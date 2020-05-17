@@ -1,15 +1,15 @@
 package web.index.controller;
 
-import java.awt.Window;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.tomcat.util.http.fileupload.RequestContext;
 
 import web.index.Service.JoinService;
 import web.index.entity.personalinfo;
@@ -25,6 +25,7 @@ public class JoinController extends HttpServlet {
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
 
+
 		JoinService joinserv= new JoinService();
 
 		String name = req.getParameter("name");
@@ -33,14 +34,10 @@ public class JoinController extends HttpServlet {
 	    String password=	req.getParameter("password");
 		String email= req.getParameter("email");
 	    String tel=	req.getParameter("tel");
-	 
-	   personalinfo person = new personalinfo( id,  password,  nickname,  email,  tel,  name);
-      joinserv.registerAccount(person);
-      resp.sendRedirect("/signupafterlogin.jsp");
- 	
-       req.setAttribute("person", person);
-   
-//	   RequestDispatcher  dispatcher= req.getRequestDispatcher("join.jsp");
+	    personalinfo person = new personalinfo( id,  password,  nickname,  email,  tel,  name);
+    	 joinserv.registerAccount(person);
+
+
 	   
 	
 	}

@@ -26,7 +26,6 @@
 .footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-color: transparent; }
 .footer-bs .footer-brand h2 { margin:0px 0px 10px; }
 .footer-bs .footer-brand p { font-size:12px; color:rgba(255,255,255,0.70); }
-
 .footer-bs .footer-nav ul.pages { list-style:none; padding:0px; }
 .footer-bs .footer-nav ul.pages li { padding:5px 0px;}
 .footer-bs .footer-nav ul.pages a { color:rgba(255,255,255,1.00); font-weight:bold; text-transform:uppercase; }
@@ -36,14 +35,11 @@
 	text-transform: uppercase;
 	letter-spacing: 3px;
 	margin-bottom:10px;
-
 }
-
 .footer-bs .footer-nav ul.list { list-style:none; padding:0px; }
 .footer-bs .footer-nav ul.list li { padding:5px 0px;}
 .footer-bs .footer-nav ul.list a { color:rgba(255,255,255,0.80); }
 .footer-bs .footer-nav ul.list a:hover { color:rgba(255,255,255,0.60); text-decoration:none; }
-
 .footer-bs .footer-social ul { list-style:none; padding:0px; }
 .footer-bs .footer-social h4 {
 	font-size: 11px;
@@ -53,7 +49,6 @@
 .footer-bs .footer-social li { padding:5px 4px;}
 .footer-bs .footer-social a { color:rgba(255,255,255,1.00);}
 .footer-bs .footer-social a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
-
 .footer-bs .footer-ns h4 {
 	font-size: 11px;
 	text-transform: uppercase;
@@ -61,35 +56,28 @@
 	margin-bottom:10px;
 }
 .footer-bs .footer-ns p { font-size:12px; color:rgba(255,255,255,0.70); }
-
 @media (min-width: 768px) {
 	.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); }
 	
 	
 .footer-bs{ margin-top: 130px; margin-left: -40px; margin-right: -62px; padding: -50px ; }
-
-
  
   li{  padding-top:2px; font-size; font-family: sans-serif; font-weight: bold;  }
  @media (min-width: 768px) {
 	.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); 
 	}
-
 	.form-signin{margin-top: 20px; }
 	.main{ background-image: url("https://cdn.pixabay.com/photo/2015/12/27/05/48/turntable-1109588_1280.jpg" );
 	background-size: cover; padding-bottom: 900px; margin-top: 100px}
 	
 	body{margin-top: 80px}
 	
-
 .alert-info{
 padding: 5px; 
 }
-
 </style>
 <title>회원가입 페이지</title>
 </head>
-
 <body >
 <header>
 <nav class="navbar navbar-default  navbar-fixed-top">
@@ -104,7 +92,6 @@ padding: 5px;
       </button>
       <p class="navbar-text"><a href="index.jsp">Myongji University</a></p>
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
@@ -127,44 +114,84 @@ padding: 5px;
        </nav>
 </header>
   
+  <script type="text/javascript">
+  function check(){
+	  
+  if (document.joinform.password.value!=document.joinform.confirmpassword.value)//비밀번호와 비밀번호 확인 폼에 입력된 값이 다르다면
+	  {
+
+          history.back();
+		  alert("비밀번호가 서로 다릅니다.");
+		  document.joinform.password.value=null;   
+		  document.joinform.confirmpassword.value=null;
+		  return false;
+	  }
+  else if(document.joinform.Duplication.value =="iduncheck")
+	  {
+	   history.back();
+	  alert("아이디 중복 검사를 하세요");
+	  return false;
+	  }
+  
+  else
+	  {
+	  alert("회원가입에 성공하셨습니다.");
+          return true;
+	  }
+  }
+  
+  
+  function openidcheck(){
+	 
+  // 중복 확인 버튼을 눌렀을 때 실행되는 함수
+	  window.name = "parentForm"; //부모 창 이름 지정
+	  window.open("idcheckForm.jsp?id="+document.joinform.id.value,"DuplicationcheckForm","width=500, height=300, resizable=no, scrollbars=no");//새 창을 여는 함수, 속성: 생성된 새 창의 url, 생성된 창의 이름, 창 옵션 설정,
+  }
+  
+  function inputidcheck()
+  {
+	  //아이디 입력 칸에 값을 입력하려고 할 때 실행되는 함수
+	  document.joinform.Duplication.value="iduncheck";
+	  //중복 확인 한 후에 새로운 아이디를 입력할 때는 중복 검사를 하지 않은 것으로 세팅한다.
+	  //중복 검사 x->Sign up 버튼 눌리지 않음
+  }
+  
+  </script>
+  
+  
   
   <main >
   <div class="container">
-
-      <form action="join" method="post">
+      <form action="join" method="post" name="joinform" onSubmit="return check()">
         <h1 >Create Account</h1>
+        
         <label>이름을 입력하세요 </label><br>
         <input type="text" name="name" class="form-control" placeholder="Name" required autofocus > <br>
+        
         <label>사용하실 닉네임을 입력하세요 </label><br>
         <input type="text" name="nickname" class="form-control" placeholder="Nickname" required autofocus > <br>
+        
         <label>사용하실 아이디를 입력하세요 </label><br>
-        <input type="text" name="id" class="form-control" placeholder="ID" required autofocus >  <br>
-         <button type="button" >중복확인</button>
+        <input type="text" name="id" class="form-control" placeholder="ID" required autofocus  onkeydown="inputidcheck()" >  <br>
+        
+         <button type="button"  value="중복확인"  onclick="openidcheck()" >중복확인</button>
+         <input type="hidden" name="Duplication" value="iduncheck" >
          <br> <br>
+         
          <label>사용하실 비밀번호 입력하세요 </label><br>
          <input type="password" name="password" class="form-control" placeholder="Password" required autofocus><br>
+         
          <label>비밀번호를 한번 더 입력하세요 </label><br>
            <input type="password" name="confirmpassword" class="form-control" placeholder="ConfirmPassword" required autofocus><br>
-           <c:if test="${!empty param.password&&!empty param.confirmpassword&&param.password==param.confirmpassword }">
-             <div class="alert alert-success" role="alert">비밀번호가 일치합니다.</div>
-           </c:if>
-           
-                <c:if test="${!empty param.password&&!empty param.confirmpassword&&param.password!=param.confirmpassword }">
-             <div class="alert alert-warning" role="alert">입력하신 비밀번호와 다릅니다. 비밀번호를 다시 입력해주세요.</div>
-            </c:if>
-           
-                <c:if test="${empty param.password||empty param.confirmpassword}">
-           <div class="alert alert-info" role="alert">비밀번호를 입력하세요</div>
-           </c:if>
-         
          
         <label>이메일을 입력하세요 </label>
        <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus><br>
+       
        <label>전화번호를 입력하세요( 입력 형식>010-####-####  )</label>
        <input type="tel" name="tel" class="form-control" placeholder="Phone Number" required autofocus><br>
+       
        <button class="btn btn-lg btn-primary btn-block" type="submit"  name="button1"   >Sign up</button>
       
-
        <!--  <div class="checkbox">
          <label>
             <input type="checkbox" value="remember-me"> Remember me
@@ -173,8 +200,6 @@ padding: 5px;
         --> 
      
       </form>
-
-
     </div> <!-- /container -->
   
   </main>
@@ -225,6 +250,5 @@ padding: 5px;
         </div>
     </footer>
   
-
 </body>
-</html>
+</html> 

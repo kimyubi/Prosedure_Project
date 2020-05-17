@@ -43,5 +43,40 @@ public class JoinService {
 		}
 		
 	}
+	
+	public boolean checkDuplication(String id)
+	{  boolean result=false;
+		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+		String sql = " SELECT ID FROM PERSONALINFO WHERE ID=? ";
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "YUBI", "rlatldn11!");
+			PreparedStatement st = con.prepareStatement(sql);
+		    st.setString(1, id);
+			ResultSet rs = st.executeQuery();
+			if(rs.next())
+			{
+				result =true;
+			}
+	
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
