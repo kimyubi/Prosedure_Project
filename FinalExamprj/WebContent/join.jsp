@@ -142,10 +142,15 @@ padding: 5px;
   
   
   function openidcheck(){
-	 
+	 if(!document.joinform.id.value)
+		 {
+		 alert("중복검사할 아이디가 입력되지 않았습니다.");
+		 }
   // 중복 확인 버튼을 눌렀을 때 실행되는 함수
+  else{
 	  window.name = "parentForm"; //부모 창 이름 지정
 	  window.open("idcheckForm.jsp?id="+document.joinform.id.value,"DuplicationcheckForm","width=500, height=300, resizable=no, scrollbars=no");//새 창을 여는 함수, 속성: 생성된 새 창의 url, 생성된 창의 이름, 창 옵션 설정,
+       }
   }
   
   function inputidcheck()
