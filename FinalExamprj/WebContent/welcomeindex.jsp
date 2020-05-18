@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
+    if (session.getAttribute("Signedid") == null) {
+        response.sendRedirect("/login.jsp");
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +15,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
+<title>메인 페이지</title>
+
 <style type="text/css">
+ body { padding-bottom: 10px;  }
  .navbar-text{ font-size: 20px; font-family: monospace; font-weight: bold; }
- .footer-bs {
+ li{  padding-top:2px; font-size; font-family: sans-serif; font-weight: bold;  }
+ .jumbotron{margin-top: 10px; padding-bottom: 200px;
+  background-image: url("https://cdn.pixabay.com/photo/2015/12/27/05/48/turntable-1109588_1280.jpg");
+  background-repeat: no-repeat; background-size: cover;
+text-shadow: black 0.4em 0.4em 0.4em;color:white; padding-left:30px; padding-bottom:30px; 
+  height: 600px;}
+  .footer-bs {
     background-color: #3c3d41;
 	padding: 60px 40px;
 	color: rgba(255,255,255,1.00);
@@ -65,30 +79,17 @@
 	.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); }
 	
 	
-.footer-bs{ margin-top: 130px; margin-left: -40px; margin-right: -62px; padding: -50px ; }
+.footer-bs{ margin-top: -111px; margin-left: -62px; margin-right: -62px; padding: -50px}
 
+
+h1{margin-top: 40px}
 
  
-  li{  padding-top:2px; font-size; font-family: sans-serif; font-weight: bold;  }
- @media (min-width: 768px) {
-	.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); 
-	}
-
-	.form-signin{margin-top: 20px; }
-	.main{ background-image: url("https://cdn.pixabay.com/photo/2015/12/27/05/48/turntable-1109588_1280.jpg" );
-	background-size: cover; padding-bottom: 900px; margin-top: 100px}
-	
-	body{margin-top: 130px}
-	
-form{
-margin-top: -60px}
-h1{font-weight: border;}
-
 </style>
-<title>로그인 페이지</title>
+
 </head>
 
-<body >
+<body>
 <header>
 <nav class="navbar navbar-default  navbar-fixed-top">
   <div class="container-fluid">
@@ -100,7 +101,7 @@ h1{font-weight: border;}
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <p class="navbar-text"><a href="index.jsp">Myongji University</a></p>
+      <p class="navbar-text"><a href="welcomeindex.jsp">Myongji University</a> </p>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -111,40 +112,32 @@ h1{font-weight: border;}
           <li><a href="#">공지사항</a></li>
           <li><a href="#">커뮤니티</a></li>
       </ul>
+      
   
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">책가방</a></li>
         <li><a href="#">마이페이지</a></li>
-        <li><a href="login.jsp" >로그인</a></li>
-         <li><a href="join.jsp">회원 가입</a></li>
+        <li><a href="/logout.jsp" >로그 아웃</a></li>
       </ul>
- 
+      
       
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
-       </nav>
+</nav>
 </header>
+<main class="main">
+<div class="jumbotron">
+  <h1>   Welcome page</h1>
+  <h3> 환영합니다 <%= session.getAttribute("Signedid") %>님 ! </h3>
+  <h3> 상단 메뉴바의 카테고리를 선택하여 웹 사이트의 서비스를 이용해 보세요 </h3>
   
-  
-  <main >
-  <div class="container">
+</div>
+</main>
 
-      <form >
-      <h1>you have successfully signed up as a member</h1>
-     <br><br>
-        <h4>Please sign in to use the service</h4>
-          <input type="text" name="id" class="form-control" placeholder="ID" required autofocus><br>
-        <input type="password" name="password" class="form-control" placeholder="Password" required autofocus><br>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-     
-      </form>
-
-
-    </div> <!-- /container -->
-  
-  </main>
-  
-      <footer class="footer-bs">
+<div class="container">
+    <section style="height:80px;"></section>
+    <!----------- Footer ------------>
+    <footer class="footer-bs">
         <div class="row">
         	<div class="col-md-3 footer-brand animated fadeInLeft">
             	<h2>Pages for users</h2>
@@ -189,7 +182,6 @@ h1{font-weight: border;}
             </div>
         </div>
     </footer>
-  
-
+</div>
 </body>
 </html>
