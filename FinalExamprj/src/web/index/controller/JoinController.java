@@ -2,6 +2,7 @@ package web.index.controller;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
@@ -36,7 +37,8 @@ public class JoinController extends HttpServlet {
 	    String tel=	req.getParameter("tel");
 	    personalinfo person = new personalinfo( id,  password,  nickname,  email,  tel,  name);
     	 joinserv.registerAccount(person);
-
+    	 resp.sendRedirect("/login.jsp");
+  
 
 	   
 	

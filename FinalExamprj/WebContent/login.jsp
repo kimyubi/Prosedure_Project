@@ -127,11 +127,13 @@
   <main >
   <div class="container">
 
-      <form >
-        <h1 >Please sign in</h1>
-        <input type="text" name="id" class="form-control" placeholder="ID" required autofocus><br>
-        <input type="password" name="password" class="form-control" placeholder="Password" required autofocus><br>
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+      <form name="loginform" action="/login" method = "post">
+        <h1 >Please sign in</h1><br>
+        <input type="text" name="loginid" class="form-control" placeholder="ID" required autofocus><br>
+        <input type="password" name="loginpassword" class="form-control" placeholder="Password" required autofocus>   <br>
+         <button class="btn btn-lg btn-primary btn-block" type="submit" >Sign in</button>
+       
+     
      
       </form>
 

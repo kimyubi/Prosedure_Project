@@ -96,7 +96,7 @@ h1{margin-top: 40px}
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <p class="navbar-text">Myongji University</p>
+           <p class="navbar-text"><a href="index.jsp">Myongji University</a> </p>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

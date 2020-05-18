@@ -119,24 +119,23 @@ padding: 5px;
 	  
   if (document.joinform.password.value!=document.joinform.confirmpassword.value)//비밀번호와 비밀번호 확인 폼에 입력된 값이 다르다면
 	  {
-
-          history.back();
+         history.go(0);
 		  alert("비밀번호가 서로 다릅니다.");
-		  document.joinform.password.value=null;   
-		  document.joinform.confirmpassword.value=null;
 		  return false;
 	  }
   else if(document.joinform.Duplication.value =="iduncheck")
 	  {
-	   history.back();
+	  history.go(0);
 	  alert("아이디 중복 검사를 하세요");
 	  return false;
 	  }
   
   else
 	  {
-	  alert("회원가입에 성공하셨습니다.");
+	  
+	  alert("회원가입에 성공하셨습니다. 환영합니다");
           return true;
+          
 	  }
   }
   
@@ -160,6 +159,8 @@ padding: 5px;
 	  //중복 확인 한 후에 새로운 아이디를 입력할 때는 중복 검사를 하지 않은 것으로 세팅한다.
 	  //중복 검사 x->Sign up 버튼 눌리지 않음
   }
+  
+
   
   </script>
   
@@ -195,15 +196,8 @@ padding: 5px;
        <label>전화번호를 입력하세요( 입력 형식>010-####-####  )</label>
        <input type="tel" name="tel" class="form-control" placeholder="Phone Number" required autofocus><br>
        
-       <button class="btn btn-lg btn-primary btn-block" type="submit"  name="button1"   >Sign up</button>
-      
-       <!--  <div class="checkbox">
-         <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
-        --> 
-     
+       <button class="btn btn-lg btn-primary btn-block" type="submit"  name="button1"  onload="/login.jsp" >Sign up</button>
+
       </form>
     </div> <!-- /container -->
   
