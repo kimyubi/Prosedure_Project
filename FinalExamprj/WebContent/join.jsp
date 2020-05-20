@@ -223,11 +223,11 @@ padding: 5px;
                 </div>
             	<div class="col-md-6">
                     <ul class="list">
-                        <li><a href="#">010-9600-1319</a></li>
-                        <li><a href="#">ieieie0419@gmail.com</a></li>
-                         <li><a href="#">ieieie0419@gmail.com</a></li>
-                        <li><a href="#">Kim Yu-bi</a></li>
-                        <li><a href="#">Department of Convergence Software</a></li>
+                        <li>010-9600-1319</li>
+                        <li>ieieie0419@gmail.com</li>
+                        <li>Myongji University</li>
+                        <li>Kim Yu-bi</li>
+                        <li>Department of Convergence Software</li>
                     </ul>
                 </div>
             </div>

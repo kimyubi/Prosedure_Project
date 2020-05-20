@@ -25,7 +25,6 @@ public class LoginController extends HttpServlet {
 		resp.setContentType("text/html; charset=UTF-8");
 		String id = req.getParameter("loginid");
 		String password = req.getParameter("loginpassword");
-		String autoLogin = req.getParameter("autoLogin");
 		PrintWriter out = resp.getWriter();
 		int islogin = service.logIn(id, password);
 	    req.setAttribute("islogin", islogin);

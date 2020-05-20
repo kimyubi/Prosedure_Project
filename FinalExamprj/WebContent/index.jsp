@@ -104,15 +104,15 @@ h1{margin-top: 40px}
       <ul class="nav navbar-nav">
           <li><a href="#">수강 신청</a></li>
            <li><a href="#">강의 평가</a></li>
-          <li><a href="#">공지사항</a></li>
+          <li><a href="notice.jsp">공지사항</a></li>
           <li><a href="#">커뮤니티</a></li>
       </ul>
   
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">책가방</a></li>
         <li><a href="#">마이페이지</a></li>
-        <li><a href="login.jsp" >로그인</a></li>
-         <li><a href="join.jsp">회원 가입</a></li>
+        <li><a href="/login.jsp" >로그인</a></li>
+         <li><a href="/join.jsp">회원 가입</a></li>
       </ul>
       
       
@@ -143,20 +143,20 @@ h1{margin-top: 40px}
             	<h4>Administrator information-</h4>
             	<div class="col-md-6">
                     <ul class="pages">
-                        <li><a href="#">Phone number</a></li>
-                        <li><a href="#">E-mail</a></li>
-                        <li><a href="#">University</a></li>
-                        <li><a href="#">Name</a></li>
-                        <li><a href="#">Major</a></li>
+                        <li>Phone number</li>
+                        <li>E-mail</li>
+                        <li>University</li>
+                        <li>Name</li>
+                        <li>Major</li>
                     </ul>
                 </div>
             	<div class="col-md-6">
                     <ul class="list">
-                        <li><a href="#">010-9600-1319</a></li>
-                        <li><a href="#">ieieie0419@gmail.com</a></li>
-                         <li><a href="#">ieieie0419@gmail.com</a></li>
-                        <li><a href="#">Kim Yu-bi</a></li>
-                        <li><a href="#">Department of Convergence Software</a></li>
+                        <li>010-9600-1319</li>
+                        <li>ieieie0419@gmail.com</li>
+                        <li>Myongji University</li>
+                        <li>Kim Yu-bi</li>
+                        <li>Department of Convergence Software</li>
                     </ul>
                 </div>
             </div>
