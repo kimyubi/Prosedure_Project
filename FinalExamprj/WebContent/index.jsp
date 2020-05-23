@@ -111,8 +111,8 @@ h1{margin-top: 40px}
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">책가방</a></li>
         <li><a href="#">마이페이지</a></li>
-        <li><a href="/login.jsp" >로그인</a></li>
-         <li><a href="/join.jsp">회원 가입</a></li>
+        <li><a href="login.jsp" >로그인</a></li>
+         <li><a href="join.jsp">회원 가입</a></li>
       </ul>
       
       

@@ -124,28 +124,23 @@ th{width: 90px; }
 								<th>조회수</th>
 								<td>${notice.hit }</td>
 							</tr>
-							<tr>
-								<th>첨부파일</th>
-								
-							<td colspan="3" style="text-align:left; " >${notice.files }</td>
-							
-							</tr>
+					
 							<tr class="content">
 								<td colspan="4" style="padding-bottom: 450px; text-align: justify; font-size:16px; padding-left:20px; padding-right:20px;
 								 padding-top: 20px;">${notice.content}</td>
 							</tr>
 							
 								<tr>
-								<th></th>
-								<td colspan="3" class="text-align-left text-indent"><a
-									class="text-blue text-strong" href=""></a></td>
+									<td colspan="3" class="text-align-left text-indent"><a
+									class="text-blue text-strong" href=""></a>	<button type="button" class="btn btn-secondary" onclick="location='/notice'">
+									목록</button></td>
+										<td colspan="3" class="text-align-left text-indent"><a
+									class="text-blue text-strong" href=""></a>	</td>
 							</tr>
 							</tbody>
 							</table>
 							</div>
-						<div>
-							<button type="button" class="btn btn-secondary" onclick="location='/notice'">목록</button>
-			      	</div>
+				
 	
 
 

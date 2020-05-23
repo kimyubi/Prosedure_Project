@@ -35,8 +35,9 @@ public class JoinController extends HttpServlet {
 	    String password=	req.getParameter("password");
 		String email= req.getParameter("email");
 	    String tel=	req.getParameter("tel");
-	    personalinfo person = new personalinfo( id,  password,  nickname,  email,  tel,  name);
+	    personalinfo person = new personalinfo(id,password,nickname,email,tel,name);
     	 joinserv.registerAccount(person);
+    	
     	 resp.sendRedirect("/login.jsp");
   
 

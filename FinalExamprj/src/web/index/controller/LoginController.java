@@ -30,11 +30,20 @@ public class LoginController extends HttpServlet {
 	    req.setAttribute("islogin", islogin);
 	    if(islogin==1)
 	    {
+	    	if(id.equals("admin")&&password.equals("admin"))
+	    	{
+	    		session.setAttribute("adminid", id);
+	    		session.setMaxInactiveInterval(30*60);
+	    		out.println("<script>alert('관리자 로그인 성공, 관리자 페이지로 이동합니다.');</script>");
+	    		out.println("<script>location.href='/adminindex.jsp'</script>");
+	    	}
+	    	else {
 	    	session.setAttribute("Signedid", id);
 	    	session.setMaxInactiveInterval(30*60);
 	    	
 	    	out.println("<script>alert('로그인에 성공하셨습니다.');</script>");
 	    	out.println("<script>location.href='/welcomeindex.jsp'</script>");
+	    	}
 	    }
 	    else if(islogin==2)
 	    {
@@ -49,8 +58,7 @@ public class LoginController extends HttpServlet {
 	    }
 	    
 	    
-//	       RequestDispatcher   dispatcher= req.getRequestDispatcher("/login.jsp");
-//           dispatcher.forward(req, resp);	
+
 		
 		
 		

@@ -61,6 +61,12 @@ public class Notice {
 		this.hit = hit;
 		this.files = files;
 	}
+	public Notice(String title, String content, String nickname)
+	{
+		this.title = title;
+		this.content = content;
+		this.nickname= nickname;
+	}
 	private String title;
 	private String nickname ;
 	private String content ;
