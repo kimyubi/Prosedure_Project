@@ -274,9 +274,8 @@ li {
 
 			<div style="margin-left: 580px; margin-top: 20px;">
 
-				<input class="btn btn-search" type="submit" value="등록" /> <input
-					class="btn btn-search" type="button" value="취소"
-					onclick="location.href='/adminnotice';" />
+				<input class="btn btn-search" type="submit" value="등록" /> 
+				<input class="btn btn-search" type="button" value="취소" onclick="location.href='/adminnotice'" />
 
 
 			</div>

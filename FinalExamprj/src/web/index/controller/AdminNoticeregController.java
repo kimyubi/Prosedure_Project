@@ -44,7 +44,7 @@ public class AdminNoticeregController extends HttpServlet {
 	    }
 	    
 	    
-   request.getRequestDispatcher("/adminnotice").forward(request, response);
+  // request.getRequestDispatcher("/adminnotice").forward(request, response);
 		
 	}
 

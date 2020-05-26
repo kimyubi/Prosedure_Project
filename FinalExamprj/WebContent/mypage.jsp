@@ -1,5 +1,14 @@
+<%@page import="web.index.entity.Notice"%>
+<%@page import="java.sql.Date"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
 	// 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
 	if (session.getAttribute("Signedid") == null) {
@@ -7,7 +16,7 @@
 		out.println("<script>location.href='/login.jsp'</script>");
 	}
 %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 
 
 <!DOCTYPE html>
@@ -23,9 +32,12 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<title>공지사항 페이지</title>
+<title>수강내역 페이지</title>
 
 <style type="text/css">
+body {
+	padding-bottom: 10px;
+}
 
 .navbar-text {
 	font-size: 20px;
@@ -33,28 +45,46 @@
 	font-weight: bold;
 }
 
+li {
+	padding-top: 2px; font-size;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+@media ( min-width : 768px) {
+	.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns
+		{
+		border-left: solid 1px rgba(255, 255, 255, 0.10);
+	}
 	body {
 		margin-top: 110px;
-		margin-bottom: 50px;
-	   padding-bottom: 10px;
+		margin-bottom: 50px
 	}
-body{
-	width: 1150px;
-	height:900px;
-	margin-left: 60px;}
-	
-.btn-secondary
-{
-margin-bottom:5px;
-margin-left: 550px;
-margin-top: 5px;
-width: 100px;
-border-color: silver;
-font-size: 16px;
-text-align: center;
+	th{text-align: center;}
+	tr{text-align: center;}
+	.table {
+		width: 1150px;
+		margin-left: 50px;
+		margin-bottom: 20px;
+	}
+	h3{
+		margin-left: 70px;
+		margin-bottom: 30px;
+		margin-top: 70px; <!--
+		font-family: monospace; -->
+		font-weight: bolder;
+	}
+	h4{
+	margin-left: 70px;}
+	.table-form {
+		margin-left: 900px;
+		margin-bottom: 30px;
+		margin-top: -40px;
+	}
+	#main {
+		width: 1500px;
+	}
 }
-th{width: 90px; }
-
 </style>
 
 </head>
@@ -100,51 +130,47 @@ th{width: 90px; }
 			<!-- /.container-fluid -->
 		</nav>
 	</header>
-	
-	
-	
 	<main class="main">
-	
-	<div class="margin-top first">
-					<h3 class="hidden">공지사항 내용</h3>
-					<table class="table table-striped">
-						<tbody>
-							<tr>
-								<th>제목</th>
-								<td class="text-align-left text-indent text-strong text-orange"
-									colspan="3">${notice.title }</td>
-							</tr>
-							<tr>
-								<th>작성일</th>
-								<td class="text-align-left text-indent" colspan="3">	<fmt:formatDate value="${notice.date }" pattern="yyyy-MM-dd / hh:mm:ss"/></td>
-							</tr>
-							<tr>
-								<th>닉네임</th>
-								<td>${notice.nickname } </td>
-								<th>조회수</th>
-								<td>${notice.hit }</td>
-							</tr>
-					
-							<tr class="content">
-								<td colspan="4" style="padding-bottom: 450px; text-align: justify; font-size:16px; padding-left:20px; padding-right:20px;
-								 padding-top: 20px;">${notice.content}</td>
-							</tr>
-							
-								<tr>
-									<td colspan="3" class="text-align-left text-indent"><a
-									class="text-blue text-strong" href=""></a>	<button type="button" class="btn btn-secondary" onclick="location='/notice'">
-									목록</button></td>
-										<td colspan="3" class="text-align-left text-indent"><a
-									class="text-blue text-strong" href=""></a>	</td>
-							</tr>
-							</tbody>
-							</table>
-							</div>
-				
-	
+		<h3>수강신청 내역</h3>
+         <h4 >총 수강신청한 학점 수 : ${totalGrades}</h4>
+		<div id="table">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+
+						<th scope="col">과목 코드</th>
+						<th scope="col" >교과목명</th>
+						<th scope="col">강의실</th>
+						<th scope="col">정원</th>
+						<th scope="col">학점</th>
+						<th scope="col">교수명</th>
+						<th scope="col">강의시간</th>
+						<th scope="col">캠퍼스</th>
+
+					</tr>
+				</thead>
+				<tbody>
+
+					<c:forEach items="${list}" var="n">
+						<tr>
+							<td>${n.code}</td>
+							<td >${n.name}</td>
+							<td >${n.location}</td>
+							<td>${n.personnel}</td>
+							<td>${n.grades }</td>
+							<td>${n.professor}</td>
+							<td>${n.time}</td>
+							<td>${n.campus}</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</div>
 
 
-</main>
+
+
+	</main>
 
 </body>
 </html>

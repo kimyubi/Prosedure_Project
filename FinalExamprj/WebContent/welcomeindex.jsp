@@ -116,7 +116,7 @@ h1{margin-top: 40px}
   
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">책가방</a></li>
-        <li><a href="#">마이페이지</a></li>
+        <li><a href="/mypage">마이페이지</a></li>
         <li><a href="/logout.jsp" >로그 아웃</a></li>
       </ul>
       

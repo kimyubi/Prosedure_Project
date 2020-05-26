@@ -57,7 +57,7 @@
   
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">책가방</a></li>
-        <li><a href="#">마이페이지</a></li>
+        <li><a href="/mypage">마이페이지</a></li>
         <li><a href="/logout.jsp" >로그 아웃</a></li>
       </ul>
       
@@ -83,14 +83,14 @@
 				<option value="department"  ${(param.selection=="department")? "selected" : "" }>학부/학과</option>
 			</select>
 			 <input type="text" name="search"  value="${param.search}"/> 
-			 <input class="btn btn-search"	type="submit"  value="검색" />
+			 <input class="btn btn-search"	type="submit"  name="button" value="검색" />
 
 		</form>
 
 <main class="main">
 
 
-	   <form action="/enrollmentin" method="post">
+	   <form action="/enrollment" method="post">
 		
 				<table class="table table-hover" style="width: 1200px; margin-left: -350px; margin-top: 40px;" >
 					<thead>
@@ -102,16 +102,15 @@
 							<th scope="col"style="text-align: center;">학점</th>
 							<th scope="col"style="text-align: center;">교수명</th>
 							<th scope="col"style="text-align: center;">강의시간</th>
-						    <th scope="col">선택</th>
+						    <th scope="col">&nbsp;&nbsp;수강신청</th>
 
 						</tr>
 					</thead>
-					
+				
 					<tbody>
-
 				 <c:forEach items="${list}" var="i">
 							<tr>
-							
+								   
 								<td >&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ${i.code}</td>
 								<td style="text-align: center;">${i.name}</td>
 								<td style="text-align: center;">&nbsp;&nbsp;${i.location}</td>
@@ -119,18 +118,21 @@
 								<td style="text-align: center;">&nbsp;&nbsp;${i.grades}</td>
 								<td style="text-align: center;">${i.professor}</td>
 								<td style="text-align: center;">${i.time}</td>
-								<td style="text-align:  justify;">&nbsp;&nbsp;<input type="checkbox" name="select" value="${i.code}"/></td>
+								<td style="text-align:  justify;"> 
+								<button name="code" value="${i.code }">수강신청</button>
+								</td>
 								
 							</tr>
 						</c:forEach>
 					</tbody>
+						
 				</table>
 				<div  style="margin-left: 1090px;">
 			
 				</div>
 				
 				</form>
-							
+							<
 	</main>
 
 </body>

@@ -249,7 +249,7 @@ li {
 	<main class="main">
 		<h1>공지사항</h1>
 
-		<form class="table-form" action="adminnotice" method="get">
+		<form class="table-form" action="/adminnotice" method="get">
 
 			<select name="selection">
 				<option value="title" ${(param.selection=="title")?"selected":"" }>제목</option>
@@ -348,7 +348,7 @@ li {
 			<div style="margin-left: 1050px;">
 
 				<input class="btn btn-search" type="submit" value="삭제" /> 
-				<a	class="btn- text btn - default"  href="adminnoticereg.jsp"  style="color: black;">글쓰기</a>
+				<a	class="btn- text btn - default"  href="/adminnoticereg.jsp"  style="color: black;">글쓰기</a>
 
 			</div>
 		</form>
