@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
     <%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
     if (session.getAttribute("Signedid") == null) {
-        response.sendRedirect("/login.jsp");
+        out.println("<script>alert('로그인 후 이용하실 수 있습니다.');</script>");
+		out.println("<script>location.href='/login.jsp'</script>");
     }
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -48,16 +49,17 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-          <li><a href="/enrollment">수강 신청</a></li>
-           <li><a href="#">강의 평가</a></li>
-          <li><a href="/notice">공지사항</a></li>
-          <li><a href="#">커뮤니티</a></li>
+       <li><a href="/enrollment">수강 신청</a></li>
+		<li><a href="/mypage">신청 내역</a></li>
+		<li><a href="#">강의 평가</a></li>
+		<li><a href="/notice">공지사항</a></li>
+		<li><a href="#">커뮤니티</a></li>
       </ul>
       
   
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">책가방</a></li>
-        <li><a href="/mypage">마이페이지</a></li>
+		<li><a href="/myinfo">내 정보</a></li>
         <li><a href="/logout.jsp" >로그 아웃</a></li>
       </ul>
       

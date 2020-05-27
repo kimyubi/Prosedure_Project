@@ -7,9 +7,7 @@
 <%@page import="java.sql.Connection"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%
+<% 
 	// 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
 	if (session.getAttribute("Signedid") == null) {
 		out.println("<script>alert('로그인 후 이용하실 수 있습니다.');</script>");
@@ -32,13 +30,12 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<title>수강내역 페이지</title>
+<title>내 정보 페이지</title>
 
 <style type="text/css">
 body {
 	padding-bottom: 10px;
 }
-
 .navbar-text {
 	font-size: 20px;
 	font-family: monospace;
@@ -60,33 +57,10 @@ li {
 		margin-top: 110px;
 		margin-bottom: 50px
 	}
-	th{text-align: center;}
-	tr{text-align: center;}
-	.table {
-		width: 1150px;
-		margin-left: 50px;
-		margin-bottom: 20px;
-	}
-	h2{
-		margin-left: 70px;
-		margin-bottom: 30px;
-		margin-top: 70px; <!--
-		font-family: monospace; -->
-		font-weight: bolder;
-	}
-	h5{
-	margin-left: 70px;
-	margin-bottom: 10px;}
-	.table-form {
-		margin-left: 900px;
-		margin-bottom: 30px;
-		margin-top: -40px;
-	}
-	#main {
-		width: 1500px;
-		margin-top: 900px;
-	}
+	
 }
+form{margin-left: 150px; margin-top:200px;}
+
 </style>
 
 </head>
@@ -133,50 +107,53 @@ li {
 			<!-- /.container-fluid -->
 		</nav>
 	</header>
-	<main class="main">
-		<h2>[ 수강신청 내역 ]</h2>
-		 <h5 >최대 이수가능 학점  : ${!empty maxgrades?  maxgrades:"내 정보에서 단과대를 선택하면 볼 수 있습니다."}</h5>
-         <h5>총 수강신청 학점 수 : ${!empty totalGrades? totalGrades:0}</h5>
- 
-  
-		<div id="table">
-			<table class="table table-hover">
-				<thead>
-					<tr>
+	
+	<main>
+	
+	
+	<form action="/myinfo" method="get">
+	<div >
+	<label style=" margin-left: 200px ; margin-bottom: 20px;"> 이름 :  </label> <input  style="padding-left: 4px;" type="text" name="name"  value="${myinfo.name}"  disabled>
+	<label  style=" margin-left: 40px"> 이메일 :  </label> <input style="padding-left: 4px;"  type="text" name="email"  value="${myinfo.email}" disabled> 
+	<br>
+	<label  style=" margin-left: 173px"> 전화번호 :  </label> <input  style="padding-left: 4px;"   type="text" name="tel"   value="${myinfo.tel}" disabled>
+	
+	<br><br>
+	<label  style=" margin-left: 260px ; margin-top: 20px;"> 단과대를 선택하세요 : </label> 
+	
+	<select name = "select" style="padding: 8px; padding-right: 100px; padding-bottom: 8px;" >
+					<option value='ict' ${(param.select=="ict")?"selected":"" }> ICT융합대학</option>
+					<option  value='inmun'  ${(param.select=="inmun")?"selected":"" } >인문대학 </option>
+					<option value='sagwa'   ${(param.select=="sagwa")?"selected":"" } >사회과학대학 </option>
+					<option  value='beob'  ${(param.select=="beob")?"selected":"" } >법학대학 </option>
+					<option  value='gyeong' ${(param.select=="gyeong")?"selected":"" } > 경영대학</option>
+					<option  value='gong'  ${(param.select=="gong")?"selected":"" } > 공과대학</option>
+					<option  value='jagwa'  ${(param.select=="jagwa")?"selected":"" } >자연과학대학 </option>
+					<option  value='yeche' ${(param.select=="title")?"yeche":"" } > 예술체육대학</option>
+					<option value='gun'  ${(param.select=="title")?"gun":"" } >건축대학 </option>
+		</select><br><br>
+		
+			<label style=" margin-left: 280px "> 최대 이수가능 학점:  ${maxgrades }</label>  
+			</div>
+		  <input  style=" margin-left:350px; margin-top: 50px; padding-left:100px; padding-right:100px; text-align: center ;"  class="btn btn-search"	type="submit" value="저장" />
+		
+			</form>
+	
+	
+	
+	
+	
 
-						<th scope="col">과목 코드</th>
-						<th scope="col" >교과목명</th>
-						<th scope="col">강의실</th>
-						<th scope="col">정원</th>
-						<th scope="col">학점</th>
-						<th scope="col">교수명</th>
-						<th scope="col">강의시간</th>
-						<th scope="col">캠퍼스</th>
-
-					</tr>
-				</thead>
-				<tbody>
-
-					<c:forEach items="${list}" var="n">
-						<tr>
-							<td>${n.code}</td>
-							<td >${n.name}</td>
-							<td >${n.location}</td>
-							<td>${n.personnel}</td>
-							<td>${n.grades }</td>
-							<td>${n.professor}</td>
-							<td>${n.time}</td>
-							<td>${n.campus}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-		</div>
-
-
-
-
+	
+	
+	
+	
+	
+	
+	
 	</main>
+	
+	
 
 </body>
 </html>

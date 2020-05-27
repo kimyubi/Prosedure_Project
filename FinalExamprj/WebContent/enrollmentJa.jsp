@@ -48,16 +48,17 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-          <li><a href="/enrollment">수강 신청</a></li>
-           <li><a href="#">강의 평가</a></li>
-          <li><a href="/notice">공지사항</a></li>
-          <li><a href="#">커뮤니티</a></li>
+   <li><a href="/enrollment">수강 신청</a></li>
+	<li><a href="/mypage">신청 내역</a></li>
+	<li><a href="#">강의 평가</a></li>
+	<li><a href="/notice">공지사항</a></li>
+	<li><a href="#">커뮤니티</a></li>
       </ul>
       
   
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">책가방</a></li>
-        <li><a href="#">마이페이지</a></li>
+ 	<li><a href="#">책가방</a></li>
+	<li><a href="/myinfo">내 정보</a></li>
         <li><a href="/logout.jsp" >로그 아웃</a></li>
       </ul>
       
@@ -90,41 +91,44 @@
 <main class="main">
 
 
-	   <form action="/enrollmentin" method="post">
-		
-				<table class="table table-hover" style="width: 1200px; margin-left: -350px; margin-top: 40px;" >
+	   <form action="/enrollmentJa" method="post">
+		<table class="table table-hover" style="width: 1200px; margin-left: -350px; margin-top: 40px;" >
 					<thead>
 						<tr>
 							<th scope="col"  style="text-align: center;">과목코드</th>
-							<th scope="col" style="text-align: center;">교과목명</th>
-							<th scope="col"style="text-align: center;">강의실</th>
-							<th scope="col"style="text-align: center;">정원</th>
-							<th scope="col"style="text-align: center;">학점</th>
-							<th scope="col"style="text-align: center;">교수명</th>
+							<th scope="col" style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 교과목명</th>
+							<th scope="col"style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 강의실</th>
+							<th scope="col"style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp; 정원</th>
+							<th scope="col"style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp; 학점</th>
+							<th scope="col"style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 교수명</th>
 							<th scope="col"style="text-align: center;">강의시간</th>
-						    <th scope="col">선택</th>
+						    <th scope="col" style="text-align: center;">수강신청</th>
 
 						</tr>
 					</thead>
-					
+				
 					<tbody>
-
 				 <c:forEach items="${list}" var="i">
 							<tr>
-							
+								   
 								<td >&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ${i.code}</td>
-								<td style="text-align: center;">${i.name}</td>
-								<td style="text-align: center;">&nbsp;&nbsp;${i.location}</td>
-								<td style="text-align: center;"> ${i.personnel} </td>
-								<td style="text-align: center;">&nbsp;&nbsp;${i.grades}</td>
-								<td style="text-align: center;">${i.professor}</td>
+								<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ${i.name}</td>
+								<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; ${i.location}</td>
+								<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;  ${i.personnel} </td>
+								<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${i.grades}</td>
+								<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ${i.professor}</td>
 								<td style="text-align: center;">${i.time}</td>
-								<td style="text-align:  justify;">&nbsp;&nbsp;<input type="checkbox" name="select" value="${i.code}"/></td>
+								<td style="text-align:  center;"> 
+								<button name="code" value="${i.code }">수강신청</button>
+								</td>
 								
 							</tr>
 						</c:forEach>
 					</tbody>
+						
 				</table>
+						
+	
 				<div  style="margin-left: 1090px;">
 			
 				</div>

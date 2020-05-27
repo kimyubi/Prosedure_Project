@@ -81,7 +81,7 @@ th{width: 90px; }
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li><a href="/enrollment">수강 신청</a></li>
-						<li><a href="#">강의 평가</a></li>
+						<li><a href="/mypage">수강 내역</li>
 						<li><a href="/notice">공지사항</a></li>
 						<li><a href="#">커뮤니티</a></li>
 					</ul>
@@ -89,7 +89,7 @@ th{width: 90px; }
 
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="#">책가방</a></li>
-						<li><a href="/mypage">마이페이지</a></li>
+						<li><a href="/myinfo">내 정보</a></li>
 						<li><a href="/logout.jsp">로그 아웃</a></li>
 					</ul>
 

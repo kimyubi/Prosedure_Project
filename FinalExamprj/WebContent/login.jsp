@@ -104,16 +104,17 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-          <li><a href="#">수강 신청</a></li>
-           <li><a href="#">강의 평가</a></li>
-          <li><a href="#">공지사항</a></li>
-          <li><a href="#">커뮤니티</a></li>
+         <li><a href="/enrollment">수강 신청</a></li>
+		<li><a href="/mypage">신청내역</a></li>
+		<li><a href="#">강의 평가</a></li>
+		<li><a href="/notice">공지사항</a></li>
+		<li><a href="#">커뮤니티</a></li>
       </ul>
   
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">책가방</a></li>
-        <li><a href="#">마이페이지</a></li>
-        <li><a href="login.jsp" >로그인</a></li>
+		<li><a href="/myinfo">내 정보</a></li>
+		   <li><a href="login.jsp" >로그인</a></li>
          <li><a href="join.jsp">회원 가입</a></li>
       </ul>
  
