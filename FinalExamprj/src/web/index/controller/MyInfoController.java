@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.websocket.Session;
 
 import web.index.Service.LoginService;
 import web.index.Service.MyInfoService;
@@ -36,9 +37,10 @@ public class MyInfoController extends HttpServlet {
     	 	out.println("<script>alert('저장되었습니다.');</script>");
 	    	out.println("<script>location.href='/myinfo'</script>");
     	String maxgrades =	service.myMaxGrades(id);
-        request.getSession().setAttribute("maxgrades", maxgrades);
+        request.getSession().setAttribute("maxgrades", Integer.parseInt(maxgrades));
         
     	}
+    	
     	
     	
 

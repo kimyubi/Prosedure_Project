@@ -5,6 +5,7 @@
         response.sendRedirect("/login.jsp");
     }
 %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -26,11 +27,39 @@
  li{  padding-top:2px; font-size; font-family: sans-serif; font-weight: bold;  }
 @media (min-width: 768px) {
 	.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); }
+	 h5{
+	margin-left: -270px;
+	margin-bottom: 10px;}
 </style>
 
 </head>
 
 <body>
+
+<script type="text/javascript">
+
+function checkmaxgrades() {
+	
+	var maxgrades = '<c:out value="${maxgrades}"/>';
+	var totalGrades = '<c:out value="${totalGrades}"/>';
+
+if(maxgrades<totalGrades)
+	{
+	     alert('수강신청 가능한 학점을 초과하였습니다.');
+	     return false;
+	}
+	
+      return true;
+
+}
+
+
+</script>
+
+
+
+
+
 <header>
 <nav class="navbar navbar-default  navbar-fixed-top">
   <div class="container-fluid">
@@ -50,7 +79,7 @@
       <ul class="nav navbar-nav">
    <li><a href="/enrollment">수강 신청</a></li>
 	<li><a href="/mypage">신청 내역</a></li>
-	<li><a href="#">강의 평가</a></li>
+	<li><a href="/deleteLecture">수강 정정</a></li>
 	<li><a href="/notice">공지사항</a></li>
 	<li><a href="#">커뮤니티</a></li>
       </ul>
@@ -89,9 +118,10 @@
 		</form>
 
 <main class="main">
+		 <h5 >최대 이수가능 학점  : ${!empty maxgrades?  maxgrades:"내 정보에서 단과대를 선택하면 볼 수 있습니다."}</h5>
+         <h5>총 수강신청 학점 수 : ${!empty totalGrades? totalGrades:0}</h5>
 
-
-	   <form action="/enrollmentJa" method="post">
+	   <form action="/enrollmentJa" method="post" >
 		<table class="table table-hover" style="width: 1200px; margin-left: -350px; margin-top: 40px;" >
 					<thead>
 						<tr>
@@ -108,7 +138,7 @@
 					</thead>
 				
 					<tbody>
-				 <c:forEach items="${list}" var="i">
+				 <c:forEach items="${list}" var="i" >
 							<tr>
 								   
 								<td >&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ${i.code}</td>

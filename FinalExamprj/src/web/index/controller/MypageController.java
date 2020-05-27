@@ -22,12 +22,20 @@ public class MypageController extends HttpServlet{
 		List<EnrollmentList> list = new ArrayList<EnrollmentList>();
 		String id = (String) request.getSession().getAttribute("Signedid");
 		list  =service.showEnrollmentList(id);
-		String totalGrades = service.totalGrades(id);
+		String totalGrades = "0";
+		String totalGrades_=service.totalGrades(id);
+		if(totalGrades_!=null&&!totalGrades_.equals(""))
+		{
+			totalGrades= totalGrades_;
+		}
 		
   	 request.setAttribute("list", list);
-  	 request.setAttribute("totalGrades", totalGrades);
+  	 request.setAttribute("totalGrades", Integer.parseInt(totalGrades));
+  	 
+  	 
 	  request.getRequestDispatcher("/mypage.jsp").forward(request, response);
-		
+	
+	
 		
 	}
 

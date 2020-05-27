@@ -95,8 +95,9 @@ padding: 5px;
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-          <li><a href="#">수강 신청</a></li>
-           <li><a href="#">강의 평가</a></li>
+          <li><a href="/enrollment">수강 신청</a></li>
+           <li><a href="/mypage">신청 내역</a></li>
+           <li><a href ="/deleteLecture">수강 정정</a></li>
           <li><a href="#">공지사항</a></li>
           <li><a href="#">커뮤니티</a></li>
       </ul>

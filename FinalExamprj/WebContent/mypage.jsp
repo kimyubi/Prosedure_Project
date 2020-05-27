@@ -16,6 +16,13 @@
 		out.println("<script>location.href='/login.jsp'</script>");
 	}
 %>
+<% 
+	if (session.getAttribute("maxgrades") == null) {
+		out.println("<script>alert('내 정보 페이지에서 단과대를 선택한 후 이용하실 수 있습니다.');</script>");
+		out.println("<script>location.href='/myinfo'</script>");
+	}
+%>
+
 
 
 
@@ -114,7 +121,7 @@ li {
 					<ul class="nav navbar-nav">
 						<li><a href="/enrollment">수강 신청</a></li>
 						<li><a href="/mypage">신청 내역</a></li>
-						<li><a href="#">강의 평가</a></li>
+						<li><a href="/deleteLecture">수강 정정</a></li>
 						<li><a href="/notice">공지사항</a></li>
 						<li><a href="#">커뮤니티</a></li>
 					</ul>

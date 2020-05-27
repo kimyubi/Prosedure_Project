@@ -228,7 +228,7 @@ li {
 					<ul class="nav navbar-nav">
 						<li><a href="/enrollment">수강 신청</a></li>
 						<li><a href="/mypage">신청내역</a></li>
-						<li><a href="#">강의 평가</a></li>
+						<li><a href="/deleteLecture">수강 정정</a></li>
 						<li><a href="/notice">공지사항</a></li>
 						<li><a href="#">커뮤니티</a></li>
 					</ul>

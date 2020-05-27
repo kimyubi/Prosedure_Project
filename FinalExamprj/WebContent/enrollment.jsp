@@ -1,12 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
     <%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
     if (session.getAttribute("Signedid") == null) {
         out.println("<script>alert('로그인 후 이용하실 수 있습니다.');</script>");
 		out.println("<script>location.href='/login.jsp'</script>");
     }
 %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% 
+	if (session.getAttribute("maxgrades") == null) {
+		out.println("<script>alert('내 정보 페이지에서 단과대를 선택한 후 이용하실 수 있습니다.');</script>");
+		out.println("<script>location.href='/myinfo'</script>");
+	}
+%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +34,9 @@
    margin-left: 50px;}
  .navbar-text{ font-size: 20px; font-family: monospace; font-weight: bold; }
  li{  padding-top:2px; font-size; font-family: sans-serif; font-weight: bold;  }
+ 	h5{
+	margin-left: -270px;
+	margin-bottom: 10px;}
 @media (min-width: 768px) {
 	.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); }
 </style>
@@ -51,7 +63,7 @@
       <ul class="nav navbar-nav">
        <li><a href="/enrollment">수강 신청</a></li>
 		<li><a href="/mypage">신청 내역</a></li>
-		<li><a href="#">강의 평가</a></li>
+		<li><a href="/deleteLecture">수강 정정</a></li>
 		<li><a href="/notice">공지사항</a></li>
 		<li><a href="#">커뮤니티</a></li>
       </ul>
@@ -69,8 +81,9 @@
 </nav>
 </header>
 
-<input  style=" margin-left: 50px; margin-bottom: 15px; width: 200px; background-color:silver;"class="btn btn-search" value="인문 캠퍼스"  onclick = "location.href = '/enrollment' "/> 
-<input  style=" margin-left: 5px; margin-bottom : 15px; width: 200px; background-color:  #F0F0F0;"class="btn btn-search"  value="자연 캠퍼스"  onclick = "location.href = '/enrollmentJa' "/> 
+
+<input  style=" margin-left: 50px; margin-bottom: 15px; width: 200px; background-color:silver;" class="btn btn-search" value="인문 캠퍼스"  onclick = "location.href = '/enrollment' "/> 
+<input  style=" margin-left: 5px; margin-bottom : 15px; width: 200px; background-color:  #F0F0F0;" class="btn btn-search"  value="자연 캠퍼스"  onclick = "location.href = '/enrollmentJa' "/> 
 
 
 		<form class="table-form" action="/enrollment" method="get" style="margin-left: 100px; width: 1200px;">
@@ -85,14 +98,16 @@
 				<option value="department"  ${(param.selection=="department")? "selected" : "" }>학부/학과</option>
 			</select>
 			 <input type="text" name="search"  value="${param.search}"/> 
-			 <input class="btn btn-search"	type="submit"  name="button" value="검색" />
+			 <input class="btn btn-search"	type="submit"  name="button"  value="검색" />
 
 		</form>
 
 <main class="main">
 
+		 <h5 >최대 이수가능 학점  : ${!empty maxgrades?  maxgrades:"내 정보에서 단과대를 선택하면 볼 수 있습니다."}</h5>
+         <h5>총 수강신청 학점 수 : ${!empty totalGrades? totalGrades:0}</h5>
 
-	   <form action="/enrollment" method="post">
+	   <form action="/enrollment" method="post"  >
 		
 				<table class="table table-hover" style="width: 1200px; margin-left: -350px; margin-top: 40px;" >
 					<thead>
@@ -134,7 +149,7 @@
 				</div>
 				
 				</form>
-							<
+					
 	</main>
 
 </body>

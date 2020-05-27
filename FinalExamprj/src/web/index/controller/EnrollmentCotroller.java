@@ -37,6 +37,16 @@ public class EnrollmentCotroller extends HttpServlet {
 		}
 		list = service.lectureList(field, search);
 		request.setAttribute("list", list);
+		
+		String id = (String) request.getSession().getAttribute("Signedid");
+		String totalGrades = "0";
+		String totalGrades_= service.totalGrades(id);
+		if(totalGrades_!=null&&!totalGrades_.equals(""))
+		{
+			totalGrades = totalGrades_;
+		}
+		
+		request.setAttribute("totalGrades", Integer.parseInt(totalGrades));
 
 		request.getRequestDispatcher("/enrollment.jsp").forward(request, response);
 	}
@@ -55,6 +65,7 @@ public class EnrollmentCotroller extends HttpServlet {
 		{
 			code= code_;
 		}
+
 		int result = service.enrollment(id, code);
 		if(result ==1)
 		{
@@ -67,6 +78,7 @@ public class EnrollmentCotroller extends HttpServlet {
 			out.println("<script>alert('이미 수강신청 하셨습니다.');</script>");
 			out.println("<script>location.href='/enrollment'</script>");
 		}
+ 
 		
 	}
 }
