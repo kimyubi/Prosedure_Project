@@ -36,29 +36,6 @@
 
 <body>
 
-<script type="text/javascript">
-
-function checkmaxgrades() {
-	
-	var maxgrades = '<c:out value="${maxgrades}"/>';
-	var totalGrades = '<c:out value="${totalGrades}"/>';
-
-if(maxgrades<totalGrades)
-	{
-	     alert('수강신청 가능한 학점을 초과하였습니다.');
-	     return false;
-	}
-	
-      return true;
-
-}
-
-
-</script>
-
-
-
-
 
 <header>
 <nav class="navbar navbar-default  navbar-fixed-top">
