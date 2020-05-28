@@ -189,4 +189,39 @@ public class EnrollmentService {
 		}
 		return totalGrades;
 	}
+	
+	public int  getWillEnrollGrade(String code)
+	{
+		int willenrollGrade=0;
+		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+		String sql= " SELECT GRADES FROM LECTURE WHERE CODE = ? ";
+
+			try {
+				Class.forName("oracle.jdbc.driver.OracleDriver");
+				Connection con = DriverManager.getConnection(url, "YUBI", "rlatldn11!");
+				PreparedStatement st = con.prepareStatement(sql);
+				st.setString(1,code);
+				ResultSet rs = st.executeQuery();
+				if(rs.next())
+				{
+					String willenrollGrade_ = rs.getString("GRADES");
+					 willenrollGrade= Integer.parseInt(willenrollGrade_);
+				}
+		
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			return willenrollGrade;
+	
+		
+	}
+	
+	
+	
 }

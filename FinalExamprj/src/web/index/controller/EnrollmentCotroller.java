@@ -24,7 +24,7 @@ public class EnrollmentCotroller extends HttpServlet {
 		EnrollmentService service = new EnrollmentService();
 		List<Lecture> list = new ArrayList<Lecture>();
 
-		String field = "code";
+		String field = "code"; 
 		String field_ = request.getParameter("selection");
 		if (field_ != null && !field_.equals(" ")) {
 			field = field_;
@@ -37,16 +37,20 @@ public class EnrollmentCotroller extends HttpServlet {
 		}
 		list = service.lectureList(field, search);
 		request.setAttribute("list", list);
+		//검색 기능
 		
 		String id = (String) request.getSession().getAttribute("Signedid");
-		String totalGrades = "0";
+		int totalGrades = 0;
 		String totalGrades_= service.totalGrades(id);
 		if(totalGrades_!=null&&!totalGrades_.equals(""))
 		{
-			totalGrades = totalGrades_;
+			totalGrades =Integer.parseInt(totalGrades_);
 		}
 		
-		request.setAttribute("totalGrades", Integer.parseInt(totalGrades));
+		request.setAttribute("totalGrades", totalGrades);
+		request.getSession().setAttribute("totalGrades", totalGrades);
+		//총 수강신청한 학점 수 
+		
 
 		request.getRequestDispatcher("/enrollment.jsp").forward(request, response);
 	}
@@ -56,29 +60,47 @@ public class EnrollmentCotroller extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		//인코딩 UTF-8로 설정
+		
 		PrintWriter out = response.getWriter();
+		
 		EnrollmentService service = new EnrollmentService();
 		String id = (String) request.getSession().getAttribute("Signedid");
 		String code_ = request.getParameter("code");
+		int total = (int) request.getSession().getAttribute("totalGrades");
+		int max = (int) request.getSession().getAttribute("maxgrades");
 		String code = null ;
 		if(code_!=null&&!code_.equals(""))
 		{
 			code= code_;
 		}
 
-		int result = service.enrollment(id, code);
-		if(result ==1)
-		{
-			out.println("<script>alert('수강 신청되었습니다.');</script>");
-			out.println("<script>location.href='/enrollment'</script>");
+		//수강 신청할 강좌의 코드를 주면서 학점을 가져와서 int willEnrollGrade에 저장한다.
+		//if (willEnrollGrade+ total>max)이 true 면 service. enroll실행하지 않고 alert('수강신청 가능한 학점을 초과~~'), else일 때 service. enrollment실행
 		
-		}
-		if(result==0)
+		int willeEnrollGrade = service.getWillEnrollGrade(code);
+		if(willeEnrollGrade+total>max)
 		{
-			out.println("<script>alert('이미 수강신청 하셨습니다.');</script>");
+			
+			out.println("<script>alert('수강신청 가능한 학점을 초과하셨습니다.');</script>");
 			out.println("<script>location.href='/enrollment'</script>");
 		}
- 
+		
+		else {   
+		
+		  int result = service.enrollment(id, code);
+		  if(result ==1)
+	    	{
+			    out.println("<script>alert('수강 신청되었습니다.');</script>");
+		    	out.println("<script>location.href='/enrollment'</script>");
+		
+	    	}
+		 if(result==0)
+		   {
+		  	out.println("<script>alert('이미 수강신청 하셨습니다.');</script>");
+			out.println("<script>location.href='/enrollment'</script>");
+		  }
+	     	}
 		
 	}
 }
