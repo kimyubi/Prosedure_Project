@@ -35,7 +35,7 @@ public class EnrollmentJaCotroller extends HttpServlet {
 		if (search_ != null && !search_.equals("")) {
 			search = search_;
 		}
-		list = service.lectureList(field, search);
+		list = service.lectureListJa(field, search);
 		request.setAttribute("list", list);
 		
 		String id = (String) request.getSession().getAttribute("Signedid");
