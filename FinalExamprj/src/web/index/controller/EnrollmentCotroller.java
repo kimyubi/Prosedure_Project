@@ -23,6 +23,7 @@ public class EnrollmentCotroller extends HttpServlet {
 
 		EnrollmentService service = new EnrollmentService();
 		List<Lecture> list = new ArrayList<Lecture>();
+	
 
 		String field = "code"; 
 		String field_ = request.getParameter("selection");
@@ -36,7 +37,9 @@ public class EnrollmentCotroller extends HttpServlet {
 			search = search_;
 		}
 		list = service.lectureList(field, search);
+
 		request.setAttribute("list", list);
+
 		//검색 기능
 		
 		String id = (String) request.getSession().getAttribute("Signedid");
@@ -67,6 +70,7 @@ public class EnrollmentCotroller extends HttpServlet {
 		EnrollmentService service = new EnrollmentService();
 		String id = (String) request.getSession().getAttribute("Signedid");
 		String code_ = request.getParameter("code");
+
 		int total = (int) request.getSession().getAttribute("totalGrades");
 		int max = (int) request.getSession().getAttribute("maxgrades");
 		String code = null ;
@@ -74,7 +78,7 @@ public class EnrollmentCotroller extends HttpServlet {
 		{
 			code= code_;
 		}
-
+	
 		//수강 신청할 강좌의 코드를 주면서 학점을 가져와서 int willEnrollGrade에 저장한다.
 		//if (willEnrollGrade+ total>max)이 true 면 service. enroll실행하지 않고 alert('수강신청 가능한 학점을 초과~~'), else일 때 service. enrollment실행
 		
@@ -101,6 +105,7 @@ public class EnrollmentCotroller extends HttpServlet {
 			out.println("<script>location.href='/enrollment'</script>");
 		  }
 	     	}
+	
 		
 	}
 }

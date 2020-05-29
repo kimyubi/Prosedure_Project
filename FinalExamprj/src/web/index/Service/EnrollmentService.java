@@ -90,6 +90,7 @@ public class EnrollmentService {
 
 		    return list;
 	}
+	
 	public List<Lecture> lectureListJa()
 	{
 		return lectureList("code", "");
@@ -142,6 +143,7 @@ public class EnrollmentService {
 			String professor = rs.getString("PROFESSOR");
 			String time =rs.getString("TIME") ;
 		    String campus= rs.getString("CAMPUS") ;
+		  
 
 		    EnrollmentList enrollmentlist = new EnrollmentList(code, name, location, personnel, grades, professor, time, campus);
 			list.add(enrollmentlist);
@@ -222,6 +224,39 @@ public class EnrollmentService {
 		
 	}
 	
-	
+    public int enrolledNum(String code)
+    {
+        int enrolledNum=0;
+       String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+       String sql = " SELECT COUNT(*) ENROLLEDNUM FROM(SELECT ENROLLMENT.ID, LECTURE.*  "
+       		+ "FROM ENROLLMENT JOIN LECTURE ON ENROLLMENT.CODE = LECTURE.CODE ) WHERE CODE= ? ";
+		try {
+			
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "YUBI", "rlatldn11!");
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1,code);
+			ResultSet rs = st.executeQuery();
+			if(rs.next())
+			{
+				String enrolledNum_ = rs.getString("ENROLLEDNUM");
+				enrolledNum = Integer.parseInt(enrolledNum_);
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+       
+      
+	  return enrolledNum;	
+    	
+    	
+    }
+
 	
 }

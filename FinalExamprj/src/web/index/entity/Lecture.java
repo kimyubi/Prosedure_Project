@@ -9,6 +9,7 @@ public class Lecture {
 	private String grades;
 	private String professor;
 	private String time;
+
 	@Override
 	public String toString() {
 		return "Lecture [code=" + code + ", name=" + name + ", location=" + location + ", personnel=" + personnel
@@ -23,6 +24,7 @@ public class Lecture {
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -67,6 +69,7 @@ public class Lecture {
 		this.professor = professor;
 		this.time = time;
 	}
+
 	
 	
 	

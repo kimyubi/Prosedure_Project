@@ -10,6 +10,7 @@ public class EnrollmentList {
 	private String professor;
 	private String time;
 	private String campus;
+
 	public String getCode() {
 		return code;
 	}

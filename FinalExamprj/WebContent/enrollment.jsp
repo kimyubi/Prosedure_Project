@@ -123,13 +123,13 @@
 
 						</tr>
 					</thead>
-				
+	
 					<tbody>
 				 <c:forEach items="${list}" var="i">
 							<tr>
 								   
 								<td >&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ${i.code}</td>
-								<td style="text-align: center;">${i.name}</td>
+								<td style="text-align: center;"><a  style="color: black;" href="lecturedetail?code=${i.code}">${i.name}</a></td>
 								<td style="text-align: center;">&nbsp;&nbsp;${i.location}</td>
 								<td style="text-align: center;"> ${i.personnel} </td>
 								<td style="text-align: center;">&nbsp;&nbsp;${i.grades}</td>
@@ -149,7 +149,7 @@
 				</div>
 				
 				</form>
-					
+						
 	</main>
 
 </body>

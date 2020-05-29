@@ -46,7 +46,6 @@ public class MyInfoService {
 		String sql = " SELECT * FROM(SELECT *FROM( SELECT MYINFO.ID, COLLEAGE.COLLEAGE, COLLEAGE.MAXGRADES ,MYINFO.REGDATE "
 				+ "FROM COLLEAGE JOIN MYINFO ON MYINFO.COLLEAGE = COLLEAGE.COLLEAGE WHERE ID = ? ) "
 				+ "ORDER BY REGDATE DESC) WHERE ROWNUM=1 " ;
-		// 가장 최근에 저장한 단과대 정보의 최대 이수 학점을 보여줌
 		
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");

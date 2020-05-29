@@ -38,9 +38,6 @@ public class LoginService {
 				result = 3;//없는 계정입니다. 회원가입을 먼저 진행해주세요
 			}
 			
-			
-			
-			
 			con.close();
 			st.close();
 			
