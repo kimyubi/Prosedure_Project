@@ -9,7 +9,42 @@ public class Lecture {
 	private String grades;
 	private String professor;
 	private String time;
+	private String campus;
+	private String colleage;
+	private String department;
 
+	public Lecture(String code, String name, String location, String personnel, String grades, String professor,
+			String time, String campus, String colleage, String department) {
+		super();
+		this.code = code;
+		this.name = name;
+		this.location = location;
+		this.personnel = personnel;
+		this.grades = grades;
+		this.professor = professor;
+		this.time = time;
+		this.campus = campus;
+		this.colleage = colleage;
+		this.department = department;
+	}
+	public String getCampus() {
+		return campus;
+	}
+	public void setCampus(String campus) {
+		this.campus = campus;
+	}
+	public String getColleage() {
+		return colleage;
+	}
+	public void setColleage(String colleage) {
+		this.colleage = colleage;
+	}
+	public String getDepartment() {
+		return department;
+	}
+	public void setDepartment(String department) {
+		this.department = department;
+	}
 	@Override
 	public String toString() {
 		return "Lecture [code=" + code + ", name=" + name + ", location=" + location + ", personnel=" + personnel

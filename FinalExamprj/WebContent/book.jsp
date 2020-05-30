@@ -1,10 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
-  <%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
-    if (session.getAttribute("Signedid") == null) {
-        out.println("<script>alert('로그인 후 이용하실 수 있습니다.');</script>");
-		out.println("<script>location.href='/login.jsp'</script>");
-    }
-%>
+
 <!-- 제이쿼리: 자바스크립트 기반의 프레임워크, 웹 개발 속도 향상에 도움을 줌 
       제이쿼리를 사용하기 위한 방법 1: 제이쿼리 홈페이지에서 jquery.js 파일 다운로드 방법 2: jquery CDN 서버로 연결되는 외부링크 사용 (HTML 코드에 jQuery 
       스크립트를 불러오는 태그 사용 -->

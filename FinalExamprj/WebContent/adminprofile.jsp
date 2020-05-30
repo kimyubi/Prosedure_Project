@@ -32,7 +32,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<title>회원정보  페이지</title>
+<title>회원정보 페이지</title>
 
 <style type="text/css">
 body {
@@ -116,18 +116,15 @@ li {
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="#">수강 신청</a></li>
-						<li><a href="#">강의 평가</a></li>
+						<li><a href="/adminenrollment">강의목록 관리</a></li>
 						<li><a href="/adminnotice">공지사항</a></li>
-						<li><a href="/book.jsp">도서검색</a></li>
 						<li><a href="#">커뮤니티</a></li>
 					</ul>
 
 
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">책가방</a></li>
-						<li><a href="adminprofile">회원 정보</a></li>
-						<li><a href="/logout.jsp">로그 아웃</a></li>
+					   <li><a href="/adminprofile">회원정보 </a></li>
+						<li><a href="/logout.jsp">로그 아웃 </a></li>
 					</ul>
 
 
@@ -140,46 +137,48 @@ li {
 	<main class="main">
 		<h1>회원 정보</h1>
 
-	   <form action="/adminprofile" method="post">
-		
-				<table class="table table-hover">
-					<thead>
+		<form action="/adminprofile" method="post">
+
+			<table class="table table-hover">
+				<thead>
+					<tr>
+
+						<th style="width: 180px; text-align: left;" scope="col">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이름</th>
+						<th scope="col">아이디</th>
+						<th scope="col">비밀 번호</th>
+						<th scope="col">전화 번호</th>
+						<th scope="col">닉네임</th>
+						<th scope="col">이메일</th>
+						<th scope="col">회원 삭제</th>
+
+					</tr>
+				</thead>
+
+				<tbody>
+
+					<c:forEach items="${infolist}" var="i">
 						<tr>
 
-							<th style="width: 180px; text-align: left;" scope="col">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;이름</th>
-							<th scope="col" >아이디</th>
-							<th scope="col">비밀 번호</th>
-							<th scope="col">전화 번호</th>
-							<th scope="col">닉네임</th>
-							<th scope="col">이메일</th>
-							<th scope="col">회원 삭제</th>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+								${i.name}</td>
+							<td>${i.id}</td>
+							<td>&nbsp;&nbsp;${i.password}</td>
+							<td>${i.tel}</td>
+							<td>&nbsp;&nbsp;${i.nickname}</td>
+							<td>${i.email}</td>
+							<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox"
+								name="select" value="${i.id}" /></td>
 
 						</tr>
-					</thead>
-					
-					<tbody>
+					</c:forEach>
+				</tbody>
+			</table>
+			<div style="margin-left: 1090px;">
+				<input class="btn btn-search" type="submit" value="삭제" />
+			</div>
 
-				 <c:forEach items="${infolist}" var="i">
-							<tr>
-							
-								<td >&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ${i.name}</td>
-								<td>${i.id}</td>
-								<td>&nbsp;&nbsp;${i.password}</td>
-								<td> ${i.tel} </td>
-								<td>&nbsp;&nbsp;${i.nickname}</td>
-								<td>${i.email}</td>
-								<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" name="select" value="${i.id}"/></td>
-								
-							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
-				<div  style="margin-left: 1090px;">
-				<input  class="btn btn-search" type="submit" value="삭제" /> 
-				</div>
-				
-				</form>
-							
+		</form>
+
 	</main>
 
 </body>
