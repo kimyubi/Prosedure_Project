@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <%
 	// 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
 	if (session.getAttribute("Signedid") == null) {
@@ -7,6 +8,7 @@
 		out.println("<script>location.href='/login.jsp'</script>");
 	}
 %>
+
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 
@@ -84,6 +86,7 @@ text-align: center;
 						<li><a href="/mypage">수강 내역</a></li>
 						<li><a href="/deleteLecture">수강 정정</a></li>
 						<li><a href="/notice">공지사항</a></li>
+						<li><a href="/book.jsp">도서검색</a></li>
 						<li><a href="#">커뮤니티</a></li>
 					</ul>
 
@@ -237,9 +240,9 @@ function prev() {
 </script>
 
 
-       
-		<button style="margin-left:  450px;  margin-top: 30px;"  type="button" class="btn btn-secondary"	onclick="location='/enrollment'">목록</button>
-		 <button style="margin-left: -220px; margin-top: 30px;  type="button"  class="btn btn-secondary" onclick=prev()>이전</button>
+		<button style="margin-left:  450px;  margin-top: 50px;"  type="button" class="btn btn-secondary"	onclick="location='/enrollment'">목록</button>
+		 <button style="margin-left: -220px; margin-top: 50px;  type="button"  class="btn btn-secondary" onclick=prev()>이전</button>
+		 <button style="margin-left:  130px;  margin-top: 50px;"  type="button" class="btn btn-secondary"	onclick="location='/book.jsp'">도서 검색</button>
 	
 
 </body>

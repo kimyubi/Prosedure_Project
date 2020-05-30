@@ -65,6 +65,7 @@
 		<li><a href="/mypage">신청 내역</a></li>
 		<li><a href="/deleteLecture">수강 정정</a></li>
 		<li><a href="/notice">공지사항</a></li>
+		<li><a href="/book.jsp">도서검색</a></li>
 		<li><a href="#">커뮤니티</a></li>
       </ul>
       

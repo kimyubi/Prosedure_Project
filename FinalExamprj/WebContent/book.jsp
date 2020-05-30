@@ -1,4 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+  <%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
+    if (session.getAttribute("Signedid") == null) {
+        out.println("<script>alert('로그인 후 이용하실 수 있습니다.');</script>");
+		out.println("<script>location.href='/login.jsp'</script>");
+    }
+%>
+<!-- 제이쿼리: 자바스크립트 기반의 프레임워크, 웹 개발 속도 향상에 도움을 줌 
+      제이쿼리를 사용하기 위한 방법 1: 제이쿼리 홈페이지에서 jquery.js 파일 다운로드 방법 2: jquery CDN 서버로 연결되는 외부링크 사용 (HTML 코드에 jQuery 
+      스크립트를 불러오는 태그 사용 -->
+      <!-- ( https://api.jquery.com/jquery.ajax/ ) 제이쿼리에서 ajax 사용  -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,11 +87,20 @@
 	.main{ background-image: url("https://cdn.pixabay.com/photo/2015/12/27/05/48/turntable-1109588_1280.jpg" );
 	background-size: cover; padding-bottom: 900px; margin-top: 100px}
 	
-	body{margin-top: 130px}
+	body{margin-top: 140px}
+	h3{margin-left: 450px; font-family: sans-serif; color: black; font-weight: bold; }
+	#bookName{
+	margin-left: 400px;  margin-top: 35px;
+	padding-right: 200px; padding-left: 5px; padding-top: 7px; padding-bottom: 7px; margin-right: 5px; margin-bottom: 50px;
+	}
+	#search{
+	padding-left: 30px; padding-right: 30px; padding-top: 7px; padding-bottom: 7px;  margin-bottom: 50px;}
+	p{margin-left: 450px;}
+
 	
 </style>
 <!------------------------------------------------------------------------------ css ----------------------------------------------------------------->
-	<title>로그인 페이지</title>
+	<title>도서검색 페이지</title>
 	</head>
 	
 	<body >
@@ -110,10 +129,9 @@
 	      </ul>
 	  
 	      <ul class="nav navbar-nav navbar-right">
-	        <li><a href="#">책가방</a></li>
+	 		<li><a href="#">책가방</a></li>
 			<li><a href="/myinfo">내 정보</a></li>
-			   <li><a href="login.jsp" >로그인</a></li>
-	         <li><a href="join.jsp">회원 가입</a></li>
+			<li><a href="/logout.jsp">로그 아웃</a></li>
 	      </ul>
 	 
 	      
@@ -123,64 +141,68 @@
 	</header>
 	  
 	  <main>
-	  <div class="container">
-	      <form name="loginform" action="/login" method = "post">
-	        <h1 >Please sign in</h1><br>
-	        <input type="text" name="loginid" class="form-control" placeholder="ID" required autofocus><br>
-	        <input type="password" name="loginpassword" class="form-control" placeholder="Password" required autofocus>   <br>
-	         <button class="btn btn-lg btn-primary btn-block" type="submit" >Sign in</button>
-	      </form>
-	    </div> 
-	    </main>
-	  
+	  <h3> 검색하실 책의 제목을 입력하세요. </h3>
 	
-	  
-	      <footer class="footer-bs">
-	        <div class="row">
-	        	<div class="col-md-3 footer-brand animated fadeInLeft">
-	            	<h2>Pages for users</h2>
-	                <p> this web page is made of an mvc structure and uses html,css,bootstrap,sql,jsp. this web page provides functions such as enrollment, pre-population
-	                , and bulletin boards for communication between users.</p>
-	            </div>
-	        	<div class="col-md-4 footer-nav animated fadeInUp">
-	            	<h4>Administrator information-</h4>
-	            	<div class="col-md-6">
-	                    <ul class="pages">
-	                        <li><a href="#">Phone number</a></li>
-	                        <li><a href="#">E-mail</a></li>
-	                        <li><a href="#">University</a></li>
-	                        <li><a href="#">Name</a></li>
-	                        <li><a href="#">Major</a></li>
-	                    </ul>
-	                </div>
-	            	<div class="col-md-6">
-	                    <ul class="list">
-	                      <li>010-9600-1319</li>
-	                        <li>ieieie0419@gmail.com</li>
-	                        <li>Myongji University</li>
-	                        <li>Kim Yu-bi</li>
-	                        <li>Department of Convergence Software</li>
-	                    </ul>
-	                </div>
-	            </div>
-	        	<div class="col-md-2 footer-social animated fadeInDown">
-	            	<h4>Follow Us</h4>
-	            	<ul>
-	                	<li><a href=" https://www.facebook.com/rladbql1319">Facebook</a></li>
-	                	<li></li>
-	                	<li><a href="https://www.instagram.com/yubig/?hl=ko">Instagram</a></li>
-	                	<li></li>
-	                </ul>
-	            </div>
-	        	<div class="col-md-3 footer-ns animated fadeInRight">
-	            	<h4>production period</h4>
-	            	<br>
-	                <p>2020.05.16~2020.05.14</p>
-	                 <p>for about a month</p>    
-	            </div>
-	        </div>
-	    </footer>
-	  
+	<script type="text/javascript">
+
+	function check() {
+		$("#booksearch").remove();
+	}
 	
+	</script>
+	     
+	    <input type="text"  id="bookName"  placeholder="책 제목을 입력하세요" required > 
+       <button id="search" onclick="check()" > 검색 </button>
+      
+		<p id ="booksearch"></p>
+		<p id="booksearch"></p>
+		<p id="booksearch"></p>
+		<p id="booksearch"></p>
+		<p id="booksearch"></p>
+		<p id="booksearch"></p>
+		<p id="booksearch"></p>
+	    <p id="booksearch"></p>
+	    
+
+		<!-- jquery cdn -->
+<script  src="https://code.jquery.com/jquery-3.5.1.js"  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+ <!--  jquery ajax -->
+ 
+ 
+ <script>
+        $(function () {
+
+            $("#search").click(function () {
+
+                $.ajax({
+                    method: "GET",
+                    url: "https://dapi.kakao.com/v3/search/book?target=title", // 전송 주소
+                    data: { query: $("#bookName").val() , sort: "accuracy"}, // 보낼 데이터 x: "y", z: "q" 형식, 사용자로부터 입력받은 책의 제목을 담아보낸다.
+                    headers: { Authorization: "KakaoAK 9200b193567e974f0955039d14cc1645" } //카카오에서 부여받은 앱키(REST API)
+                })
+                    .done(function (msg) { // 요청에 대한 응답이 오면 처리를 하는 코드
+                      //  alert("데이터가 저장되었습니다"+ msg); //요청이 성공적으로 실행되어 done을 실행하면 '데이터가 저장되었습니다'라는 알림창과 함께 Object가 넘어왔음을 알 수 있다.
+                        console.log(msg); //개발자 도구상에 응답으로 받은 객체를 보여주기 위한 것
+                        for(var i =0; i < msg.documents.length;i++){
+                     
+                    	$( "#booksearch" ).append("<strong>"+msg.documents[i].title+"</strong><br>");
+                    	$( "#booksearch" ).append( "<img src = '"+msg.documents[i].thumbnail+"'/><br><br>" );
+                    	$( "#booksearch" ).append("저자: "+ msg.documents[i].authors+"<br>");
+                    	$( "#booksearch" ).append("출판사: "+ msg.documents[i].publisher+"<br>");
+                    	$( "#booksearch" ).append("판매상태: "+ msg.documents[i].status+"<br>");
+                    	$( "#booksearch" ).append( "정가: "+msg.documents[i].price +"원 <br>");
+                    	$( "#booksearch" ).append( "판매가: "+msg.documents[i].sale_price +"원 <br>");
+                    	$( "#booksearch" ).append( "ISBN: "+msg.documents[i].isbn+"<br><br><br>");
+                 
+                    
+                        }
+                    });
+            })
+        });
+
+    </script>
+ 
+ </main>
+	 
 	</body>
 	</html>
