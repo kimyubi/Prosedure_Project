@@ -73,11 +73,11 @@
 </header>
 
 
-<input  style=" margin-left: 50px; margin-bottom: 15px; width: 200px; background-color:silver;" class="btn btn-search" value="인문 캠퍼스"  onclick = "location.href = '/adminenrollment' "/> 
-<input  style=" margin-left: 5px; margin-bottom : 15px; width: 200px; background-color:  #F0F0F0;" class="btn btn-search"  value="자연 캠퍼스"  onclick = "location.href = '/adminenrollmentJa' "/> 
+<input  style=" margin-left: 50px; margin-bottom: 15px; width: 200px; background-color:#F0F0F0;" class="btn btn-search" value="인문 캠퍼스"  onclick = "location.href = '/adminenrollment' "/> 
+<input  style=" margin-left: 5px; margin-bottom : 15px; width: 200px; background-color: silver;" class="btn btn-search"  value="자연 캠퍼스"  onclick = "location.href = '/adminenrollmentJa' "/> 
 
 
-		<form class="table-form" action="/adminenrollment" method="get" style="margin-left: 100px; width: 1200px;">
+		<form class="table-form" action="/adminenrollmentJa" method="get" style="margin-left: 100px; width: 1200px;">
 
 			<select name="selection" style=" padding-bottom:6px; margin-left: -20px;  ">
 				<option  value="code" ${(param.selection=="code")?"selected":"" }>과목코드</option>
@@ -93,14 +93,14 @@
 
 		</form>
 		   <input type="button"  name="button"  value="강의 추가" style="margin-left: -280px;  padding: 3px; padding-left: 15px; 
-		  padding-right: 15px;"  onclick="location.href='adminLectureAdd.jsp'" />
-		  	   <input type="button"  name="button"  value="강의계획서 추가" style="margin-left: 3px;  padding: 3px; padding-left: 15px; 
+		  padding-right: 15px;"  onclick="location.href='adminLectureAddJa.jsp'" />
+		     <input type="button"  name="button"  value="강의계획서 추가" style="margin-left: 3px;  padding: 3px; padding-left: 15px; 
 		  padding-right: 15px;"  onclick="location.href='adminLectureDetailAdd.jsp'" />
 
 <main class="main">
 
 
-	   <form action="/adminenrollment" method="post"  >
+	   <form action="/adminenrollmentJa" method="post"  >
 		
 				<table class="table table-hover" style="width: 1200px; margin-left: -350px; margin-top: 20px;" >
 					<thead>

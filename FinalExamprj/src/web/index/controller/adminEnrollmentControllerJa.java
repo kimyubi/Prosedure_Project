@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import web.index.Service.EnrollmentService;
 import web.index.entity.Lecture;
 
-@WebServlet("/adminenrollment")
-public class adminEnrollmentCotroller extends HttpServlet {
+@WebServlet("/adminenrollmentJa")
+public class adminEnrollmentControllerJa extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -36,7 +36,7 @@ public class adminEnrollmentCotroller extends HttpServlet {
 		if (search_ != null && !search_.equals("")) {
 			search = search_;
 		}
-		list = service.lectureList(field, search);
+		list = service.lectureListJa(field, search);
 
 		request.setAttribute("list", list);
 
@@ -45,7 +45,7 @@ public class adminEnrollmentCotroller extends HttpServlet {
 		String id = (String) request.getSession().getAttribute("adminid");
 
 
-		request.getRequestDispatcher("/adminenrollment.jsp").forward(request, response);
+		request.getRequestDispatcher("/adminenrollmentJa.jsp").forward(request, response);
 	}
 	
 	@Override
@@ -64,6 +64,7 @@ public class adminEnrollmentCotroller extends HttpServlet {
 		{
 			code= code_;
 		}
+	
 		int result2= service.deleteLectureDetail(code);
 		int result3 = service.deleteWeeklyProgress(code);
 		int result1 = service.deleteLecture(code);
@@ -72,7 +73,7 @@ public class adminEnrollmentCotroller extends HttpServlet {
 		if(result1==1&& result2==1 &&result3==1)
 		{
 			out.println("<script>alert('해당 강의가 성공적으로 삭제되었습니다.');</script>");
-			out.println("<script>location.href='/adminenrollment'</script>");
+			out.println("<script>location.href='/adminenrollmentJa'</script>");
 		}
 	
 	

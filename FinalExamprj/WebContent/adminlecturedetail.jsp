@@ -3,7 +3,7 @@
 	
 <%
 	// 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
-	if (session.getAttribute("Signedid")==null){
+	if (session.getAttribute("Signedid") == null && session.getAttribute("adminid")==null){
 		out.println("<script>alert('로그인 후 이용하실 수 있습니다.');</script>");
 		out.println("<script>location.href='/login.jsp'</script>");
 	}
@@ -82,18 +82,14 @@ text-align: center;
 				<div class="collapse navbar-collapse"
 					id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li><a href="/enrollment">수강신청</a></li>
-						<li><a href="/mypage">신청 내역</a></li>
-						<li><a href="/deleteLecture">수강 정정 </a></li>
-						<li><a href="/notice">공지사항 </a></li>
-						<li><a href="/book.jsp">도서검색 </a></li>
+						<li><a href="/adminenrollment">강의목록 관리</a></li>
+						<li><a href="/adminnotice">공지사항</a></li>
 						<li><a href="#">커뮤니티</a></li>
 					</ul>
 
 
 					<ul class="nav navbar-nav navbar-right">
-					    <li><a href="#">책가방</a></li>
-						<li><a href="/myinfo">회원정보</a></li>
+						<li><a href="/adminprofile">내 정보</a></li>
 						<li><a href="/logout.jsp">로그 아웃</a></li>
 					</ul>
 
@@ -241,8 +237,8 @@ function prev() {
 
 
 		<button style="margin-left:  450px;  margin-top: 50px;"  type="button" class="btn btn-secondary"	onclick="location='/adminenrollment'">목록</button>
-		 <button style="margin-left: -220px; margin-top: 50px;"  type="button"  class="btn btn-secondary" onclick=prev()>이전</button>
-		 		 <button style="margin-left: 125px; margin-top: 50px;"  type="button"  class="btn btn-secondary" onclick="location='/book.jsp'">도서 검색</button>
+		 <button style="margin-left: -220px; margin-top: 50px;  type="button"  class="btn btn-secondary" onclick=prev()>이전</button>
+
 	
 
 </body>
