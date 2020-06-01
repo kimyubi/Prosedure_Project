@@ -104,7 +104,8 @@ padding: 5px;
       </ul>
   
       <ul class="nav navbar-nav navbar-right">
-      <li><a href="#">책가방</a></li>
+       <li><a href="/miridamgi">미리담기</a></li>
+      <li><a href="/mybag">책가방</a></li>
 		<li><a href="/myinfo">내 정보</a></li>
         <li><a href="login.jsp" >로그인</a></li>
          <li><a href="/join.jsp">회원 가입</a></li>

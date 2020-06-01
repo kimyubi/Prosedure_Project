@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<title>수강 신청 페이지</title>
+<title>미리담기 페이지</title>
 
 <style type="text/css">
   body {margin-top: 95px;   margin-left:350px;}
@@ -71,8 +71,8 @@
       
   
       <ul class="nav navbar-nav navbar-right">
-         <li><a href="/miridamgi">미리담기</a></li>
-         <li><a href="/mybag">책가방</a></li>
+      <li><a href="/miridamgi">미리담기</a></li>
+        <li><a href="mybag">책가방</a></li>
 		<li><a href="/myinfo">내 정보</a></li>
         <li><a href="/logout.jsp" >로그 아웃</a></li>
       </ul>
@@ -84,11 +84,11 @@
 </header>
 
 
-<input  style=" margin-left: 50px; margin-bottom: 15px; width: 200px; background-color:silver;" class="btn btn-search" value="인문 캠퍼스"  onclick = "location.href = '/enrollment' "/> 
-<input  style=" margin-left: 5px; margin-bottom : 15px; width: 200px; background-color:  #F0F0F0;" class="btn btn-search"  value="자연 캠퍼스"  onclick = "location.href = '/enrollmentJa' "/> 
+<input  style=" margin-left: 50px; margin-bottom: 15px; width: 200px; background-color:silver;" class="btn btn-search" value="인문 캠퍼스"  onclick = "location.href = '/miridamgi' "/> 
+<input  style=" margin-left: 5px; margin-bottom : 15px; width: 200px; background-color:  #F0F0F0;" class="btn btn-search"  value="자연 캠퍼스"  onclick = "location.href = '/miridamgiJa' "/> 
 
 
-		<form class="table-form" action="/enrollment" method="get" style="margin-left: 100px; width: 1200px;">
+		<form class="table-form" action="/miridamgi" method="get" style="margin-left: 100px; width: 1200px;">
 
 			<select name="selection" style=" padding-bottom:6px; margin-left: -20px;  ">
 				<option  value="code" ${(param.selection=="code")?"selected":"" }>과목코드</option>
@@ -106,10 +106,10 @@
 
 <main class="main">
 
-		 <h5 >최대 이수가능 학점  : ${!empty maxgrades?  maxgrades:"내 정보에서 단과대를 선택하면 볼 수 있습니다."}</h5>
-         <h5>총 수강신청 학점 수 : ${!empty totalGrades? totalGrades:0}</h5>
+		 <h5 >미리담기 가능 학점  : ${!empty maxmiri?  maxmiri:"내 정보에서 단과대를 선택하면 볼 수 있습니다."}</h5>
+         <h5>총 미리담기한 학점 수 : ${!empty totalmiriGrades? totalmiriGrades:0}</h5>
 
-	   <form action="/mybagenrollment" method="post"  >
+	   <form action="/miridamgi" method="post"  >
 		
 				<table class="table table-hover" style="width: 1200px; margin-left: -350px; margin-top: 40px;" >
 					<thead>
@@ -121,7 +121,7 @@
 							<th scope="col"style="text-align: center;">학점</th>
 							<th scope="col"style="text-align: center;">교수명</th>
 							<th scope="col"style="text-align: center;">강의시간</th>
-						    <th scope="col">&nbsp;&nbsp;수강신청</th>
+						    <th scope="col">&nbsp;&nbsp;미리담기</th>
 
 						</tr>
 					</thead>
@@ -138,7 +138,7 @@
 								<td style="text-align: center;">${i.professor}</td>
 								<td style="text-align: center;">${i.time}</td>
 								<td style="text-align:  justify;"> 
-								<button name="code" value="${i.code }">수강신청</button>
+								<button name="code" value="${i.code }">미리담기</button>
 								</td>
 								
 							</tr>

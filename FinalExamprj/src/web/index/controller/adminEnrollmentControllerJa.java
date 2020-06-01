@@ -75,6 +75,11 @@ public class adminEnrollmentControllerJa extends HttpServlet {
 			out.println("<script>alert('해당 강의가 성공적으로 삭제되었습니다.');</script>");
 			out.println("<script>location.href='/adminenrollmentJa'</script>");
 		}
+		else if( result1 ==1)//강의 계획서가 등록되어 있지 않은 경우
+		{
+			out.println("<script>alert('해당 강의가 성공적으로 삭제되었습니다.');</script>");
+			out.println("<script>location.href='/adminenrollmentJa'</script>");
+		}
 	
 	
 		

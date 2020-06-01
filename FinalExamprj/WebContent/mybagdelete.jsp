@@ -16,14 +16,6 @@
 		out.println("<script>location.href='/login.jsp'</script>");
 	}
 %>
-<% 
-	if (session.getAttribute("maxgrades") == null) {
-		out.println("<script>alert('내 정보 페이지에서 단과대를 선택한 후 이용하실 수 있습니다.');</script>");
-		out.println("<script>location.href='/myinfo'</script>");
-	}
-%>
-
-
 
 
 <!DOCTYPE html>
@@ -39,7 +31,7 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
-<title>수강내역 페이지</title>
+<title>책가방 페이지</title>
 
 <style type="text/css">
 body {
@@ -142,12 +134,17 @@ li {
 			<!-- /.container-fluid -->
 		</nav>
 	</header>
+	
+
 	<main class="main">
-		<h2>[ 수강신청 내역 ]</h2>
-		 <h5 >최대 이수가능 학점  : ${!empty maxgrades?  maxgrades:"내 정보에서 단과대를 선택하면 볼 수 있습니다."}</h5>
-         <h5>총 수강신청 학점 수 : ${!empty totalGrades? totalGrades:0}</h5>
+		<h2>[ 책가방 내역 ]</h2>
+		  <h5 >미리담기 가능 학점  : ${!empty maxmiri?  maxmiri:"내 정보에서 단과대를 선택하면 볼 수 있습니다."}</h5>
+          <h5>총 미리담기한 학점 수 : ${!empty totalmiriGrades? totalmiriGrades:0}</h5>
  
-  
+  	<input  style=" margin-left: 400px; margin-bottom: 15px; width: 200px; background-color: #F0F0F0;" class="btn btn-search" value="수강 신청"  onclick = "location.href = '/mybag' "/> 
+   <input  style=" margin-left: 5px; margin-bottom : 15px; width: 200px; background-color: silver;" class="btn btn-search"  value="책가방 내역 정정"  onclick = "location.href = '/mybagdelete' "/> 
+	
+	   <form action ="/mybagdelete" method ="post">
 		<div id="table">
 			<table class="table table-hover">
 				<thead>
@@ -161,6 +158,7 @@ li {
 						<th scope="col">교수명</th>
 						<th scope="col">강의시간</th>
 						<th scope="col">캠퍼스</th>
+						<th scope="col">강의 삭제</th>
 
 					</tr>
 				</thead>
@@ -176,12 +174,13 @@ li {
 							<td>${n.professor}</td>
 							<td>${n.time}</td>
 							<td>${n.campus}</td>
+							<td><button name="code" value="${n.code}">강의 삭제</button ></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-
+    </form>
 
 
 

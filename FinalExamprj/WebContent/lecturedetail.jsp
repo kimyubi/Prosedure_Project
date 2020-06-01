@@ -92,7 +92,8 @@ text-align: center;
 
 
 					<ul class="nav navbar-nav navbar-right">
-					    <li><a href="#">책가방</a></li>
+					     <li><a href="/miridamgi">미리담기</a></li>
+                          <li><a href="/mybag">책가방</a></li>
 						<li><a href="/myinfo">회원정보</a></li>
 						<li><a href="/logout.jsp">로그 아웃</a></li>
 					</ul>
