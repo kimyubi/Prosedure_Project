@@ -3,9 +3,9 @@
 	
 <%
 	// 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
-	if (session.getAttribute("Signedid") == null && session.getAttribute("adminid")==null){
-		out.println("<script>alert('로그인 후 이용하실 수 있습니다.');</script>");
-		out.println("<script>location.href='/login.jsp'</script>");
+	if (session.getAttribute("adminid")==null && session.getAttribute("Signedid")==null){
+		out.println("<script>alert('접근 권한이 없습니다.');</script>");
+		out.println("<script>location.href='/index.jsp'</script>");
 	}
 %>
 
@@ -235,9 +235,9 @@ function prev() {
 }
 </script>
 
-
+         
 		<button style="margin-left:  450px;  margin-top: 50px;"  type="button" class="btn btn-secondary"	onclick="location='/adminenrollment'">목록</button>
-		 <button style="margin-left: -220px; margin-top: 50px;  type="button"  class="btn btn-secondary" onclick=prev()>이전</button>
+		 <button style="margin-left: -220px; margin-top: 50px; "   type="button"  class="btn btn-secondary" onclick=prev() > 이전</button>
 
 	
 

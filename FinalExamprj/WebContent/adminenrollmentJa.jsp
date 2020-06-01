@@ -3,10 +3,12 @@
 
 <%
 	// 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
-	if (session.getAttribute("adminid") == null) {
+	if (session.getAttribute("adminid") == null)
+	{
 		out.println("<script>alert('접근 권한이 없습니다.');</script>");
 		out.println("<script>location.href='/index.jsp'</script>");
 	}
+	
 %>
 
 
@@ -95,7 +97,7 @@
 		   <input type="button"  name="button"  value="강의 추가" style="margin-left: -280px;  padding: 3px; padding-left: 15px; 
 		  padding-right: 15px;"  onclick="location.href='adminLectureAddJa.jsp'" />
 		     <input type="button"  name="button"  value="강의계획서 추가" style="margin-left: 3px;  padding: 3px; padding-left: 15px; 
-		  padding-right: 15px;"  onclick="location.href='adminLectureDetailAdd.jsp'" />
+		  padding-right: 15px;"  onclick="location.href='adminLectureDetailJaAdd.jsp'" />
 
 <main class="main">
 
@@ -122,7 +124,7 @@
 							<tr>
 								   
 								<td >&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ${i.code}</td>
-								<td style="text-align: center;"><a  style="color: black;" href="adminlecturedetail?code=${i.code}">${i.name}</a></td>
+								<td style="text-align: center;"><a  style="color: black;" href="adminlecturedetailJa?code=${i.code}">${i.name}</a></td>
 								<td style="text-align: center;">&nbsp;&nbsp;${i.location}</td>
 								<td style="text-align: center;"> ${i.personnel} </td>
 								<td style="text-align: center;">&nbsp;&nbsp;${i.grades}</td>

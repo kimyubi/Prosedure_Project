@@ -122,7 +122,7 @@
 								   
 								<td >&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; ${i.code}</td>
 								<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
-								<a   style="color: black;" href="lecturedetail?code=${i.code}">${i.name}</a></td>
+								<a   style="color: black;" href="lecturedetailJa?code=${i.code}">${i.name}</a></td>
 								<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; ${i.location}</td>
 								<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;  ${i.personnel} </td>
 								<td style="text-align: center;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ${i.grades}</td>
