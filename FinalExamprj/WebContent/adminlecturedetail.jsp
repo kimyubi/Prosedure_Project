@@ -238,6 +238,7 @@ function prev() {
          
 		<button style="margin-left:  450px;  margin-top: 50px;"  type="button" class="btn btn-secondary"	onclick="location='/adminenrollment'">목록</button>
 		 <button style="margin-left: -220px; margin-top: 50px; "   type="button"  class="btn btn-secondary" onclick=prev() > 이전</button>
+		  <button style="margin-left: 120px; margin-top: 50px; "   type="button"  class="btn btn-secondary" onclick="location='/lecturedetailChange?code=${plan.code}'" > 수정</button>
 
 	
 
