@@ -20,7 +20,8 @@ textarea{margin-left:10px;}
 <title>강의평가 등록페이지</title>
 </head>
 <body>
-<form action=" " method="post">
+
+<form action="/RegLectureEvaluation" method="post">
         <div style="margin-top:30px;  margin-left:20px;">
            <label > 강의명</label>
             <input type="text" class="form-control" name="name" placeholder="강의명을 입력하세요." required style="display:inline-block; margin-right:20px;" >
@@ -46,7 +47,7 @@ textarea{margin-left:10px;}
            </select>
            </div>
            
-           <div style="margin-top:20px; margin-left:20px;">
+           <div style="margin-top:20px; margin-left:20px;" >
             <label >제목</label><br>
             <input type="text" class="form-control" name="title" placeholder="제목을 입력하세요." required style="width:88%; height:auto" >
            </div>
@@ -110,6 +111,8 @@ textarea{margin-left:10px;}
           </div>
            
             </form>
+            
+      
    
 </body>
 </html>
