@@ -153,7 +153,7 @@
 
 			</select>
 			 <input type="text" name="search"  value="${param.search}"/> 
-			 <input class="btn btn-search"   style="margin-left:65px; margin-top:5px;" 	type="submit"  name="button"  value="검색" />
+			 <input class="btn btn-search"   style="margin-left:5px; margin-top:5px;" 	type="submit"  name="button"  value="검색" />
 
 		</form>
 		
@@ -167,7 +167,7 @@
   }
  
  </script>
-  <input class="btn btn-search"	type="submit"  name="button"  value="등록"  style="margin-left:380px; margin-top:-55px;" onclick="openRegLectureEvaluation()"/>
+  <input class="btn btn-search"	type="submit"  name="button"  value="등록"  style="margin-left:435px; margin-top:-55px;" onclick="openRegLectureEvaluation()"/>
 	
 	
 	
@@ -184,16 +184,17 @@
 					style="padding-bottom: 15px; padding-top: 25px; font-size: 30px; font-weight: border; color: gray; text-align: justify;">
 					&nbsp;${n.name}<label
 					style="font-size: 16px; font-weight: lighter; margin-left: 12px; color: black;">${n.professor}</label>
+					
 				</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td colspan="4" style="padding-bottom: 20px; padding-top: 15px;">
+				<td colspan="4" style="padding-bottom: 10px; padding-top: 15px;">
 					<label
 					style="margin-left: 30px; margin-top: 15px; font-size: 16px; font-weight: bord;">${n.title}</label> <label
 					style="font-weight: lighter; margin-left: 2px;">(${n.studyYear}년 ${n. studySemester}
-						수강자)</label> <br>
+						수강자)</label>  <label style="font-weight: lighter; margin-left: 860px;">작성자: ${n.id }</label> <br>
 				</td>
 			</tr>
 			<tr>
@@ -219,12 +220,16 @@
 						시험 횟수: ${n.exam} </label></td>
 
 			</tr>
-
+             <form action="/deleteLectureEvaluation" method="post">
+             <input type="hidden" name="id" value="${n.id }" >
+              <input type="hidden" name="num" value="${n.num }" >
 			<tr>
 				<td colspan="4"><label
 					style="margin-left: 40px; font-size: 16px; font-weight: border;  margin-bottom:-5px; margin-top: 5px;">총점:
-						 ${n.totalScore}</label> <hr style="color: gray; padding-right: 200px; height: 20px;"></td>
+						 ${n.totalScore} </label> <input type= "submit" value="삭제" style="margin-left:900px;margin-top:-50px;  font-weight:lighter;"> 
+						<hr style="color: gray; padding-right: 200px; height: 20px;"></td>		 
 			</tr>
+			</form>
 		</tbody>
 	</table>
 	</c:forEach>

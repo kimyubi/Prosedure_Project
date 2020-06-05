@@ -33,8 +33,6 @@ public class LectureEvaluationController extends HttpServlet {
 			query = query_;
 		}
 		
-		String Signedid = (String) request.getSession().getAttribute("Signedid");
-		
 		list = service.getLectureEvaluationList(field, query);
 		
 		request.setAttribute("list", list);

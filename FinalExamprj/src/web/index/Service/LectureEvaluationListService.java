@@ -55,4 +55,25 @@ public class LectureEvaluationListService {
 		return list;
 	}
 
+	public int deleteEvaluationLecture(String num) {
+		int result = 0 ;
+		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
+		String sql = " DELETE FROM LECTUREEVALUATION WHERE NUM = ? "; 
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "YUBI", "rlatldn11!");
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, num);
+			result = st.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+		
+	}
+
 }
