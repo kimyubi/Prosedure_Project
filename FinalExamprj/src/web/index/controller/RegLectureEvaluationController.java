@@ -41,12 +41,16 @@ public class RegLectureEvaluationController extends HttpServlet {
 	 if(result ==1)
 	 {
 		 out.println("<script>alert('강의평가가 성공적으로 등록되었습니다.');</script>");
+		 out.println("<script>	 window.opener.location.reload();</script>");
 		 out.println("<script>window.close();</script>");
+		
+	
+
 	 }
 	 else
 	 {
-		 out.println("<script>alert('오류로 인해 강의평가 등록에 실패하였습니다.');</script>");
-		 out.println("<script>alert('/RegLectureEvaluation.jsp');</script>");
+		 out.println("<script>alert('내용을 입력하세요.');</script>");
+		 out.println("<script>location.href='/RegLectureEvaluation.jsp'</script>");
 		
 	 }
 		

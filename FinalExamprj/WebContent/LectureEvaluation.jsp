@@ -6,6 +6,7 @@
 		out.println("<script>location.href='/login.jsp'</script>");
 	}
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -123,7 +124,7 @@
 			<li><a href="/deleteLecture">수강 정정</a></li>
 			<li><a href="/notice">공지사항</a></li>
 			<li><a href="/book.jsp">도서검색</a></li>
-			<li><a href="#">커뮤니티</a></li>
+			<li><a href="/LectureEvaluation">강의 평가</a></li>
 	      </ul>
 	  
 	      <ul class="nav navbar-nav navbar-right">
@@ -143,7 +144,7 @@
 	  
 	  <main>
 	
-		<form class="table-form" action="" method="get" style=" margint-top:-120px; margin-left: 60px; width: 1200px;">
+		<form class="table-form" action="/LectureEvaluation" method="get" style=" margint-top:-120px; margin-left: 120px; width: 1200px;">
 
 			<select name="selection" style=" padding-bottom:6px; margin-left: -20px;  ">
 			
@@ -152,7 +153,7 @@
 
 			</select>
 			 <input type="text" name="search"  value="${param.search}"/> 
-			 <input class="btn btn-search"	type="submit"  name="button"  value="검색" />
+			 <input class="btn btn-search"   style="margin-left:65px; margin-top:5px;" 	type="submit"  name="button"  value="검색" />
 
 		</form>
 		
@@ -166,7 +167,68 @@
   }
  
  </script>
-  <input class="btn btn-search"	type="submit"  name="button"  value="등록"  style="margin-left:370px; margin-top:-56px;" onclick="openRegLectureEvaluation()"/>
-	 
-	</body>
+  <input class="btn btn-search"	type="submit"  name="button"  value="등록"  style="margin-left:380px; margin-top:-55px;" onclick="openRegLectureEvaluation()"/>
+	
+	
+	
+	 <!---------------------------------------------------강의평가 글 목록----------------------------------------------------------------------------------------------------------->
+
+
+
+			<c:forEach items="${list}" var="n">
+	<table class="table table-striped"
+		style="width: 80%; margin-left: 90px;">
+		<thead>
+			<tr>
+				<th scope="col" colspan="4"
+					style="padding-bottom: 15px; padding-top: 25px; font-size: 30px; font-weight: border; color: gray; text-align: justify;">
+					&nbsp;${n.name}<label
+					style="font-size: 16px; font-weight: lighter; margin-left: 12px; color: black;">${n.professor}</label>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td colspan="4" style="padding-bottom: 20px; padding-top: 15px;">
+					<label
+					style="margin-left: 30px; margin-top: 15px; font-size: 16px; font-weight: bord;">${n.title}</label> <label
+					style="font-weight: lighter; margin-left: 2px;">(${n.studyYear}년 ${n. studySemester}
+						수강자)</label> <br>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="4" style="padding-bottom: 20px; padding-top: 15px;">
+					<label
+					style="margin-left: 30px; margin-right: 90px; margin-top: 5px; font-size: 14px; font-weight: lighter;">
+						${n.content}</label> <br>
+				</td>
+
+			</tr>
+			<tr>
+
+				<td colspan="4"><label
+					style="margin-left: 30px; margin-top: 10px; margin-bottom: 20px; font-size: 20px; font-weight: border; color: gray;">[
+						성적 반영 ]</label><br> <label
+					style="margin-left: 40px; font-size: 16px; font-weight: normal;">
+						과제: ${n.task} </label> <label
+					style="margin-left: 40px; font-size: 16px; font-weight: normal;">
+						조모임: ${n.teample}  </label> <label
+					style="margin-left: 40px; font-size: 16px; font-weight: normal;">
+						학점 비율: ${n.gradescale} </label> <label
+					style="margin-left: 40px; font-size: 16px; font-weight: normal; margin-bottom: 20px;">
+						시험 횟수: ${n.exam} </label></td>
+
+			</tr>
+
+			<tr>
+				<td colspan="4"><label
+					style="margin-left: 40px; font-size: 16px; font-weight: border;  margin-bottom:-5px; margin-top: 5px;">총점:
+						 ${n.totalScore}</label> <hr style="color: gray; padding-right: 200px; height: 20px;"></td>
+			</tr>
+		</tbody>
+	</table>
+	</c:forEach>
+
+  
+</body>
 	</html>

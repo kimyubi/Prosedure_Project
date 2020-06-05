@@ -14,6 +14,33 @@ public class LectureEvaluation {
 	String gradescale;
 	String exam;
 	String totalScore;
+	String num;
+	
+
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
+	}
+	public LectureEvaluation(String id, String name, String professor, String studyYear, String studySemester,
+			String title, String content, String task, String teample, String gradescale, String exam,
+			String totalScore, String num) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.professor = professor;
+		this.studyYear = studyYear;
+		this.studySemester = studySemester;
+		this.title = title;
+		this.content = content;
+		this.task = task;
+		this.teample = teample;
+		this.gradescale = gradescale;
+		this.exam = exam;
+		this.totalScore = totalScore;
+		this.num = num;
+	}
 	public String getId() {
 		return id;
 	}
