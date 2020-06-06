@@ -6,13 +6,8 @@
 		out.println("<script>location.href='/login.jsp'</script>");
 	}
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-
-<!-- 제이쿼리: 자바스크립트 기반의 프레임워크, 웹 개발 속도 향상에 도움을 줌 
-      제이쿼리를 사용하기 위한 방법 1: 제이쿼리 홈페이지에서 jquery.js 파일 다운로드 방법 2: jquery CDN 서버로 연결되는 외부링크 사용 (HTML 코드에 jQuery 
-      스크립트를 불러오는 태그 사용 -->
-      <!-- ( https://api.jquery.com/jquery.ajax/ ) 제이쿼리에서 ajax 사용  -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,7 +86,7 @@
 	.main{ background-image: url("https://cdn.pixabay.com/photo/2015/12/27/05/48/turntable-1109588_1280.jpg" );
 	background-size: cover; padding-bottom: 900px; margin-top: 100px}
 	
-	body{margin-top: 140px}
+	body{margin-top: 90px}
 	h3{margin-left: 450px; font-family: sans-serif; color: black; font-weight: bold; }
 	#bookName{
 	margin-left: 400px;  margin-top: 35px;
@@ -104,7 +99,7 @@
 	
 </style>
 <!------------------------------------------------------------------------------ css ----------------------------------------------------------------->
-	<title>도서검색 페이지</title>
+	<title>여성 안심택배보관함 검색</title>
 	</head>
 	
 	<body >
@@ -119,20 +114,20 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	          <p class="navbar-text"><a href="welcomeindex.jsp" style="color: black;">Myongji</a> </p>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-          <li><a href="/enrollment">수강 신청</a></li>
+	      <p class="navbar-text"><a href="welcomeindex.jsp" style="color: black;">Myongji</a></p>
+	    </div>
+	
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	         <li><a href="/enrollment">수강 신청</a></li>
 			<li><a href="/mypage">신청 내역</a></li>
 			<li><a href="/deleteLecture">수강 정정</a></li>
 			<li><a href="/notice">공지사항</a></li>
 			<li><a href="/LectureEvaluation">강의 평가</a></li>
 			<li><a href="/book.jsp">도서검색</a>
 			<li><a href="/delivery">택배안심 보관함</a></li>
-      </ul>
+		
+	      </ul>
 	  
 	      <ul class="nav navbar-nav navbar-right">
 	 		 <li><a href="/miridamgi">미리담기</a></li>
@@ -150,68 +145,50 @@
 	</header>
 	  
 	  <main>
-	  <h3> 검색하실 책의 제목을 입력하세요. </h3>
 	
-	<script type="text/javascript">
+		<form class="table-form" action="/delivery" method="get" style=" margint-top:-120px; margin-left: 120px; width: 1200px;">
 
-	function check() {
-		$("#booksearch").remove();
-	}
-	
-	</script>
-	     
-	    <input type="text"  id="bookName"  placeholder="책 제목을 입력하세요" required > 
-       <button id="search" onclick="check()" > 검색 </button>
-      
-		<p id ="booksearch"></p>
-		<p id="booksearch"></p>
-		<p id="booksearch"></p>
-		<p id="booksearch"></p>
-		<p id="booksearch"></p>
-		<p id="booksearch"></p>
-		<p id="booksearch"></p>
-	    <p id="booksearch"></p>
-	    
+			<select name="selection" style=" padding-bottom:6px; margin-left: -20px;  ">
+			
+				<option value="citycountycode"  ${(param.selection=="citycountycode")? "selected" : "" }>시군구 코드</option>
+				<option value="city"  ${(param.selection=="city")? "selected" : "" }>시도 명</option>
+				<option value="citycountyname"  ${(param.selection=="citycountyname")? "selected" : "" }>시군구 명</option>
 
-		<!-- jquery cdn -->
-<script  src="https://code.jquery.com/jquery-3.5.1.js"  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
- <!--  jquery ajax -->
- 
- 
- <script>
-        $(function () {
+			</select>
+			 <input type="text" name="search"  value="${param.search}"/> 
+			 <input class="btn btn-search"   style="margin-left:5px; margin-top:5px;" 	type="submit"  name="button"  value="검색" />
 
-            $("#search").click(function () {
-
-                $.ajax({
-                    method: "GET",
-                    url: "https://dapi.kakao.com/v3/search/book?target=title", // 전송 주소
-                    data: { query: $("#bookName").val() , sort: "accuracy"}, // 보낼 데이터 x: "y", z: "q" 형식, 사용자로부터 입력받은 책의 제목을 담아보낸다.
-                    headers: { Authorization: "KakaoAK 9200b193567e974f0955039d14cc1645" } //카카오에서 부여받은 앱키(REST API)
-                })
-                    .done(function (msg) { // 요청에 대한 응답이 오면 처리를 하는 코드
-                      //  alert("데이터가 저장되었습니다"+ msg); //요청이 성공적으로 실행되어 done을 실행하면 '데이터가 저장되었습니다'라는 알림창과 함께 Object가 넘어왔음을 알 수 있다.
-                        console.log(msg); //개발자 도구상에 응답으로 받은 객체를 보여주기 위한 것
-                        for(var i =0; i < msg.documents.length;i++){
-                     
-                    	$( "#booksearch" ).append("<strong>"+msg.documents[i].title+"</strong><br>");
-                    	$( "#booksearch" ).append( "<img src = '"+msg.documents[i].thumbnail+"'/><br><br>" );
-                    	$( "#booksearch" ).append("저자: "+ msg.documents[i].authors+"<br>");
-                    	$( "#booksearch" ).append("출판사: "+ msg.documents[i].publisher+"<br>");
-                    	$( "#booksearch" ).append("판매상태: "+ msg.documents[i].status+"<br>");
-                    	$( "#booksearch" ).append( "정가: "+msg.documents[i].price +"원 <br>");
-                    	$( "#booksearch" ).append( "판매가: "+msg.documents[i].sale_price +"원 <br>");
-                    	$( "#booksearch" ).append( "ISBN: "+msg.documents[i].isbn+"<br><br><br>");
-                 
-                    
-                        }
-                    });
-            })
-        });
-
-    </script>
- 
+		</form>
+		
  </main>
-	 
-	</body>
+ 	
+	
+	 <!---------------------------------------------------강의평가 글 목록----------------------------------------------------------------------------------------------------------->
+
+
+
+<table  class="table table-hover"	style="width: 80%; margin-left: 90px; margin-top:20px;">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" style="width: 20%; text-align: center;">시도 명</th>
+      <th scope="col"  style="width: 10%; ">시군구 명</th>
+      <th scope="col"  style="text-align: center; width: 40%" >시설명</th>
+      <th scope="col" style="text-align: center; width: 70%" ">도로명 주소</th>
+    </tr>
+  </thead>
+  <tbody>
+  <c:forEach items="${list}" var="n">
+    <tr>
+		<td style="width: 20%; text-align: center;">${n.city}</td>
+		<td  style="width: 10%;">${n.citycountyname}</td>
+		<td  style="text-align: center;  font-weight: bold; "><a style="color: gray;" href="/deliverydetail?uniqueid=${n.uniqueid}">${n.facility}</a></td>
+		<td style="text-align: center; width: 80%" >${n.roadname }</td>
+	</tr>
+	</c:forEach>
+
+  </tbody>
+</table>
+
+  
+</body>
 	</html>

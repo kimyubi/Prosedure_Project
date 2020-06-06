@@ -55,20 +55,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <p class="navbar-text"><a href="welcomeindex.jsp">Myongji University</a> </p>
+        <p class="navbar-text"><a href="welcomeindex.jsp" style="color: black;">Myongji</a> </p>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-       <li><a href="/enrollment">수강 신청</a></li>
-		<li><a href="/mypage">신청 내역</a></li>
-		<li><a href="/deleteLecture">수강 정정</a></li>
-		<li><a href="/notice">공지사항</a></li>
-		<li><a href="/book.jsp">도서검색</a></li>
-		<li><a href="/LectureEvaluation">강의 평가</a></li>
+          <li><a href="/enrollment">수강 신청</a></li>
+			<li><a href="/mypage">신청 내역</a></li>
+			<li><a href="/deleteLecture">수강 정정</a></li>
+			<li><a href="/notice">공지사항</a></li>
+			<li><a href="/LectureEvaluation">강의 평가</a></li>
+			<li><a href="/book.jsp">도서검색</a>
+			<li><a href="/delivery">택배안심 보관함</a></li>
       </ul>
-      
   
       <ul class="nav navbar-nav navbar-right">
          <li><a href="/miridamgi">미리담기</a></li>
@@ -111,7 +111,7 @@
 		 <h5 >최대 이수가능 학점  : ${!empty maxgrades?  maxgrades:"내 정보에서 단과대를 선택하면 볼 수 있습니다."}</h5>
          <h5>총 수강신청 학점 수 : ${!empty totalGrades? totalGrades:0}</h5>
 
-	   <form action="/mybagenrollment" method="post"  >
+	   <form action="/enrollment" method="post"  >
 		
 				<table class="table table-hover" style="width: 1200px; margin-left: -350px; margin-top: 40px;" >
 					<thead>

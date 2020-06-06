@@ -6,13 +6,8 @@
 		out.println("<script>location.href='/login.jsp'</script>");
 	}
 %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-
-<!-- 제이쿼리: 자바스크립트 기반의 프레임워크, 웹 개발 속도 향상에 도움을 줌 
-      제이쿼리를 사용하기 위한 방법 1: 제이쿼리 홈페이지에서 jquery.js 파일 다운로드 방법 2: jquery CDN 서버로 연결되는 외부링크 사용 (HTML 코드에 jQuery 
-      스크립트를 불러오는 태그 사용 -->
-      <!-- ( https://api.jquery.com/jquery.ajax/ ) 제이쿼리에서 ajax 사용  -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,7 +86,7 @@
 	.main{ background-image: url("https://cdn.pixabay.com/photo/2015/12/27/05/48/turntable-1109588_1280.jpg" );
 	background-size: cover; padding-bottom: 900px; margin-top: 100px}
 	
-	body{margin-top: 140px}
+	body{margin-top: 90px}
 	h3{margin-left: 450px; font-family: sans-serif; color: black; font-weight: bold; }
 	#bookName{
 	margin-left: 400px;  margin-top: 35px;
@@ -104,7 +99,7 @@
 	
 </style>
 <!------------------------------------------------------------------------------ css ----------------------------------------------------------------->
-	<title>도서검색 페이지</title>
+	<title>여성 안심택배보관함 상세</title>
 	</head>
 	
 	<body >
@@ -119,20 +114,20 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	          <p class="navbar-text"><a href="welcomeindex.jsp" style="color: black;">Myongji</a> </p>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-          <li><a href="/enrollment">수강 신청</a></li>
+	      <p class="navbar-text"><a href="welcomeindex.jsp" style="color: black;">Myongji</a></p>
+	    </div>
+	
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav">
+	         <li><a href="/enrollment">수강 신청</a></li>
 			<li><a href="/mypage">신청 내역</a></li>
 			<li><a href="/deleteLecture">수강 정정</a></li>
 			<li><a href="/notice">공지사항</a></li>
 			<li><a href="/LectureEvaluation">강의 평가</a></li>
 			<li><a href="/book.jsp">도서검색</a>
 			<li><a href="/delivery">택배안심 보관함</a></li>
-      </ul>
+		
+	      </ul>
 	  
 	      <ul class="nav navbar-nav navbar-right">
 	 		 <li><a href="/miridamgi">미리담기</a></li>
@@ -149,69 +144,105 @@
 	       </nav>
 	</header>
 	  
-	  <main>
-	  <h3> 검색하실 책의 제목을 입력하세요. </h3>
 	
-	<script type="text/javascript">
+<table  class="table table-striped"	style="width: 50%; margin-left: 320px; margin-top:10px; border-color: gray; border-width: 20%; border: 2px;">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col" style="width: 20%; text-align: center; font-size: 18px; background-color: #F0F0F0" colspan="4" >위치 안내</th>
+    </tr>
+    <tr>
+    <td>
+    <label style="margin-left:50px; font-size: 17px; font-weight: lighter; margin-top:15px; ">시설명:  ${delivery.facility} </label><br>
+    <label style="margin-left:50px; font-size: 17px; font-weight: lighter;  ">시도명:  ${delivery.city} </label>
+    <label style="margin-left:200px; font-size: 17px; font-weight: lighter;  ">시군구명:  ${delivery.citycountyname} </label><br>
+    <label style="margin-left:50px; font-size: 17px; font-weight: lighter;  ">시군구코드:  ${delivery.citycountycode} </label><br>
+     <label style="margin-left:50px; font-size: 17px; font-weight: lighter; margin-top:15px; ">도로명 주소:  ${delivery.roadname} </label><br>
+     <label style="margin-left:50px; font-size: 17px; font-weight: lighter; margin-bottom: 15px; ">지번주소:  ${delivery.branchaddress} </label>
+    </td>
+    </tr>
+    <tr>
+          <th scope="col" style="width: 20%; text-align: center; font-size: 18px; background-color:  #F0F0F0" colspan="4" >이용 안내</th>
+    </tr>
+    <tr>
+       <td scope="col" style="width: 20%; text-align: center; font-size: 16px; font-weight: normal;" colspan="4" >평일</td>
+    </tr>
+    <tr>
+      <td>
+    <label style="margin-left:100px; font-size: 17px; font-weight: lighter; margin-top:10px; ">운영 시작시간:  ${delivery.starttime} </label>
+    <label style="margin-left:90px; font-size: 17px; font-weight: lighter;  ">운영 종료시간:   ${delivery.finaltime}</label><br>
+    </td>
+    </tr>
+    
+      <tr>
+       <td scope="col" style="width: 20%; text-align: center; font-size: 16px; font-weight: normal;" colspan="4" >토요일</td>
+    </tr>
+    <tr>
+      <td>
+    <label style="margin-left:100px; font-size: 17px; font-weight: lighter; margin-top:10px; ">운영 시작시간:   ${delivery.satstart} </label>
+    <label style="margin-left:90px; font-size: 17px; font-weight: lighter;  ">운영 종료시간:   ${delivery.satfinal}</label><br>
+    </td>
+    </tr>
+    
+      <tr>
+       <td scope="col" style="width: 20%; text-align: center; font-size: 16px; font-weight: normal;" colspan="4" >공휴일</td>
+    </tr>
+    
+    <tr>
+      <td>
+    <label style="margin-left:100px; font-size: 17px; font-weight: lighter; margin-top:10px; ">운영 시작시간:   ${delivery.holistart} </label>
+    <label style="margin-left:90px; font-size: 17px; font-weight: lighter;  ">운영 종료시간:   ${delivery.holifinal} </label><br>
+    </td>
+    </tr>
+    
+    
+       <tr>
+          <th scope="col" style="width: 20%; text-align: center; font-size: 18px; background-color:  #F0F0F0" colspan="4" >가격 안내</th>
+    </tr>
+    
+    <tr>
+    <td>
+    <label style="margin-left:50px; font-size: 17px; font-weight: lighter; margin-top:20px; ">무료 이용시간:  ${delivery.freehours}시간 </label><br>
+    <label style="margin-left:50px; font-size: 15px; font-weight: lighter;  ">*이후 연체료 부과 단위시간:  ${delivery.costunittime}시간 </label><br>
+    <label style="margin-left:50px; font-size: 17px; font-weight: lighter; margin-top: 10px; margin-bottom:20px; ">연체료: ${delivery.cost}(원) </label>
+    </td>
+    </tr>
+    
+      <tr>
+          <th scope="col" style="width: 20%; text-align: center; font-size: 18px; background-color:  #F0F0F0" colspan="4" >사용 방법</th>
+    </tr>
+    
+    <tr>
+    <td style="text-align: justify;">
+        <label style="margin-left:30px; margin-right:30px; margin-top:20px; margin-bottom:20px;font-size: 15px; font-weight: lighter;  "> ${delivery.howtouse}</label><br>
+     </td>
+    </tr>
+    
+    <tr>
+          <th scope="col" style="width: 20%; text-align: center; font-size: 18px; background-color:  #F0F0F0" colspan="4" >문의 사항</th>
+    </tr>
+   
+   <tr>
+   <td>
+   <label style="margin-left:50px; font-size: 15px; font-weight: lighter; margin-top:20px; ">관리기관명:  ${delivery.adminname} </label>
+    <label style="margin-left:90px; font-size: 15px; font-weight: lighter;  ">관리기관 전화번호:  ${delivery.admintel}</label><br>
+    <label style="margin-left:50px; font-size: 15px; font-weight: lighter; margin-top:7px; ">고객센터 전화번호:  ${delivery.tel}</label>
+   </td>
+   </tr>
+  
+    
+  </thead>
+  <tbody>
 
-	function check() {
-		$("#booksearch").remove();
-	}
-	
-	</script>
-	     
-	    <input type="text"  id="bookName"  placeholder="책 제목을 입력하세요" required > 
-       <button id="search" onclick="check()" > 검색 </button>
-      
-		<p id ="booksearch"></p>
-		<p id="booksearch"></p>
-		<p id="booksearch"></p>
-		<p id="booksearch"></p>
-		<p id="booksearch"></p>
-		<p id="booksearch"></p>
-		<p id="booksearch"></p>
-	    <p id="booksearch"></p>
-	    
+  </tbody>
+</table>
+  <script type="text/javascript">
+function prev() {
+	history.go(-1);
+}
+</script>
+	 <button style="font-size:20px; margin-top:20px;margin-left: 520px; padding-top:20px; padding-bottom:20px; padding-left:100px; padding-right:100px; margin-bottom:50px; " type="button"  class="btn btn-secondary" onclick=prev()>이전</button>
 
-		<!-- jquery cdn -->
-<script  src="https://code.jquery.com/jquery-3.5.1.js"  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
- <!--  jquery ajax -->
- 
- 
- <script>
-        $(function () {
 
-            $("#search").click(function () {
-
-                $.ajax({
-                    method: "GET",
-                    url: "https://dapi.kakao.com/v3/search/book?target=title", // 전송 주소
-                    data: { query: $("#bookName").val() , sort: "accuracy"}, // 보낼 데이터 x: "y", z: "q" 형식, 사용자로부터 입력받은 책의 제목을 담아보낸다.
-                    headers: { Authorization: "KakaoAK 9200b193567e974f0955039d14cc1645" } //카카오에서 부여받은 앱키(REST API)
-                })
-                    .done(function (msg) { // 요청에 대한 응답이 오면 처리를 하는 코드
-                      //  alert("데이터가 저장되었습니다"+ msg); //요청이 성공적으로 실행되어 done을 실행하면 '데이터가 저장되었습니다'라는 알림창과 함께 Object가 넘어왔음을 알 수 있다.
-                        console.log(msg); //개발자 도구상에 응답으로 받은 객체를 보여주기 위한 것
-                        for(var i =0; i < msg.documents.length;i++){
-                     
-                    	$( "#booksearch" ).append("<strong>"+msg.documents[i].title+"</strong><br>");
-                    	$( "#booksearch" ).append( "<img src = '"+msg.documents[i].thumbnail+"'/><br><br>" );
-                    	$( "#booksearch" ).append("저자: "+ msg.documents[i].authors+"<br>");
-                    	$( "#booksearch" ).append("출판사: "+ msg.documents[i].publisher+"<br>");
-                    	$( "#booksearch" ).append("판매상태: "+ msg.documents[i].status+"<br>");
-                    	$( "#booksearch" ).append( "정가: "+msg.documents[i].price +"원 <br>");
-                    	$( "#booksearch" ).append( "판매가: "+msg.documents[i].sale_price +"원 <br>");
-                    	$( "#booksearch" ).append( "ISBN: "+msg.documents[i].isbn+"<br><br><br>");
-                 
-                    
-                        }
-                    });
-            })
-        });
-
-    </script>
- 
- </main>
-	 
-	</body>
+  
+</body>
 	</html>
