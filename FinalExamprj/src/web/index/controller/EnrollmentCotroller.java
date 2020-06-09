@@ -56,6 +56,7 @@ public class EnrollmentCotroller extends HttpServlet {
 		
 
 		request.getRequestDispatcher("/enrollment.jsp").forward(request, response);
+		//request객체를 /enrollment.jsp와 공유
 	}
 	
 	@Override
@@ -73,6 +74,7 @@ public class EnrollmentCotroller extends HttpServlet {
 
 		int total = (int) request.getSession().getAttribute("totalGrades");
 		int max = (int) request.getSession().getAttribute("maxgrades");
+		
 		String code = null ;
 		if(code_!=null&&!code_.equals(""))
 		{

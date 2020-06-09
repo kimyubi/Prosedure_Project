@@ -53,9 +53,9 @@ public class MiridamgiCotroller extends HttpServlet {
 		request.setAttribute("totalmiriGrades", totalmiriGrades);
 		request.getSession().setAttribute("totalmiriGrades", totalmiriGrades);
 		request.getSession().setAttribute("maxmiri", 24);
-		//총 미리담기한 학점 수 
+		// totalmiriGrades: 총 미리담기한 학점 수
+		// maxmiri: 미리담기 가능 학점 :24
 		
-
 		request.getRequestDispatcher("/miridamgi.jsp").forward(request, response);
 	}
 	
@@ -81,7 +81,7 @@ public class MiridamgiCotroller extends HttpServlet {
 		}
 	
 		//수강 신청할 강좌의 코드를 주면서 학점을 가져와서 int willEnrollGrade에 저장한다.
-		//if (willEnrollGrade+ total>max)이 true 면 service. enroll실행하지 않고 alert('수강신청 가능한 학점을 초과~~'), else일 때 service. enrollment실행
+		//if (willEnrollGrade+ total>max)이 true 면 service. miridamgi실행하지 않고 alert('미리담기 가능한 학점을 초과~~'), else일 때 service. miridamgi실행
 		
 		int willeEnrollGrade = service.getWillEnrollGrade(code);
 		if(willeEnrollGrade+total>max)

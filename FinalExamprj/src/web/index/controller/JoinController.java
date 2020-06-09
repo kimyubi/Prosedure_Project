@@ -19,14 +19,13 @@ import web.index.entity.personalinfo;
 @WebServlet("/join")
 public class JoinController extends HttpServlet {
 	
-	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html; charset=UTF-8");
-
-
+      //문자 인코딩 방식을 UTF-8로 설정
+		
 		JoinService joinserv= new JoinService();
 
 		String name = req.getParameter("name");
@@ -35,13 +34,12 @@ public class JoinController extends HttpServlet {
 	    String password=	req.getParameter("password");
 		String email= req.getParameter("email");
 	    String tel=	req.getParameter("tel");
-	    personalinfo person = new personalinfo(id,password,nickname,email,tel,name);
-    	 joinserv.registerAccount(person);
-    	
-    	 resp.sendRedirect("/login.jsp");
-  
-
 	   
+	    personalinfo person = new personalinfo(id,password,nickname,email,tel,name);//personalinfo entity
+    	 joinserv.registerAccount(person);//계정을 등록하는 Service메소드
+    	
+    	 resp.sendRedirect("/login.jsp");//회원가입이 완료되면 login.jsp페이지로 이동한다.
+ 
 	
 	}
 	

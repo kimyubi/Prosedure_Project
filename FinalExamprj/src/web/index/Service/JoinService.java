@@ -16,6 +16,7 @@ public class JoinService {
 
 		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 		String sql = " INSERT INTO PERSONALINFO VALUES(?,?,?,?,?,?) ";
+		//PERSONALINFO라는 이름을 가진 테이블에 값을 집어넣는다.
 				
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -30,6 +31,9 @@ public class JoinService {
 			st.setString(6, person.getEmail());
 		
 			 st.executeUpdate();
+			 //INSERT,DELETE,UPDATE -> executeUpdate();
+			 // executeUpdate()는 변화를 준 행의 개수를 반환한다. 
+			 //SELECT -> executeQuery();
 			
 			con.close();
 			st.close();
@@ -45,7 +49,8 @@ public class JoinService {
 	}
 	
 	public boolean checkDuplication(String id)
-	{  boolean result=false;
+	{ 
+		boolean result=false;
 		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 		String sql = " SELECT ID FROM PERSONALINFO WHERE ID=? ";
 		try {

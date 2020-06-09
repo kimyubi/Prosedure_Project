@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import oracle.net.aso.i;
 import web.index.Service.EnrollmentService;
 import web.index.entity.EnrollmentList;
 
@@ -20,17 +21,23 @@ public class MypageController extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		EnrollmentService service = new EnrollmentService();
 		List<EnrollmentList> list = new ArrayList<EnrollmentList>();
+	    //EnrollmenrtList: 강의 목록을 담는 entity
+		
 		String id = (String) request.getSession().getAttribute("Signedid");
+		//현재 로그인 중인 사용자의 수강신청 목록을 가져오기 위해서
+		
 		list  =service.showEnrollmentList(id);
-		String totalGrades = "0";
+		//현재 로그인 중인 사용자의 아이디를 매개변수로 주고 해당 사용자의 수강신청 목록을 가져온다.
+		
+		int totalGrades = 0;
 		String totalGrades_=service.totalGrades(id);
 		if(totalGrades_!=null&&!totalGrades_.equals(""))
 		{
-			totalGrades= totalGrades_;
+			totalGrades= Integer.parseInt(totalGrades_);
 		}
 		
   	 request.setAttribute("list", list);
-  	 request.setAttribute("totalGrades", Integer.parseInt(totalGrades));
+  	 request.setAttribute("totalGrades", totalGrades);
   	 
   	 
 	  request.getRequestDispatcher("/mypage.jsp").forward(request, response);

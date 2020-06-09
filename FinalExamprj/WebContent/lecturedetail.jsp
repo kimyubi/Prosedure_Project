@@ -243,7 +243,7 @@ function prev() {
 
 		<button style="margin-left:  450px;  margin-top: 50px;"  type="button" class="btn btn-secondary"	onclick="location='/enrollment'">목록</button>
 		 <button style="margin-left: -220px; margin-top: 50px;"  type="button"  class="btn btn-secondary" onclick=prev()>이전</button>
-		 		 <button style="margin-left: 125px; margin-top: 50px;"  type="button"  class="btn btn-secondary" onclick="location='/book.jsp'">도서 검색</button>
+		  <button style="margin-left: 125px; margin-top: 50px;"  type="button"  class="btn btn-secondary" onclick="location='/book.jsp'">도서 검색</button>
 	
 
 </body>

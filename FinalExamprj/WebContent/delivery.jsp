@@ -150,13 +150,15 @@
 
 			<select name="selection" style=" padding-bottom:6px; margin-left: -20px;  ">
 			
+			   <option value="citycountyname"  ${(param.selection=="citycountyname")? "selected" : "" }>시군구 명</option>
+			   <option value="city"  ${(param.selection=="city")? "selected" : "" }>시도 명</option>
 				<option value="citycountycode"  ${(param.selection=="citycountycode")? "selected" : "" }>시군구 코드</option>
-				<option value="city"  ${(param.selection=="city")? "selected" : "" }>시도 명</option>
-				<option value="citycountyname"  ${(param.selection=="citycountyname")? "selected" : "" }>시군구 명</option>
+		
+				
 
 			</select>
-			 <input type="text" name="search"  value="${param.search}"/> 
-			 <input class="btn btn-search"   style="margin-left:5px; margin-top:5px;" 	type="submit"  name="button"  value="검색" />
+			 <input  autocomplete="off" type="text" name="search"  value="${param.search}"/> 
+			 <input class="btn btn-search" style="margin-left:5px; margin-top:5px; " 	type="submit"  name="button"  value="검색" />
 
 		</form>
 		

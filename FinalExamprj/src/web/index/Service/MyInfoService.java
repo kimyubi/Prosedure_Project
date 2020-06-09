@@ -74,6 +74,7 @@ public class MyInfoService {
 		int result = 0;
 		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 		String sql = " INSERT INTO MYINFO ( ID, COLLEAGE ,REGDATE) VALUES ( ?,  ?, SYSDATE ) " ;
+		//MYINFO라는 이름의 테이블에 매개변수로 받은 아이디와 단과대 정보를 저장한다.
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con;

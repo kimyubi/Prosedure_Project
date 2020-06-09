@@ -41,6 +41,7 @@ public class MybagController extends HttpServlet{
   	 request.setAttribute("totalGrades", totalGrades);	
  	request.setAttribute("totalmiriGrades", totalmiriGrades);
   	 request.setAttribute("list", MiridamgiList);
+	 request.setAttribute("maxmiri", 24);
   	 request.getSession().setAttribute("totalGrades", totalGrades);
 
   	 

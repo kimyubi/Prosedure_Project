@@ -16,7 +16,10 @@ public class LecturePlanService {
 	    LecturePlan lectureplan = null;
 		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 		String sql = " SELECT * FROM LECTURE JOIN LECTUREDETAIL ON LECTURE.CODE = LECTUREDETAIL.CODE JOIN WEEKLYPROGRESS ON LECTURE.CODE = WEEKLYPROGRESS.CODE WHERE LECTURE.CODE = ?";
-	
+	//강의 테이블(과목코드,교과목명, 강의실,학점,교수명,강의시간)+ 강의 디테일 테이블(학습목표,평가방법,주교재)+주차계획서 테이블(WEEK1~WEEK16)
+	//을 모두 조인한다. 이때 LECTUREDETAIL.CODE와 WEEKLYPROGRESS.CODE는 LECTURE.CODE를 참조한다.
+	// CODE는 PK(Primary Key)->null이 아니고 유일해야 한다.(unique)
+	// 이렇게 조인된 테이블을 매개변수로 받은 과목 코드로 검색하여 나온 하나의 행의 칼럼값을 LecturePlan이라는 entity에 담아서 강의계획서 화면에 뿌려준다.
 			try {
 				Class.forName("oracle.jdbc.driver.OracleDriver");
 				Connection con = DriverManager.getConnection(url, "YUBI", "rlatldn11!");

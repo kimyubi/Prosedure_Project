@@ -156,6 +156,8 @@
 
 	function check() {
 		$("#booksearch").remove();
+		//검색 버튼이 눌릴 때 마다 이전의 검색결과를 remove()한다. 
+		//그렇지 않으면 새로 검색 할 때마다 검색결과가 중첩되기 때문이다.
 	}
 	
 	</script>
@@ -173,26 +175,29 @@
 	    <p id="booksearch"></p>
 	    
 
-		<!-- jquery cdn -->
+		<!-- jquery cdn : jquery.js파일을 다운로드하지 않더라도 jquery 를 html안에서 사용할 수 있도록  하는 코드 -->
+		<!-- jquery 공식사이트에 가면 jquerycdn을 제공한다.  -->
 <script  src="https://code.jquery.com/jquery-3.5.1.js"  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
- <!--  jquery ajax -->
  
  
+ 
+ 
+ <!--  jquery ajax : 이것도 굳이 외우지 않아도 인터넷에 jquery ajax치면 나오는 공식문서에 examples를 복붙해서 쓰는 방법! -->
  <script>
         $(function () {
 
-            $("#search").click(function () {
+            $("#search").click(function () { //검색 버튼을 클릭하면 실행되는 function
 
                 $.ajax({
-                    method: "GET",
-                    url: "https://dapi.kakao.com/v3/search/book?target=title", // 전송 주소
+                    method: "GET", // 카카오 API 설명서에 적힌 방식대로 하면 됌.
+                    url: "https://dapi.kakao.com/v3/search/book?target=title", // 전송 주소 : 이건 그냥 카카오 디벨로퍼스에서 복사해서 쓰는 것
                     data: { query: $("#bookName").val() , sort: "accuracy"}, // 보낼 데이터 x: "y", z: "q" 형식, 사용자로부터 입력받은 책의 제목을 담아보낸다.
                     headers: { Authorization: "KakaoAK 9200b193567e974f0955039d14cc1645" } //카카오에서 부여받은 앱키(REST API)
                 })
                     .done(function (msg) { // 요청에 대한 응답이 오면 처리를 하는 코드
                       //  alert("데이터가 저장되었습니다"+ msg); //요청이 성공적으로 실행되어 done을 실행하면 '데이터가 저장되었습니다'라는 알림창과 함께 Object가 넘어왔음을 알 수 있다.
-                        console.log(msg); //개발자 도구상에 응답으로 받은 객체를 보여주기 위한 것
-                        for(var i =0; i < msg.documents.length;i++){
+                      //  console.log(msg); //개발자 도구상에 응답으로 받은 객체를 보여주기 위한 것
+                        for(var i =0; i < msg.documents.length;i++){ 
                      
                     	$( "#booksearch" ).append("<strong>"+msg.documents[i].title+"</strong><br>");
                     	$( "#booksearch" ).append( "<img src = '"+msg.documents[i].thumbnail+"'/><br><br>" );
@@ -202,7 +207,8 @@
                     	$( "#booksearch" ).append( "정가: "+msg.documents[i].price +"원 <br>");
                     	$( "#booksearch" ).append( "판매가: "+msg.documents[i].sale_price +"원 <br>");
                     	$( "#booksearch" ).append( "ISBN: "+msg.documents[i].isbn+"<br><br><br>");
-                 
+                 //제이쿼리를 html로 출력하기 위한 것, 이걸 굳이 외우려고 하지말고 쓸 때 마다 구글에 검색하는 것! jquery html치면 나온다.
+                 // 아이디가 #booksearch인 태그에 append()안의 내용을 출력한다.
                     
                         }
                     });

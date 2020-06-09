@@ -126,6 +126,7 @@ public class EnrollmentService {
 	{   int rs =0;
 		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 		String sql = " INSERT INTO MIRIDAMGI(ID,CODE) SELECT ?, ? FROM DUAL WHERE NOT EXISTS(SELECT ID FROM MIRIDAMGI WHERE ID = ? AND CODE = ?) ";
+	//MIRIDAMGI 테이블에 매개변수로 받은 ID와 CODE 모두가 동일한 행이 없다면 매개변수로 받은 ID와 CODE를 INSERT한다.
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "YUBI", "rlatldn11!");
@@ -153,6 +154,11 @@ public class EnrollmentService {
 	String sql= " SELECT CODE,NAME,LOCATION,PERSONNEL,GRADES,PROFESSOR,TIME,CAMPUS"
 			+ " FROM(SELECT ENROLLMENT.ID, LECTURE.* FROM ENROLLMENT JOIN LECTURE ON ENROLLMENT.CODE =LECTURE.CODE ) "
 			+ "WHERE ID = ? ";
+	
+	//LECTURE 테이블( 아이디, 과목 코드) LECTURE 테이블(과목 코드,과목명,강의실,학점,교수명, 강의시간, 캠퍼스 ....(생략))
+	//두 테이블을 조인함으로써 해당 아이디(매개변수로 받은 아이디)가 신청한 강좌의 과목코드 뿐만이 아니라 신청한 강좌의 정보까지도 SELECT할 수 있음
+	//매개변수로 받은 아이디가 수강신청한 강좌의 목록을 EnrollmentList(entity)에 담아 신청내역 페이지에 뿌려준다.
+
 	try {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		Connection con = DriverManager.getConnection(url, "YUBI", "rlatldn11!");
@@ -182,8 +188,6 @@ public class EnrollmentService {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-
-	
 	
 	return list;
 	}
@@ -244,10 +248,7 @@ public class EnrollmentService {
 	{
 		String totalGrades = "";
 		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
-		String sql= " SELECT SUM(GRADES) TOTALGRADES FROM(SELECT CODE,NAME,LOCATION,PERSONNEL,GRADES,PROFESSOR,TIME,CAMPUS,COLLEAGE,DEPARTMENT "
-				+ " FROM ( SELECT ENROLLMENT.ID, LECTURE.* " + 
-				" FROM ENROLLMENT JOIN LECTURE " + 
-				" ON ENROLLMENT.CODE = LECTURE.CODE ) WHERE ID = ? ) ";
+		String sql= " SELECT SUM(GRADES) TOTALGRADES FROM (SELECT ID, GRADES FROM (SELECT ENROLLMENT.ID, LECTURE.* FROM ENROLLMENT JOIN LECTURE ON ENROLLMENT.CODE = LECTURE.CODE)) WHERE ID = ? ";
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "YUBI", "rlatldn11!");

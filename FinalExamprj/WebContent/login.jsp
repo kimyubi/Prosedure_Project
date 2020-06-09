@@ -64,7 +64,7 @@
 	.footer-bs .footer-nav, .footer-bs .footer-social, .footer-bs .footer-ns { border-left:solid 1px rgba(255,255,255,0.10); }
 	
 	
-.footer-bs{ margin-top: 130px; margin-left: -40px; margin-right: -62px; padding: -50px ; }
+.footer-bs{ margin-top: 180px; margin-left: -40px; margin-right: -62px; padding: -50px ; }
 
 
  
@@ -77,7 +77,7 @@
 	.main{ background-image: url("https://cdn.pixabay.com/photo/2015/12/27/05/48/turntable-1109588_1280.jpg" );
 	background-size: cover; padding-bottom: 900px; margin-top: 100px}
 	
-	body{margin-top: 130px}
+	body{margin-top: 130px;}
 	
 </style>
 <!------------------------------------------------------------------------------ css ----------------------------------------------------------------->
@@ -96,7 +96,7 @@
 	        <span class="icon-bar"></span>
 	        <span class="icon-bar"></span>
 	      </button>
-	         <p class="navbar-text"><a href="welcomeindex.jsp" style="color: black;">Myongji</a> </p>
+	         <p class="navbar-text"><a href="/index.jsp" style="color: black;">Myongji</a> </p>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -128,10 +128,10 @@
 	  <main>
 	  <div class="container">
 	      <form name="loginform" action="/login" method = "post">
-	        <h1 >Please sign in</h1><br>
-	        <input type="text" name="loginid" class="form-control" placeholder="ID" required autofocus><br>
-	        <input type="password" name="loginpassword" class="form-control" placeholder="Password" required autofocus>   <br>
-	         <button class="btn btn-lg btn-primary btn-block" type="submit" >Sign in</button>
+	        <h1 style="margin-left:240px;" >Please sign in</h1><br>
+	        <input type="text" autocomplete="off" name="loginid" class="form-control" placeholder="ID" required autofocus style="width:60%; margin-left:240px;"><br>
+	        <input type="password" autocomplete="off"  name="loginpassword" class="form-control" placeholder="Password" required autofocus style="width:60%;margin-left:240px;">   <br>
+	         <button class="btn btn-lg btn-primary btn-block" type="submit" style="width:60%;margin-left:240px;"> Sign in</button>
 	      </form>
 	    </div> 
 	    </main>

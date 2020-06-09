@@ -12,6 +12,8 @@
 
 <title>메인 페이지</title>
 
+<!-- Signedid에 저장된 아이디가 없을 때, 즉 로그인 하지 않았을 때 보이는 메인 페이지 -->
+
 <style type="text/css">
  body { padding-bottom: 10px;  }
  .navbar-text{ font-size: 20px; font-family: monospace; font-weight: bold; }

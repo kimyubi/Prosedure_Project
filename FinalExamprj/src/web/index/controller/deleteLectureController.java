@@ -26,10 +26,8 @@ public class deleteLectureController extends HttpServlet {
 		String id = (String) request.getSession().getAttribute("Signedid");
 		list  =service.showEnrollmentList(id);
   	   request.setAttribute("list", list);
-
-		
+	 //로그인 한 사용자의 수강신청 목록을 보여줌.
 		request.getRequestDispatcher("/deleteLecture.jsp").forward(request, response);
-	
 	}
 
 	@Override
@@ -41,7 +39,7 @@ public class deleteLectureController extends HttpServlet {
 
 		String code = request.getParameter("code");
 		String id = (String) request.getSession().getAttribute("Signedid");
-		//현재 로그인 중인(세션에 저장되어 있는) 아이디와 삭제를 선택한 강좌의 코드를 각각 id와 code에 저장
+		//현재 로그인 중인(세션에 저장되어 있는) 사용자의 아이디와 삭제할 강좌의 코드를 각각 id와 code에 저장
 		
 		//id와 code를 매개변수로 넘겨주면 id와 code정보를 가지고 데이터베이스의 enrollment테이블의 행 삭제하는 서비스 함수 호출
 		DeleteLectureService service = new DeleteLectureService();

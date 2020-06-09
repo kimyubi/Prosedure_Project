@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>로그 아웃</title>
 </head>
+
 <body>
   <%
         session.invalidate();

@@ -7,7 +7,7 @@
 		out.println("<script>location.href='/index.jsp'</script>");
 	}
 %>
-<!-- 관리자 아이디 admin 비밀번호  admin -->
+<!-- 관리자 아이디: admin 비밀번호: admin -->
 <!DOCTYPE html>
 <html>
 <head>

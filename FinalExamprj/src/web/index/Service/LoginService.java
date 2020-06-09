@@ -13,12 +13,14 @@ public class LoginService {
 		int result = 3;
 		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 		String sql = " SELECT PASSWORD FROM PERSONALINFO WHERE ID= ? ";
+		//PERSONALINFO 라는 이름의 테이블에서 ID가 ?인 칼럼의 PASSWORD를 SELECT
 				
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "YUBI", "rlatldn11!");
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, id);
+			//?위치에 매개변수로 받은 id를 set한다.
 			ResultSet rs = st.executeQuery();
 			
 			if(rs.next())
@@ -33,6 +35,7 @@ public class LoginService {
 				}
 					
 			}
+			
 			else
 			{
 				result = 3;//없는 계정입니다. 회원가입을 먼저 진행해주세요

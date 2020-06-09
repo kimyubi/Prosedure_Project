@@ -23,7 +23,9 @@ public class LecturePlanController extends HttpServlet{
 		LecturePlanService service = new LecturePlanService();
 		
 		String code = request.getParameter("code");
+		// /lecturedetail?code=? 와 같이 get방식으로 과목 코드 정보가 오게 된다.
 		LecturePlan plan =  service.getLecturePlan(code);
+		//Lectureplan: 강의계획서 정보를 담고있는 entity
 	    request.setAttribute("plan",plan);
 
 		

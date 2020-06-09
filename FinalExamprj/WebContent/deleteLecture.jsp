@@ -163,7 +163,7 @@ li {
 					</tr>
 				</thead>
 				<tbody>
-
+                  <!-- 사용자의 수강신청 목록을 보여주는 부분 -->
 					<c:forEach items="${list}" var="n">
 						<tr>
 							<td>${n.code}</td>
@@ -175,6 +175,7 @@ li {
 							<td>${n.time}</td>
 							<td>${n.campus}</td>
 							<td><button name="code" value="${n.code}">강의 삭제</button ></td>
+							<!-- 삭제할 강좌의 과목 코드를 넘겨줌.  -->
 						</tr>
 					</c:forEach>
 				</tbody>

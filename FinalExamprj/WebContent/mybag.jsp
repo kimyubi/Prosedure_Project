@@ -17,6 +17,13 @@
 	}
 %>
 
+<% 
+	if (session.getAttribute("maxgrades") == null) {
+		out.println("<script>alert('내 정보 페이지에서 단과대를 선택한 후 이용하실 수 있습니다.');</script>");
+		out.println("<script>location.href='/myinfo'</script>");
+	}
+%>
+
 
 <!DOCTYPE html>
 <html>

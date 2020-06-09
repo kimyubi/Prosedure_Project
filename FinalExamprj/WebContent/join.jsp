@@ -46,6 +46,7 @@
 	text-transform: uppercase;
 	letter-spacing: 3px;
 }
+
 .footer-bs .footer-social li { padding:5px 4px;}
 .footer-bs .footer-social a { color:rgba(255,255,255,1.00);}
 .footer-bs .footer-social a:hover { color:rgba(255,255,255,0.80); text-decoration:none; }
@@ -120,7 +121,11 @@ padding: 5px;
   
   <script type="text/javascript">
   function check(){
-	  
+	 
+	 //submit여부를 결정하는 함수 
+	 //document.joinform.password.value: password field 에 입력된 파라미터 값
+	 //document.joinform.confirmpassword.value: confirmpassword field에 입력된 파라미터 값
+	 
   if (document.joinform.password.value!=document.joinform.confirmpassword.value)//비밀번호와 비밀번호 확인 폼에 입력된 값이 다르다면
 	  {
          history.go(0);
@@ -129,6 +134,9 @@ padding: 5px;
 	  }
   else if(document.joinform.Duplication.value =="iduncheck")
 	  {
+	  
+	  //document.joinform.Duplication.value: Duplication field에 입력된 파라미터 값 
+	  //Duplication :중복확인 검사 여부를 저장, Duplication에 저장된 값이 iduncheck면 중복검사 x, idcheck면 중복검사 o
 	  history.go(0);
 	  alert("아이디 중복 검사를 하세요");
 	  return false;
@@ -145,26 +153,32 @@ padding: 5px;
   
   
   function openidcheck(){
+	  
+	// 중복 확인 버튼을 눌렀을 때 실행되는 함수
+	
 	 if(!document.joinform.id.value)
 		 {
 		 alert("중복검사할 아이디가 입력되지 않았습니다.");
+		 //id를 입력하지 않고 중복확인 버튼을 눌렀을 때 
 		 }
-  // 중복 확인 버튼을 눌렀을 때 실행되는 함수
+  
   else{
 	  window.name = "parentForm"; //부모 창 이름 지정
-	  window.open("idcheckForm.jsp?id="+document.joinform.id.value,"DuplicationcheckForm","width=500, height=300, resizable=no, scrollbars=no");//새 창을 여는 함수, 속성: 생성된 새 창의 url, 생성된 창의 이름, 창 옵션 설정,
+	  window.open("idcheckForm.jsp?id="+document.joinform.id.value,"DuplicationcheckForm","width=500, height=300, resizable=no, scrollbars=no");
+	  //window.open: 새 창을 여는 함수 
+	  //속성: 생성될 새 창의 url, 생성된 창의 이름, 창 옵션 설정,
+	  //document.joinform.id.value: id field에 입력된 파라미터 값
        }
+	
   }
   
   function inputidcheck()
   {
-	  //아이디 입력 칸에 값을 입력하려고 할 때 실행되는 함수
+	  //아이디 입력 칸에 값을 입력하려고 할 때 실행되는 함수 ->onkeydown: 사용자가 키보드의 키를 눌렀을 때 inputidcheck가 실행된다.
 	  document.joinform.Duplication.value="iduncheck";
-	  //중복 확인 한 후에 새로운 아이디를 입력할 때는 중복 검사를 하지 않은 것으로 세팅한다.
+	  //이전에 중복 확인했을지라도 새로 아이디를 입력할 때는 중복 검사를 하지 않은 것으로 세팅한다.
 	  //중복 검사 x->Sign up 버튼 눌리지 않음
   }
-  
-
   
   </script>
   
@@ -172,33 +186,36 @@ padding: 5px;
   
   <main >
   <div class="container">
-      <form action="join" method="post" name="joinform" onSubmit="return check()">
+      <form action="join" method="post" name="joinform" onSubmit="return check()"> 
+      <!-- check함수를 실행한 결과가 true이면 submit, false이면 submit하지 않음. -->
+      
         <h1 >Create Account</h1>
         
         <label>이름을 입력하세요 </label><br>
-        <input type="text" name="name" class="form-control" placeholder="Name" required autofocus > <br>
+        <input autocomplete="off"  type="text" name="name" class="form-control" placeholder="Name" required autofocus > <br>
         
         <label>사용하실 닉네임을 입력하세요 </label><br>
-        <input type="text" name="nickname" class="form-control" placeholder="Nickname" required autofocus > <br>
+        <input autocomplete="off" type="text" name="nickname" class="form-control" placeholder="Nickname" required autofocus > <br>
         
         <label>사용하실 아이디를 입력하세요 </label><br>
-        <input type="text" name="id" class="form-control" placeholder="ID" required autofocus  onkeydown="inputidcheck()" >  <br>
+        <input autocomplete="off" type="text" name="id" class="form-control" placeholder="ID" required autofocus  onkeydown="inputidcheck()" >  <br>
         
          <button type="button"  value="중복확인"  onclick="openidcheck()" >중복확인</button>
          <input type="hidden" name="Duplication" value="iduncheck" >
+         <!-- Duplication의 기본 값은 "iduncheck", 중복확인을 했을 경우에는 "idcheck"  -->
          <br> <br>
          
          <label>사용하실 비밀번호 입력하세요 </label><br>
-         <input type="password" name="password" class="form-control" placeholder="Password" required autofocus><br>
+         <input autocomplete="off" type="password" name="password" class="form-control" placeholder="Password" required autofocus><br>
          
          <label>비밀번호를 한번 더 입력하세요 </label><br>
-           <input type="password" name="confirmpassword" class="form-control" placeholder="ConfirmPassword" required autofocus><br>
+           <input autocomplete="off" type="password" name="confirmpassword" class="form-control" placeholder="ConfirmPassword" required autofocus><br>
          
         <label>이메일을 입력하세요 </label>
-       <input type="email" name="email" class="form-control" placeholder="Email address" required autofocus><br>
+       <input autocomplete="off"  type="email" name="email" class="form-control" placeholder="Email address" required autofocus><br>
        
-       <label>전화번호를 입력하세요( 입력 형식>010-####-####  )</label>
-       <input type="tel" name="tel" class="form-control" placeholder="Phone Number" required autofocus><br>
+       <label>전화번호를 입력하세요( 입력 형식 > 010-####-####  )</label>
+       <input autocomplete="off"  type="tel" name="tel" class="form-control" placeholder="Phone Number" required autofocus><br>
        
        <button class="btn btn-lg btn-primary btn-block" type="submit"  name="button1"  onload="/login.jsp" >Sign up</button>
 

@@ -10,7 +10,8 @@ public class DeleteLectureService {
 	public int  delete(String id , String code)
 	{
 		int result = 0; //result 는 삭제한 개수
-		//현재 사용자의 아이디와 삭제할 강의의 과목 코드를 받아 db의  enrollment 테이블에서 해당 행 삭제
+		//현재 사용자의 아이디와 삭제할 강의의 과목 코드를 받아 db의  enrollment 테이블에서 ID 칼럼의 값이 매개변수로 받은 아이디와 동일하고,
+		// CODE 칼럼의 값이 매개변수로 받은 과목코드와 동일한 행을 삭제
 		
 		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 		String sql = "  DELETE FROM ENROLLMENT WHERE ID= ? AND CODE = ? ";

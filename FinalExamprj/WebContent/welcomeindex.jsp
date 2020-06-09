@@ -3,6 +3,7 @@
     <%  // 인증된 세션이 없는경우, 해당페이지를 볼 수 없게 함.
     if (session.getAttribute("Signedid") == null) {
         response.sendRedirect("/login.jsp");
+        //로그인 페이지로 이동시킨다.
     }
 %>
 <!DOCTYPE html>
@@ -16,6 +17,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <title>메인 페이지</title>
+<!-- 로그인을 했을 때 보이는 페이지  -->
 
 <style type="text/css">
  body { padding-bottom: 10px;  }
@@ -83,8 +85,6 @@ text-shadow: black 0.4em 0.4em 0.4em;color:white; padding-left:30px; padding-bot
 
 
 h1{margin-top: 40px}
-
- 
 </style>
 
 </head>
@@ -134,7 +134,7 @@ h1{margin-top: 40px}
 <main class="main">
 <div class="jumbotron">
   <h1>   Welcome page</h1>
-  <h3> 환영합니다 <%= session.getAttribute("Signedid") %>님 ! </h3>
+  <h3> 환영합니다 ${Signedid }님 ! </h3>
   <h3> 상단 메뉴바의 카테고리를 선택하여 웹 사이트의 서비스를 이용해 보세요 </h3>
   
 </div>
