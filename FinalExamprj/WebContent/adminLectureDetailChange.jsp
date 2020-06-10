@@ -182,7 +182,7 @@
              
                <tr>
                 <td colspan="2">
-                 <input  style="padding-left: 200px; padding-right: 200px; margin-top: 10px;"   class="btn btn-search"	type="submit"  name="button"  value="등록" />
+                 <input  style="padding-left: 200px; padding-right: 200px; margin-top: 10px;"   class="btn btn-search"	type="submit"  name="button"  value="수정" />
                 </td>
             </tr>
 

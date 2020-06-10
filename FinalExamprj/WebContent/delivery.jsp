@@ -154,8 +154,6 @@
 			   <option value="city"  ${(param.selection=="city")? "selected" : "" }>시도 명</option>
 				<option value="citycountycode"  ${(param.selection=="citycountycode")? "selected" : "" }>시군구 코드</option>
 		
-				
-
 			</select>
 			 <input  autocomplete="off" type="text" name="search"  value="${param.search}"/> 
 			 <input class="btn btn-search" style="margin-left:5px; margin-top:5px; " 	type="submit"  name="button"  value="검색" />
@@ -175,7 +173,7 @@
       <th scope="col" style="width: 20%; text-align: center;">시도 명</th>
       <th scope="col"  style="width: 10%; ">시군구 명</th>
       <th scope="col"  style="text-align: center; width: 40%" >시설명</th>
-      <th scope="col" style="text-align: center; width: 70%" ">도로명 주소</th>
+      <th scope="col" style="text-align: center; width: 70%" >도로명 주소</th>
     </tr>
   </thead>
   <tbody>
@@ -184,6 +182,10 @@
 		<td style="width: 20%; text-align: center;">${n.city}</td>
 		<td  style="width: 10%;">${n.citycountyname}</td>
 		<td  style="text-align: center;  font-weight: bold; "><a style="color: gray;" href="/deliverydetail?uniqueid=${n.uniqueid}">${n.facility}</a></td>
+		<!-- 시설명을 클릭하면 해당 시설의 상세 페이지로 이동한다. WOMAN 테이블의 UNIQUEID는 pk이다. -->
+		<!-- 시설명을 클릭하면 '/deliverydetail?uniqueid=클릭한 시설명의 uniqueid' 로 이동하도록 함.  즉,  /deliverydetail 페이지에 get방식으로
+		클릭한 시설의 uniqueid 정보를 uniqueid라는 이름으로 보내는 것이다.  -->
+		<!-- 그러면 /deliverydetail페이지에서는 "uniqueid"라는 이름으로 파라미터 값을 전달 받을 수 있게 된다. -->
 		<td style="text-align: center; width: 80%" >${n.roadname }</td>
 	</tr>
 	</c:forEach>

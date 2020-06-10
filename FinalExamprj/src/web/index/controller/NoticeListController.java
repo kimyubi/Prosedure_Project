@@ -47,6 +47,8 @@ public class NoticeListController extends HttpServlet{
         	 query = query_;
          }
          
+         //검색 기능 구현
+     
          
 		List<Notice> list  =service. getNoticeList(field , query, page);
 		

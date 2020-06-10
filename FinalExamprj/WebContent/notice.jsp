@@ -254,10 +254,10 @@ li {
 
 		<form class="table-form" action="/notice" method="get">
 
-			<select name="selection">
+			<select name="selection" style="padding-left:3px; padding-bottom:6px;">
 				<option value="title" ${(param.selection=="title")?"selected":"" }>제목</option>
 				<option value="nickname"  ${(param.selection=="nickname")? "selected" : "" }>작성자</option>
-			</select> <input type="text" name="search"  value="${param.search}"/>
+			</select> <input type="text" autocomplete="off" name="search"  value="${param.search}"/>
 			 <input class="btn btn-search"	type="submit" value="검색" />
 
 		</form>
@@ -282,12 +282,16 @@ li {
 				<tbody>
 
 					<c:forEach items="${list}" var="n">
+					<!-- NOTICE 테이블로부터 조건에 맞는 리스트를 꺼내온다. -->
 						<tr>
 							<th scope="row">&nbsp;&nbsp;&nbsp;&nbsp;${n.id}</th>
-							<td style="text-align: center;"><a href="/detail?id=${n.id}"
-								style="color: black;">${n.title}</a></td>
+							<td style="text-align: center;"><a href="/detail?id=${n.id}"style="color: black;">${n.title}</a></td>
+							<!-- 공지사항의 제목을 클릭하면 해당 공지사항의 상세페이지로 이동한다. -->
+							<!-- 공지사항의 제목을 클릭하면 /detail 페이지로 get방식으로 id가 id라는 이름으로 전달된다.-->
+							<!-- /detail페이지에서 "id"라는 이름으로 클릭한 글의 id를 꺼낼 수 있다. -->
 							<td>&nbsp;&nbsp;${n.nickname}</td>
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;	<fmt:formatDate value="${n.date}" pattern="YY-MM-dd "/></td>
+							<!-- 날짜의 출력 형식을 YY-MM-dd로 지정(포맷)한다. -->
 							<td>&nbsp;&nbsp;&nbsp;&nbsp;${n.hit}</td>
 						</tr>
 					</c:forEach>
@@ -300,40 +304,70 @@ li {
 			<div>
 
 				<c:set var="page" value="${param.p ==null?1:param.p}" />
+				<!--  page라는 이름의 변수의 값을 ${param.p ==null?1:param.p}로 설정한다. pram.p: p파라미터의 값 
+				page를 선택하지 않으면, 1저장. -> 공지사항 페이지가 처음 표출될 때는 페이지가 선택되지 않은 상태인데,  이때 1페이지가 노출되어야 하기 때문이다.-->
+				
 				<c:set var="startNum" value="${page-(page-1)%5 }" />
+				<!-- 페이지의 시작 번호는 page-(page-1)%5로 구할 수 있다. 중요 !!!!!!!  -->
+				<!-- 예를 들어 17페이지의 시작 페이지 번호는 17-(16%5) 즉, 16이다. -->
+				<!--  5페이지의 시작 페이지 번호는 5-(4%5) 즉, 1이다. -->
+				<!-- !!!!!!!!!!!!! 페이징 처리:  page-(page-1)%5 !!!!!!!!!!!!!!!! -->
+				
+				<!-- startNum이라는 이름의 변수의 값을 페이지의 값이 달라짐에 따라 동적으로 설정 -->
+				<!-- page의 값이 17이면 startNum의 값은 16, page의 값이 5이면 startNum의 값은 1  -->
 
 			</div>
 
 		
 			<c:set var="lastNum" value="10" />
+			<!-- 임의로 10으로 설정했으나 시간이 남으면 NOTICE레코드 수를 구해서 그것을 value로 설정할 부분 -->
 	
 
 
-			<ul class="-list- center">
-
-				<c:forEach var="i" begin="0" end="4">
-					<li><a style="color:  ${ (page == (startNum+i ))?'tomato':''} " 
+			<ul class="-list- center" style="margin-left:-30px; margin-top:15px;">
+				<c:forEach var="i" begin="0" end="4"> <!-- 페이지 번호 5개씩, 0부터 4까지 i라는 이름으로 루핑을 돈다. -->
+					<li><a style="color:  ${ (page == (startNum+i ))?'black':'gray'} " 
 						href="/notice?p=${startNum+i }&selection=${param.selection }&search=${param.search}">${startNum+i}</a></li>
 				</c:forEach>
-
+       <!-- 선택한 페이지 번호가 현재 페이지 번호와 같으면 검정색, 아니면 회색  -->
+       <!-- startNum+i가 현재 페이지 번호 -->
+       <!-- 페이지 번호를 선택하면 그에 맞는 공지사항 리스트를 보여준다.  -->
 			</ul>
 			
 			<div>
 
 				<c:if test="${ startNum!=1}">
-					<a href="?p=${startNum-1 }&t=&q=" class="btn btn-prev">이전</a>
+				<!-- 12345
+				      678910
+				     -->
+				<!-- test속성에 조건문을 입력, 조건을 만족하면 if태그 안의 내용을 실행, 만족하지 않으면 실행하지 않음.  -->
+				<!-- 시작 페이지가 1이 아니면 이전 페이지로 이동할 수 있음.  -->
+				<!-- startNum이 6이라면 5페이지로 이동하므로 이전 페이지로 이동한 것. -->
+				<!-- 마찬가지로 startNum이 11이라면  -->
+					<a href="?p=${startNum-1 }&t=&q=" class="btn btn-prev"  style="color:black;">이전</a>
 				</c:if>
 
 				<c:if test="${ startNum==1}">
-					<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다.');">이전</span>
+				<!-- 시작 번호가 1이면 이전페이지로 이동할 수 없으므로 '이전 페이지가 없습니다' 표출 -->
+					<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다.');" style="color:black;">이전</span>
 				</c:if>
 
 				<c:if test="${startNum+5 <lastNum }">
-					<a href="?p=${startNum+5 }&t=&q=" class="btn btn-next">다음</a>
+				<!--  다음 페이지가 표출되도록 하려면 다음 페이지로 넘어갔을 때의 startNum이 무조건 lastNum보다 작아야한다. -->
+					<a href="?p=${startNum+5 }&t=&q=" class="btn btn-next" style="color:black;">다음</a>
 				</c:if>
 
 				<c:if test="${startNum+5 >=lastNum}">
-					<span class="btn btn-next" onclick="alert('다음 페이지가 없습니다.');">다음</span>
+				<!-- startNum+5: 다음페이지로 넘어갔을 때의 startNum -->
+				<!-- startNum+4가 그 startNum과 같은 범주에 속하는 마지막 페이지 번호이다. 즉 startNum+5를 한다면 다음 페이지로 넘어가게 된다. -->
+					<!-- 12345
+				      678910
+				     -->
+				     <!-- 예를 들어 startNum이 1이라면 같은 범주에 속하는 마지막 페이지 번호는 startNum+4인 5이다.
+				     만약 startNum+5를 하게 된다면 페이지 번호는 6이 되고 , 페이지에 범주가 변경되게 된다. -->
+				     <!-- 이때, startNum인 6에 5를 더한다면 11이 된다. lastNum을 10으로 설정했으므로 startNumdl 6일때는 다음을 누르더라도 다음페이지로
+				     이동하지 않도록 해야한다. 따라서 '다음 페이지가 없습니다.'라는 메시지를 표출한다.   -->
+					<span class="btn btn-next" onclick="alert('다음 페이지가 없습니다.');" style="color:black;">다음</span>
 				</c:if>
 
 			</div>

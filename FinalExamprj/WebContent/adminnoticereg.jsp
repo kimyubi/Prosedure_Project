@@ -255,13 +255,13 @@ li {
 						<tr>
 							<th style="width: 90px;">제목</th>
 							<td class="text-align-left text-indent text-strong text-orange"
-								colspan="3"><input type="text" name="title"
+								colspan="3"><input autocomplete="off" type="text" name="title"
 								style="padding-right: 200px;" /></td>
 						</tr>
 
 
 						<tr class="content">
-							<td colspan="100";  ><textarea class="content"
+							<td colspan="100";  ><textarea class="content"  autocomplete="off"
 									name="content" style="width: 1200px; height: 900px;"></textarea></td>
 						</tr>
 

@@ -250,7 +250,7 @@ li {
 
 		<form class="table-form" action="/adminnotice" method="get">
 
-			<select name="selection">
+			<select name="selection" style="padding-left:3px; padding-bottom:6px;">
 				<option value="title" ${(param.selection=="title")?"selected":"" }>제목</option>
 				<option value="nickname"
 					${(param.selection=="nickname")? "selected" : "" }>작성자</option>
@@ -315,11 +315,11 @@ li {
 
 
 
-				<ul class="-list- center">
+				<ul class="-list- center" style="margin-left:-30px; margin-top:15px;">
 
 					<c:forEach var="i" begin="0" end="4">
 						<li><a
-							style="color:  ${ (page == (startNum+i ))?'tomato':''} "
+							style="color:  ${ (page == (startNum+i ))?'black':'gray'} "
 							href="/adminnotice?p=${startNum+i }&selection=${param.selection }&search=${param.search}">${startNum+i}</a></li>
 					</c:forEach>
 
@@ -328,7 +328,7 @@ li {
 
 
 				<c:if test="${ startNum!=1}">
-					<a href="?p=${startNum-1 }&t=&q=" class="btn btn-prev">이전</a>
+					<a href="?p=${startNum-1 }&t=&q=" class="btn btn-prev" style="color:black;">이전</a>
 				</c:if>
 
 				<c:if test="${ startNum==1}">
@@ -336,18 +336,18 @@ li {
 				</c:if>
 
 				<c:if test="${startNum+5 <lastNum }">
-					<a href="?p=${startNum+5 }&t=&q=" class="btn btn-next">다음</a>
+					<a href="?p=${startNum+5 }&t=&q=" class="btn btn-next" style="color:black;">다음</a>
 				</c:if>
 
 				<c:if test="${startNum+5 >=lastNum}">
-					<span class="btn btn-next" onclick="alert('다음 페이지가 없습니다.');">다음</span>
+					<span class="btn btn-next" onclick="alert('다음 페이지가 없습니다.');" style="color:black;">다음</span>
 				</c:if>
 			</div>
 
 			<div style="margin-left: 1050px;">
 
 				<input class="btn btn-search" type="submit" value="삭제" /> 
-				<a	class="btn- text btn - default"  href="/adminnoticereg.jsp"  style="color: black;">글쓰기</a>
+				<input type="button"	class="btn btn-search"  onclick="location='/adminnoticereg.jsp'" style="color: black;" value="글쓰기">
 
 			</div>
 		</form>

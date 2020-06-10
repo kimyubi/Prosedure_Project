@@ -14,8 +14,7 @@ import web.index.entity.Notice;
 
 public class AdminNoticeService {
 
-	private List<Notice> list;
-	private List<Notice> list2;
+	
 
 	public List<Notice> getNoticeList() {
 		return getNoticeList("title", "", 1);
@@ -30,7 +29,7 @@ public class AdminNoticeService {
 	public List<Notice> getNoticeList(String field/* TITLE/NICKNAME */, String query, int page) {
 		List<Notice> list = new ArrayList<>();
 		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
-		String sql = " SELECT * FROM(SELECT ROWNUM NUM, N.* FROM (SELECT * FROM NOTICE WHERE " + field + " LIKE ? "
+		String sql = " SELECT * FROM(SELECT ROWNUM NUM, N.* FROM (SELECT * FROM NOTICE WHERE " + field + " LIKE ? ORDER BY REGDATE ASC "
 				+ " ) N ) WHERE NUM BETWEEN ? AND ?  ";
 		// page가 1일때 1, page가 2일때 11,......21,31,41 1+(page-1)*10
 		// page가 1일 때 10, page가 2일때 20 ,....30 40 50 60 70

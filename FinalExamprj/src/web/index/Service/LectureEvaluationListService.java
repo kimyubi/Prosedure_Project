@@ -56,6 +56,10 @@ public class LectureEvaluationListService {
 	}
 
 	public int deleteEvaluationLecture(String num) {
+		//삭제할 강의의 번호를 매개변수로 받는다.
+		// LECTUREEVALUATION 테이블에서 NUM은 PK( 유일성, 널이 아님)
+		// NUM은 따로 값을 넣어주지 않고 시퀀스를 만들어 NUM열에 시퀀스를 적용한다.
+		
 		int result = 0 ;
 		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 		String sql = " DELETE FROM LECTUREEVALUATION WHERE NUM = ? "; 
@@ -73,6 +77,8 @@ public class LectureEvaluationListService {
 			e.printStackTrace();
 		}
 		return result;
+		//삭제가 성공적으로 되었다면 st.executeUpdate() 는 1을 반환하고
+		//오류로 인해 삭제가 되지 않았다면 st.executeUpdate() 는 0을 반환한다.
 		
 	}
 

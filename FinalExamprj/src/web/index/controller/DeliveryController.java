@@ -37,6 +37,7 @@ public class DeliveryController extends HttpServlet {
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/delivery.jsp").forward(request, response);
+		//검색을 구현하는 코드
 		
 		
 	}

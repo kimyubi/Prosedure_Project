@@ -26,7 +26,7 @@ public class NoticeService {
 	public List<Notice> getNoticeList(String field/* TITLE/NICKNAME */, String query, int page) {
 		List<Notice> list = new ArrayList<>();
 		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
-		String sql = " SELECT * FROM(SELECT ROWNUM NUM, N.* FROM (SELECT * FROM NOTICE WHERE " + field + " LIKE ? "
+		String sql = " SELECT * FROM(SELECT ROWNUM NUM, N.* FROM (SELECT * FROM NOTICE WHERE " + field + " LIKE ? ORDER BY REGDATE ASC "
 				+ " ) N ) WHERE NUM BETWEEN ? AND ?  ";
 		// page가 1일때 1, page가 2일때 11,......21,31,41 1+(page-1)*10
 		// page가 1일 때 10, page가 2일때 20 ,....30 40 50 60 70
@@ -37,7 +37,7 @@ public class NoticeService {
 			Connection con = DriverManager.getConnection(url, "YUBI", "rlatldn11!");
 			PreparedStatement st = con.prepareStatement(sql);
 			st.setString(1, "%" + query + "%");
-			st.setInt(2, 1 + (page - 1) * 10);
+			st.setInt(2, 1 + (page - 1) * 10); //등차수열 공식 : 첫째항 + (n-1)d
 			st.setInt(3, page * 10);
 
 			ResultSet rs = st.executeQuery();

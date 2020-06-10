@@ -24,9 +24,9 @@ textarea{margin-left:10px;}
 <form action="/RegLectureEvaluation" method="post">
         <div style="margin-top:30px;  margin-left:20px;">
            <label > 강의명</label>
-            <input type="text" class="form-control" name="name" placeholder="강의명을 입력하세요." required style="display:inline-block; margin-right:20px;" >
+            <input type="text" autocomplete="off" class="form-control" name="name" placeholder="강의명을 입력하세요." required style="display:inline-block; margin-right:20px;" >
              <label> 교수명</label>
-            <input type="text" class="form-control" name="professor" placeholder="교수명을 입력하세요." required style="display:inline-block;">
+            <input type="text" autocomplete="off" class="form-control" name="professor" placeholder="교수명을 입력하세요." required style="display:inline-block;">
            </div>
            
            <div style="margin-top:20px; margin-left:15px;">
@@ -49,12 +49,12 @@ textarea{margin-left:10px;}
            
            <div style="margin-top:20px; margin-left:20px;" >
             <label >제목</label><br>
-            <input type="text" class="form-control" name="title" placeholder="제목을 입력하세요." required style="width:88%; height:auto" >
+            <input type="text" autocomplete="off"  class="form-control" name="title" placeholder="제목을 입력하세요." required style="width:88%; height:auto" >
            </div>
            
              <div style="margin-top:20px; margin-left:20px;">
             <label >내용</label><br>
-            <textarea rows="8" class="form-control name" name="content" style="width:88%"></textarea>
+            <textarea autocomplete="off" rows="8" class="form-control name" name="content" style="width:88%"></textarea>
            </div>
            
            <div style="margin-top:20px; margin-left:20px;">   

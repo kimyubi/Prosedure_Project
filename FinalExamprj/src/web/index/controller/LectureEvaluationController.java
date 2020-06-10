@@ -37,7 +37,6 @@ public class LectureEvaluationController extends HttpServlet {
 		
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/LectureEvaluation.jsp").forward(request, response);
-		
-
+   //검색 기능을 구현하기 위한 코드 
 }
 }

@@ -152,6 +152,7 @@
     </tr>
     <tr>
     <td>
+    <!-- delivery에는 시설의 상세정보가 담겨있음. -->
     <label style="margin-left:50px; font-size: 17px; font-weight: lighter; margin-top:15px; ">시설명:  ${delivery.facility} </label><br>
     <label style="margin-left:50px; font-size: 17px; font-weight: lighter;  ">시도명:  ${delivery.city} </label>
     <label style="margin-left:200px; font-size: 17px; font-weight: lighter;  ">시군구명:  ${delivery.citycountyname} </label><br>

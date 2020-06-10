@@ -49,9 +49,11 @@ public class deliveryService {
 	}
 
 	public delivery getdeliverydetail(String uniqueid) {
+		//상세정보를 가져올 시설의 시설명을 매개변수로 받아서 해당 시설명을 가진 시설의 상세정보를 받아온다.
 		delivery del= null;
 		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 		String sql = " SELECT * FROM WOMAN WHERE UNIQUEID = ? ";
+		//WOMAN 테이블의 UNIQUEID칼럼은 PK(유일성, 널이 아님)이다.
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "YUBI", "rlatldn11!");
@@ -81,6 +83,7 @@ public class deliveryService {
 				String tel = rs.getString("TEL");
 				String admintel = rs.getString("ADMINNAME");
 				String adminname = rs.getString("ADMINNAME");
+				//시설의 상세정보를 delivery 엔티티에 담아 리턴한다.
 				del = new delivery(uniqueid_, city, citycountyname, roadname, facility, citycountycode, branchaddress, starttime, finaltime, satstart, satfinal, holistart, holifinal, freehours, costunittime, cost, controlcode, howtouse, tel, admintel, adminname);
 			}
 	

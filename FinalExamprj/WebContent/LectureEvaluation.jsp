@@ -170,14 +170,18 @@
  
  </script>
   <input class="btn btn-search"	type="submit"  name="button"  value="등록"  style="margin-left:435px; margin-top:-55px;" onclick="openRegLectureEvaluation()"/>
+  <!-- 등록버튼을 클릭하면 openRegLectureEvaluation()가 실행됌. openRegLectureEvaluation()은 강의평가를 등록하는 자식 창을 생성하는 function  -->
 	
 	
 	
-	 <!---------------------------------------------------강의평가 글 목록----------------------------------------------------------------------------------------------------------->
+<!---------------------------------------------------강의평가 글 목록----------------------------------------------------------------------------------------------------------->
 
 
 
 			<c:forEach items="${list}" var="n">
+	<!-- LECTUEREVALUATION 테이블에 저장되어 있는 강의평가 글 목록을 꺼내와  LectureEvaluation entity에 담은 뒤  ArrayList에 entity들을 담아서
+	LectureEvaluation.jsp페이지에 뿌려준다. -->		
+	
 	<table class="table table-striped"
 		style="width: 80%; margin-left: 90px;">
 		<thead>
@@ -223,6 +227,7 @@
 
 			</tr>
              <form action="/deleteLectureEvaluation" method="post">
+             <!-- id -->
              <input type="hidden" name="id" value="${n.id }" >
               <input type="hidden" name="num" value="${n.num }" >
 			<tr>
