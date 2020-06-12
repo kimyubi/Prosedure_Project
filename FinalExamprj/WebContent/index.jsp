@@ -25,9 +25,9 @@ text-shadow: black 0.4em 0.4em 0.4em;color:white; padding-left:30px; padding-bot
   height: 600px;}
   .footer-bs {
     background-color: #3c3d41;
-	padding: 60px 40px;
+	padding: 60px 30px;
 	color: rgba(255,255,255,1.00);
-	margin-bottom: 20px;
+	margin-bottom: -10px;
 	border-bottom-right-radius: 6px;
 	border-top-left-radius: 0px;
 	border-bottom-left-radius: 6px;

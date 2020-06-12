@@ -228,7 +228,7 @@ li {
 					<ul class="nav navbar-nav">
 						<li><a href="/adminenrollment">강의목록 관리</a></li>
 						<li><a href="/adminnotice">공지사항</a></li>
-						<li><a href="#">커뮤니티</a></li>
+						<li><a href="/adminLectureEvaluation">강의평가 관리</a></li>
 					</ul>
 
 

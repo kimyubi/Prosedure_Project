@@ -59,7 +59,7 @@
       <ul class="nav navbar-nav">
        <li><a href="/adminenrollment">강의목록 관리</a></li>
 		<li><a href="/adminnotice">공지사항</a></li>
-		<li><a href="#">커뮤니티</a></li>
+			<li><a href="/adminLectureEvaluation">강의평가 관리</a></li>
       </ul>
       
   
@@ -85,36 +85,36 @@
         <table class="table table-boardered">
             <tr>
                 <th>과목코드</th>
-                <td><input type="text" class="form-control" name="code" placeholder="과목코드를 입력하세요." required></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="code" placeholder="과목코드를 입력하세요." required></td>        
             </tr>
             <tr>
                 <th>교과목명</th>
-                <td><input type="text" class="form-control" name="name" placeholder="교과목명을 입력하세요." required></td>      
+                <td><input autocomplete="off" type="text" class="form-control" name="name" placeholder="교과목명을 입력하세요." required></td>      
             </tr>
              
             <tr>
                 <th>강의실</th>
-                <td><input type="text" class="form-control" name="location" placeholder="강의실을 입력하세요." required ></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="location" placeholder="강의실을 입력하세요." required ></td>        
             </tr>
             
                <tr>
                 <th>정원</th>
-                <td><input type="text" class="form-control" name="personnel" placeholder="정원을 입력하세요." required ></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="personnel" placeholder="정원을 입력하세요." required ></td>        
              </tr>
              
               <tr>
                 <th>학점</th>
-                <td><input type="text" class="form-control" name="grades" placeholder="학점을 입력하세요." required ></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="grades" placeholder="학점을 입력하세요." required ></td>        
              </tr>
              
              <tr>
                 <th>교수명</th>
-                <td><input type="text" class="form-control" name="professor" placeholder="교수명을 입력하세요." required ></td>        
+                <td><input autocomplete="off"  type="text" class="form-control" name="professor" placeholder="교수명을 입력하세요." required ></td>        
              </tr>
              
              <tr>
                 <th>강의시간</th>
-                <td><input type="text" class="form-control" name="time" placeholder="강의시간 입력하세요." required ></td>        
+                <td><input autocomplete="off"  type="text" class="form-control" name="time" placeholder="강의시간 입력하세요." required ></td>        
              </tr>
              
             <tr>
@@ -129,12 +129,12 @@
             
                <tr>
                 <th>단과대</th>
-                <td><input type="text" class="form-control" name="colleage" placeholder="단과대를 입력하세요." required ></td>        
+                <td><input autocomplete="off"  type="text" class="form-control" name="colleage" placeholder="단과대를 입력하세요." required ></td>        
              </tr>
              
                 <tr>
                 <th>학부/학과</th>
-                <td><input type="text" class="form-control" name="department" placeholder="학부/학과를 입력하세요." required ></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="department" placeholder="학부/학과를 입력하세요." required ></td>        
              </tr>
              
                <tr>

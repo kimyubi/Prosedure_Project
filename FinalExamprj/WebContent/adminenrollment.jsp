@@ -57,7 +57,7 @@
       <ul class="nav navbar-nav">
        <li><a href="/adminenrollment">강의목록 관리</a></li>
 		<li><a href="/adminnotice">공지사항</a></li>
-		<li><a href="#">커뮤니티</a></li>
+			<li><a href="/adminLectureEvaluation">강의평가 관리</a></li>
       </ul>
       
   
@@ -75,7 +75,9 @@
 
 <input  style=" margin-left: 50px; margin-bottom: 15px; width: 200px; background-color:silver;" class="btn btn-search" value="인문 캠퍼스"  onclick = "location.href = '/adminenrollment' "/> 
 <input  style=" margin-left: 5px; margin-bottom : 15px; width: 200px; background-color:  #F0F0F0;" class="btn btn-search"  value="자연 캠퍼스"  onclick = "location.href = '/adminenrollmentJa' "/> 
-
+<!-- 인문캠퍼스의 강의목록 페이지와 자연캠퍼스의 강의목록 페이지를 구분함.
+      인문캠퍼스 버튼을 누르면 인문캠퍼스의 강의목록을 보여주는 수강신청페이지로, 자연캠퍼스 버튼을 누르면 자연캠퍼스의 강의목록을 보여주는 수강신청
+      페이지로 이동한다. -->
 
 		<form class="table-form" action="/adminenrollment" method="get" style="margin-left: 100px; width: 1200px;">
 
@@ -88,19 +90,25 @@
 				<option value="colleage"  ${(param.selection=="colleage")? "selected" : "" }>단과대</option>
 				<option value="department"  ${(param.selection=="department")? "selected" : "" }>학부/학과</option>
 			</select>
-			 <input type="text" name="search"  value="${param.search}"/> 
+			 <input autocomplete="off" type="text" name="search"  value="${param.search}"/> 
 			 <input class="btn btn-search"	type="submit"  name="button"  value="검색" />
 
 		</form>
+		<!-- 검색범위와 검색어를 주고 조건에 맞는 결과를 꺼내온다. -->
+		
 		   <input type="button"  name="button"  value="강의 추가" style="margin-left: -280px;  padding: 3px; padding-left: 15px; 
-		  padding-right: 15px;"  onclick="location.href='adminLectureAdd.jsp'" />
+		  padding-right: 15px;"  onclick="location.href='/adminLectureAdd.jsp'" />
+		  <!-- 강의 추가 버튼을 누르면 강의 신규등록 페이지로 이동한다. (/adminLectureAdd.jsp) -->
+		  
 		  	   <input type="button"  name="button"  value="강의계획서 추가" style="margin-left: 3px;  padding: 3px; padding-left: 15px; 
 		  padding-right: 15px;"  onclick="location.href='adminLectureDetailAdd.jsp'" />
+		  <!-- 강의계획서 추가 버튼을 누르면 강의 신규등록 페이지로 이동한다. (/adminLectureDetailAdd.jsp) -->
 
 <main class="main">
 
 
 	   <form action="/adminenrollment" method="post"  >
+	   <!-- /adminenrollment로 post방식으로 정보를 전송한다. -->
 		
 				<table class="table table-hover" style="width: 1200px; margin-left: -350px; margin-top: 20px;" >
 					<thead>
@@ -130,6 +138,7 @@
 								<td style="text-align: center;">${i.time}</td>
 								<td style="text-align:  justify;"> 
 								<button name="code" value="${i.code }">강의 삭제</button>
+								<!-- 강의 삭제 버튼을 누르면 삭제할 강의의 과목코드가 /adminenrollment로  넘어간다. -->
 								</td>
 								
 							</tr>

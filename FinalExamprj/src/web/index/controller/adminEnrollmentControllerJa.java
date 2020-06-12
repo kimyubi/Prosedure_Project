@@ -23,27 +23,28 @@ public class adminEnrollmentControllerJa extends HttpServlet {
 
 		EnrollmentService service = new EnrollmentService();
 		List<Lecture> list = new ArrayList<Lecture>();
-	
+		//강의 목록을 담기 위한 리스트.
 
 		String field = "code"; 
 		String field_ = request.getParameter("selection");
 		if (field_ != null && !field_.equals(" ")) {
 			field = field_;
 		}
+		//field의 기본 값은 "code"로 하고 "selection"의 파라미터 값이 null이 아니고, ""도 아니라면 
+		//field에 파라미터 값을 저장한다.
 
 		String search = "";
 		String search_ = request.getParameter("search");
 		if (search_ != null && !search_.equals("")) {
 			search = search_;
 		}
+		//search의 기본 값은 ""로 하고 "search"의 파라미터 값이 null이 아니고, ""도 아니라면 
+    	//search에 파라미터 값을 저장한다.
 		list = service.lectureListJa(field, search);
 
 		request.setAttribute("list", list);
 
 		//검색 기능
-		
-		String id = (String) request.getSession().getAttribute("adminid");
-
 
 		request.getRequestDispatcher("/adminenrollmentJa.jsp").forward(request, response);
 	}

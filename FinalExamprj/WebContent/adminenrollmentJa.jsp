@@ -59,7 +59,7 @@
       <ul class="nav navbar-nav">
        <li><a href="/adminenrollment">강의목록 관리</a></li>
 		<li><a href="/adminnotice">공지사항</a></li>
-		<li><a href="#">커뮤니티</a></li>
+			<li><a href="/adminLectureEvaluation">강의평가 관리</a></li>
       </ul>
       
   
@@ -90,7 +90,7 @@
 				<option value="colleage"  ${(param.selection=="colleage")? "selected" : "" }>단과대</option>
 				<option value="department"  ${(param.selection=="department")? "selected" : "" }>학부/학과</option>
 			</select>
-			 <input type="text" name="search"  value="${param.search}"/> 
+			 <input autocomplete="off" type="text" name="search"  value="${param.search}"/> 
 			 <input class="btn btn-search"	type="submit"  name="button"  value="검색" />
 
 		</form>

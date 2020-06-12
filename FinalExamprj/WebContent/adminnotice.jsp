@@ -229,7 +229,7 @@ li {
 			      <ul class="nav navbar-nav">     
        <li><a href="/adminenrollment">강의목록 관리</a></li>
 		<li><a href="/adminnotice">공지사항</a></li>
-		<li><a href="#">커뮤니티</a></li>
+		<li><a href="/adminLectureEvaluation">강의평가 관리</a></li>
                  </ul>
       
   
@@ -254,7 +254,7 @@ li {
 				<option value="title" ${(param.selection=="title")?"selected":"" }>제목</option>
 				<option value="nickname"
 					${(param.selection=="nickname")? "selected" : "" }>작성자</option>
-			</select> <input type="text" name="search" value="${param.search}" /> <input
+			</select> <input autocomplete="off"  type="text" name="search" value="${param.search}" /> <input
 				class="btn btn-search" type="submit" value="검색" />
 
 		</form>

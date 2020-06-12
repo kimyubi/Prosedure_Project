@@ -18,6 +18,7 @@ public class AdminProfileService {
 		List<personalinfo> infoList = new ArrayList<>(); 
 		String url = "jdbc:oracle:thin:@localhost:1521/xepdb1";
 		String sql =" SELECT * FROM PERSONALINFO ";
+		// PERSONALINFO 테이블의 모든 행(레코드)를 꺼내온다. 
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url, "YUBI", "rlatldn11!");

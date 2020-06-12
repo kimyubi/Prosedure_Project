@@ -59,7 +59,7 @@
       <ul class="nav navbar-nav">
        <li><a href="/adminenrollment">강의목록 관리</a></li>
 		<li><a href="/adminnotice">공지사항</a></li>
-		<li><a href="#">커뮤니티</a></li>
+			<li><a href="/adminLectureEvaluation">강의평가 관리</a></li>
       </ul>
       
   
@@ -85,26 +85,26 @@
         <table class="table table-boardered">
             <tr>
                 <th>과목코드</th>
-                <td><input type="text" class="form-control" name="code" placeholder="과목코드를 입력하세요." required></td>        
+                <td><input autocomplete="off"  type="text" class="form-control" name="code" placeholder="과목코드를 입력하세요." required></td>        
             </tr>
             <tr>
                 <th>E-mail</th>
-                <td><input type="text" class="form-control" name="email" placeholder="이메일을 입력하세요." required></td>      
+                <td><input autocomplete="off"  type="text" class="form-control" name="email" placeholder="이메일을 입력하세요." required></td>      
             </tr>
              
             <tr>
                 <th>학습목표</th>
-                <td><textarea class="form-control" name="goal" placeholder="학습목표를 입력하세요." required ></textarea></td>        
+                <td><textarea autocomplete="off"  class="form-control" name="goal" placeholder="학습목표를 입력하세요." required ></textarea></td>        
             </tr>
             
                <tr>
                 <th>교재 및 참고문헌</th>
-                <td><input type="text" class="form-control" name="book"   placeholder="교재 및 참고문헌을 입력하세요."  required ></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="book"   placeholder="교재 및 참고문헌을 입력하세요."  required ></td>        
              </tr>
              
               <tr>
                 <th>학습 평가방법</th>
-                <td><input type="text" class="form-control" name="gradeevaluation"  placeholder="학습 평가방법을 입력하세요." required ></td>        
+                <td><input  autocomplete="off" type="text" class="form-control" name="gradeevaluation"  placeholder="학습 평가방법을 입력하세요." required ></td>        
              </tr>
              
              <tr>
@@ -113,71 +113,71 @@
              
                <tr>
                 <th>Week1</th>
-                <td><input type="text" class="form-control" name="week1"  required></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="week1"  required></td>        
              </tr>
              
                <tr>
                 <th>Week2</th>
-                <td><input type="text" class="form-control" name="week2" required></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="week2" required></td>        
              </tr>
              
                <tr>
                 <th>Week3</th>
-                <td><input type="text" class="form-control" name="week3" required></td>        
+                <td><input autocomplete="off"  type="text" class="form-control" name="week3" required></td>        
              </tr>
                <tr>
                 <th>Week4</th>
-                <td><input type="text" class="form-control" name="week4" required></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="week4" required></td>        
              </tr>
                <tr>
                 <th>Week5</th>
-                <td><input type="text" class="form-control" name="week5" required></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="week5" required></td>        
              </tr>
                <tr>
                 <th>Week6</th>
-                <td><input type="text" class="form-control" name="week6" required></td>        
+                <td><input autocomplete="off"  type="text" class="form-control" name="week6" required></td>        
              </tr>
                <tr>
                 <th>Week7</th>
-                <td><input type="text" class="form-control" name="week7" required ></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="week7" required ></td>        
              </tr>
                <tr>
                 <th>Week8</th>
-                <td><input type="text" class="form-control" name="week8"  required></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="week8"  required></td>        
              </tr>
              
                <tr>
                 <th>Week9</th>
-                <td><input type="text" class="form-control" name="week9"  required></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="week9"  required></td>        
              </tr>
              
                <tr>
                 <th>Week10</th>
-                <td><input type="text" class="form-control" name="week10" required ></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="week10" required ></td>        
              </tr>
                <tr>
                 <th>Week11</th>
-                <td><input type="text" class="form-control" name="week11"  required></td>        
+                <td><input autocomplete="off"  type="text" class="form-control" name="week11"  required></td>        
              </tr>
                <tr>
                 <th>Week12</th>
-                <td><input type="text" class="form-control" name="week12"  required ></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="week12"  required ></td>        
              </tr>
                <tr>
                 <th>Week13</th>
-                <td><input type="text" class="form-control" name="week13" required ></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="week13" required ></td>        
              </tr>
                <tr>
                 <th>Week14</th>
-                <td><input type="text" class="form-control" name="week14"  required></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="week14"  required></td>        
              </tr>
                <tr>
                 <th>Week15</th>
-                <td><input type="text" class="form-control" name="week15" required ></td>        
+                <td><input autocomplete="off" type="text" class="form-control" name="week15" required ></td>        
              </tr>
                <tr>
                 <th>Week16</th>
-                <td><input type="text" class="form-control" name="week16"  required ></td>        
+                <td><input autocomplete="off"  type="text" class="form-control" name="week16"  required ></td>        
              </tr>
              
                <tr>

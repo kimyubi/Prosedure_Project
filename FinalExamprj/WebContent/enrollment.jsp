@@ -101,7 +101,7 @@
 				<option value="colleage"  ${(param.selection=="colleage")? "selected" : "" }>단과대</option>
 				<option value="department"  ${(param.selection=="department")? "selected" : "" }>학부/학과</option>
 			</select>
-			 <input type="text" name="search"  value="${param.search}"/> 
+			 <input  autocomplete="off"  type="text" name="search"  value="${param.search}"/> 
 			 <input class="btn btn-search"	type="submit"  name="button"  value="검색" />
 
 		</form>

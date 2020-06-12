@@ -24,14 +24,16 @@ public class adminLectureDetailChange extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		//adminlecturedetail.jsp 페이지에서 수정버튼을 누르면 이 페이지로 이동한다.
+		//항상 /adminlecturedetail.jsp ?code=[수정할 강의의 과목코드] 의 형식으로 온다.
 		LecturePlanService service = new LecturePlanService();
 		
 		String code = request.getParameter("code");
 		request.getSession().setAttribute("code", code);
 		LecturePlan plan =  service.getLecturePlan(code);
-	    request.setAttribute("plan",plan);
-
+		//과목코드가 code인 강의의 강의 계획서를 꺼내온다. 
 		
+	    request.setAttribute("plan",plan);
 	request.getRequestDispatcher("/adminLectureDetailChange.jsp").forward(request, response);
 		
 	}
@@ -68,15 +70,29 @@ public class adminLectureDetailChange extends HttpServlet{
        	LectureDetail lectureDetail = new LectureDetail(code, email, goal, gradeevaluation, book);
        	WeeklyProgress weeklyProgress = new WeeklyProgress(code, week1, week2, week3, week4, week5, week6, week7, week8, week9, week10, week11, week12, week13, week14, week15, week16);
        	
-       	adminLectureDetailAddService service = new adminLectureDetailAddService();
-       int result1 = 	service.updateLectureDetail(lectureDetail);
-       int result2 = service.updateWeeklyProgress(weeklyProgress);
-       
-       if(result1==1&&result2==1)
+       	adminLectureDetailAddService service = new adminLectureDetailAddService();       
+       if(code!=null&&!code.equals(""))
        {
-    	   out.println("<script>alert('강의계획서가 성공적으로 수정되었습니다.');</script>");
+    	   int result1 = 	service.updateLectureDetail(lectureDetail);
+           int result2 = service.updateWeeklyProgress(weeklyProgress);
+           if(result1==1&&result2==1)
+           {
+        	   out.println("<script>alert('강의계획서가 성공적으로 수정되었습니다.');</script>");
+    	   	   out.println("<script>location.href='/adminlecturedetail?code="+code+"'</script>");
+           }
+           else
+           {
+        	   out.println("<script>alert('오류로 인해 강의계획서 수정에 실패하셨습니다..');</script>");
+    	   	   out.println("<script>location.href='/adminlecturedetail?code="+code+"'</script>");
+           }
+    	   
+       }
+       else
+       {
+    	   out.println("<script>alert(' 수정할 강의계획서가 없습니다. \\n 강의계획서 추가 버튼을 눌러 강의계획서를 추가한 후 이용하세요.');</script>");
 	   	   out.println("<script>location.href='/adminlecturedetail?code="+code+"'</script>");
        }
+   
      
        
     	

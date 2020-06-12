@@ -57,9 +57,9 @@ li {
 
 .footer-bs {
 	background-color: #3c3d41;
-	padding: 60px 40px;
+	padding: 60px 30px;
 	color: rgba(255, 255, 255, 1.00);
-	margin-bottom: 20px;
+	margin-bottom: -10px;
 	border-bottom-right-radius: 6px;
 	border-top-left-radius: 0px;
 	border-bottom-left-radius: 6px;
@@ -207,7 +207,7 @@ li {
 					<ul class="nav navbar-nav">
 						<li><a href="/adminenrollment">강의목록 관리</a></li>
 						<li><a href="/adminnotice">공지사항</a></li>
-						<li><a href="#">커뮤니티</a></li>
+							<li><a href="/adminLectureEvaluation">강의평가 관리</a></li>
 					</ul>
 
 

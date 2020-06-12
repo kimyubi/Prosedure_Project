@@ -59,7 +59,7 @@
       <ul class="nav navbar-nav">
        <li><a href="/adminenrollment">강의목록 관리</a></li>
 		<li><a href="/adminnotice">공지사항</a></li>
-		<li><a href="#">커뮤니티</a></li>
+		<li><a href="/adminLectureEvaluation">강의평가 관리</a></li>
       </ul>
       
   
@@ -85,26 +85,28 @@
         <table class="table table-boardered">
             <tr>
                 <th>과목코드</th>
-                <td><input type="text" class="form-control" name="code" disabled required value="${plan.code }" ></td>        
+                <td><input  autocomplete="off"   type="text" class="form-control" name="code" disabled required value="${plan.code}" ></td>        
             </tr>
+            <!-- /admindetail 페이지에서 수정 버튼을 누르면, 수정할 강의의 과목 코드가  /lecturedetailChange페이지로 get방식으로 전달된다.  -->
+            <!-- /lecturedetailChange페이지에서 과목코드 파라미터값을 받아 과목 코드가 일치한 강의계획서를 꺼내온다.  -->
             <tr>
                 <th>E-mail</th>
-                <td><input type="text" class="form-control" name="email" placeholder="이메일을 입력하세요." required  value="${plan.email }"></td>      
+                <td><input  autocomplete="off"  type="text" class="form-control" name="email" placeholder="이메일을 입력하세요." required  value="${plan.email }"></td>      
             </tr>
              
             <tr>
                 <th>학습목표</th>
-                <td><textarea class="form-control" name="goal" placeholder="학습목표를 입력하세요." required  >${plan.goal }</textarea></td>        
+                <td><textarea  autocomplete="off"   class="form-control" name="goal" placeholder="학습목표를 입력하세요." required  >${plan.goal }</textarea></td>        
             </tr>
             
                <tr>
                 <th>교재 및 참고문헌</th>
-                <td><input type="text" class="form-control" name="book"   placeholder="교재 및 참고문헌을 입력하세요."  required  value = "${plan.book }"></td>        
+                <td><input  autocomplete="off"  type="text" class="form-control" name="book"   placeholder="교재 및 참고문헌을 입력하세요."  required  value = "${plan.book }"></td>        
              </tr>
              
               <tr>
                 <th>학습 평가방법</th>
-                <td><input type="text" class="form-control" name="gradeevaluation"  placeholder="학습 평가방법을 입력하세요." required value="${plan.gradeevaluation}"></td>        
+                <td><input   autocomplete="off"  type="text" class="form-control" name="gradeevaluation"  placeholder="학습 평가방법을 입력하세요." required value="${plan.gradeevaluation}"></td>        
              </tr>
              
              <tr>
@@ -113,71 +115,71 @@
              
                <tr>
                 <th>Week1</th>
-                <td><input type="text" class="form-control" name="week1"  required value = "${plan.week1 }"></td>        
+                <td><input  autocomplete="off"  type="text" class="form-control" name="week1"  required value = "${plan.week1 }"></td>        
              </tr>
              
                <tr>
                 <th>Week2</th>
-                <td><input type="text" class="form-control" name="week2" required value = "${plan.week2 }"></td>        
+                <td><input  autocomplete="off"  type="text" class="form-control" name="week2" required value = "${plan.week2 }"></td>        
              </tr>
              
                <tr>
                 <th>Week3</th>
-                <td><input type="text" class="form-control" name="week3" required value = "${plan.week3 }"></td>        
+                <td><input  autocomplete="off"  type="text" class="form-control" name="week3" required value = "${plan.week3 }"></td>        
              </tr>
                <tr>
                 <th>Week4</th>
-                <td><input type="text" class="form-control" name="week4" required value = "${plan.week4 }"></td>        
+                <td><input  autocomplete="off"  type="text" class="form-control" name="week4" required value = "${plan.week4 }"></td>        
              </tr>
                <tr>
                 <th>Week5</th>
-                <td><input type="text" class="form-control" name="week5" required value = "${plan.week5 }"></td>        
+                <td><input  autocomplete="off"   type="text" class="form-control" name="week5" required value = "${plan.week5 }"></td>        
              </tr>
                <tr>
                 <th>Week6</th>
-                <td><input type="text" class="form-control" name="week6" required value = "${plan.week6 }"></td>        
+                <td><input  autocomplete="off"  type="text" class="form-control" name="week6" required value = "${plan.week6 }"></td>        
              </tr>
                <tr>
                 <th>Week7</th>
-                <td><input type="text" class="form-control" name="week7" required value = "${plan.week7 }" ></td>        
+                <td><input  autocomplete="off"  type="text" class="form-control" name="week7" required value = "${plan.week7 }" ></td>        
              </tr>
                <tr>
                 <th>Week8</th>
-                <td><input type="text" class="form-control" name="week8"  required value = "${plan.week8 }"></td>        
+                <td><input  autocomplete="off" type="text" class="form-control" name="week8"  required value = "${plan.week8 }"></td>        
              </tr>
              
                <tr>
                 <th>Week9</th>
-                <td><input type="text" class="form-control" name="week9"  required value = "${plan.week9 }"></td>        
+                <td><input  autocomplete="off"  type="text" class="form-control" name="week9"  required value = "${plan.week9 }"></td>        
              </tr>
              
                <tr>
                 <th>Week10</th>
-                <td><input type="text" class="form-control" name="week10" required value = "${plan.week10 }"></td>        
+                <td><input  autocomplete="off"  type="text" class="form-control" name="week10" required value = "${plan.week10 }"></td>        
              </tr>
                <tr>
                 <th>Week11</th>
-                <td><input type="text" class="form-control" name="week11"  required value = "${plan.week11 }"></td>        
+                <td><input  autocomplete="off"  type="text" class="form-control" name="week11"  required value = "${plan.week11 }"></td>        
              </tr>
                <tr>
                 <th>Week12</th>
-                <td><input type="text" class="form-control" name="week12"  required value = "${plan.week12}"></td>        
+                <td><input  autocomplete="off"  type="text" class="form-control" name="week12"  required value = "${plan.week12}"></td>        
              </tr>
                <tr>
                 <th>Week13</th>
-                <td><input type="text" class="form-control" name="week13" required value = "${plan.week13 }"></td>        
+                <td><input  autocomplete="off"  type="text" class="form-control" name="week13" required value = "${plan.week13 }"></td>        
              </tr>
                <tr>
                 <th>Week14</th>
-                <td><input type="text" class="form-control" name="week14"  required value = "${plan.week14 }"></td>        
+                <td><input  autocomplete="off"  type="text" class="form-control" name="week14"  required value = "${plan.week14 }"></td>        
              </tr>
                <tr>
                 <th>Week15</th>
-                <td><input type="text" class="form-control" name="week15" required  value = "${plan.week15 }"></td>        
+                <td><input  autocomplete="off"  type="text" class="form-control" name="week15" required  value = "${plan.week15 }"></td>        
              </tr>
                <tr>
                 <th>Week16</th>
-                <td><input type="text" class="form-control" name="week16"  required value = "${plan.week16 }"></td>        
+                <td><input  autocomplete="off"  type="text" class="form-control" name="week16"  required value = "${plan.week16 }"></td>        
              </tr>
              
                <tr>

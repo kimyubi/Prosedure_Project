@@ -45,17 +45,21 @@ public class AdminProfileController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		String[] deleteid = request.getParameterValues("select");
+		//같은 이름을 가진 여러개의 파라미터 값을 받을 때는 배열로 받는다.
+		// getParameterValues()는 배열을 리턴한다.
 
-		if (deleteid != null) 
+		if (deleteid != null)
 		{
 
 		   int result=	service.delete_id(deleteid);
-		
+		   if(result!=0)
+		   {
 			out.println("<script>alert('해당 계정이 성공적으로 삭제되었습니다.');</script>");
 			out.println("<script>location.href='/adminprofile'</script>");
+		   }
 		   
 		}
-		else
+		else //삭제할 강의를 선택하지 않고 삭제 버튼을 눌렀을 때
 		{
 			out.println("<script>alert('선택한 삭제 항목이 없습니다.');</script>");
 			out.println("<script>location.href='/adminprofile'</script>");

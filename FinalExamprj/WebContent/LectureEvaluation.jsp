@@ -154,7 +154,7 @@
 				<option value="professor"  ${(param.selection=="professor")? "selected" : "" }>교수명</option>
 
 			</select>
-			 <input type="text" name="search"  value="${param.search}"/> 
+			 <input  autocomplete="off"  type="text" name="search"  value="${param.search}"/> 
 			 <input class="btn btn-search"   style="margin-left:5px; margin-top:5px;" 	type="submit"  name="button"  value="검색" />
 
 		</form>
